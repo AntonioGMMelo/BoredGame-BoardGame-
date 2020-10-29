@@ -1,3 +1,5 @@
+import java.awt.Color
+
 import scala.annotation.tailrec
 
 object a {
@@ -25,5 +27,18 @@ object a {
       println(CharacterPosition)
       Move(NOfSpaces - 1, PixelsPerSpace, CharPositionAfter)
     }
+  }
+}
+
+object Player{
+  type Name = String
+  type Color
+  def CreatePlayer(Name: String): (Name, Color) ={ //falta parâmetro color
+
+    println("Player created successfully!")
+  }
+  def EditPlayerName(Name: String): (Name, Color) ={
+
+    println("Player edited successfully!")
   }
 }
