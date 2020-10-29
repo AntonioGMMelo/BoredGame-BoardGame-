@@ -28,10 +28,15 @@ object a {
     }
   }
 
+
   def main(args: Array[String]): Unit = {
     Move(3, 20, (1080, 1080))
     //Move(3, 20, (0, 1080))
     //Move(3, 20, (0,0))
     //Move(3, 20, (1080, 0))
   }
+}
+
+object Player{
+  def CreatePlayer(Name: String, Colour: )
 }
