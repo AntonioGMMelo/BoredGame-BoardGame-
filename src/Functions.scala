@@ -1,5 +1,4 @@
 import scala.annotation.tailrec
-import scala.reflect.runtime.universe._
 
 object a {
   val BOUNDARY_LEFT: Int = 0; //Where is the center pixel on the left most spaces
@@ -27,16 +26,4 @@ object a {
       Move(NOfSpaces - 1, PixelsPerSpace, CharPositionAfter)
     }
   }
-
-
-  def main(args: Array[String]): Unit = {
-    Move(3, 20, (1080, 1080))
-    //Move(3, 20, (0, 1080))
-    //Move(3, 20, (0,0))
-    //Move(3, 20, (1080, 0))
-  }
-}
-
-object Player{
-  def CreatePlayer(Name: String, Colour: )
 }
