@@ -1,5 +1,6 @@
 import java.awt.Color
 
+import scala.{:+, ::}
 import scala.annotation.tailrec
 
 object a {
@@ -30,14 +31,19 @@ object a {
   }
 }
 
-object Player{
+object b{
   type Name = String
-  type Color
-  def CreatePlayer(Name: String): (Name, Color) ={ //falta parâmetro color
+  type Color = Color
+  type Player = (Name, Color)
+  var Players = List[Player] //único problema: listas são imutáveis. talvez utilizar linked lists?
 
+  def CreatePlayer(NewName: String, NewColor: Color): Unit ={
+    var NewPlayer: Player = (NewName, NewColor)
+    Players :: NewPlayer
     println("Player created successfully!")
   }
-  def EditPlayerName(Name: String): (Name, Color) ={
+
+  def EditPlayerName(NewName: String): Unit ={
 
     println("Player edited successfully!")
   }
