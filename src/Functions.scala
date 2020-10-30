@@ -35,7 +35,7 @@ object b{
   type Name = String
   type Color = Color
   type Player = (Name, Color)
-  var Players = List[Player] //único problema: listas são imutáveis. talvez utilizar linked lists? Podemos "criar" uma lista nova toda vez, não é problema
+  var Players = List[Player] //Podemos "criar" uma lista nova toda vez, não é problema
 
   def CreatePlayer(NewName: String, NewColor: Color): Unit ={
     var NewPlayer: Player = (NewName, NewColor)
