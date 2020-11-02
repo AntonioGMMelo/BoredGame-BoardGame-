@@ -38,13 +38,31 @@ object b{
   var Players = List[Player] //Podemos "criar" uma lista nova toda vez, não é problema
 
   def CreatePlayer(NewName: String, NewColor: Color): Unit ={
+    var iterator: Int = 0
     var NewPlayer: Player = (NewName, NewColor)
-    Players :: NewPlayer
+    while (iterator < Players.length {
+      if (NewName != Players(iterator)) {
+        Player += NewPlayer
+      }
+      else{
+        println("Player name already exists. Choose another one!")
+      }
+      iterator += 1
+    }
     println("Player created successfully!")
   }
 
-  def EditPlayerName(NewName: String): Unit ={
-
-    println("Player edited successfully!")
+  def EditPlayerName(PreviousName: String, NewNewName: String): Unit ={
+    var iterator: Int = 0
+    while(iterator < Players.length){
+      if(PreviousName == Players(iterator)){
+        NewPlayer: Player = (NewNewName, Players(iterator)._2)
+        Players updated (iterator, NewPlayer)
+        println("Player edited successfully!")
+      }
+    }
+    else{
+      println("Player name doesn't exist.")
+    }
   }
 }
