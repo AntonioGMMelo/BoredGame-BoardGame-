@@ -5,11 +5,11 @@ import scala.annotation.tailrec
 
 object player {
   val BOUNDARY_LEFT: Int = 0; //Where is the center pixel on the left most spaces
-  val BOUNDARY_RIGHT: Int = 1080; //where the center pixel on the right most spaces are
+  val BOUNDARY_RIGHT: Int = 1000; //where the center pixel on the right most spaces are
   val BOUNDARY_TOP: Int = 0; //Where the center of the top most spaces are
-  val BOUNDARY_BOTTOM: Int = 1080 //Where the center of the bottom most spaces are
+  val BOUNDARY_BOTTOM: Int = 1000 //Where the center of the bottom most spaces are
     @tailrec
-  def Move(NOfSpaces: Int, PixelsPerSpace: Int, CharacterPosition: (Int, Int)): (Int,Int) = { //Moves the character by PixelsPerSpace NOfSpaces times movement is like a square starts at the bottom right and
+  def move(NOfSpaces: Int, PixelsPerSpace: Int, CharacterPosition: (Int, Int)): (Int,Int) = { //Moves the character by PixelsPerSpace NOfSpaces times movement is like a square starts at the bottom right and
     var CharPositionAfter: (Int, Int) =(0,0)
     if (NOfSpaces > 0) {
       if (BOUNDARY_BOTTOM == CharacterPosition._2 && BOUNDARY_LEFT < CharacterPosition._1) { //Moves to the left first
@@ -25,17 +25,18 @@ object player {
           }
         }
       }
-      Move(NOfSpaces - 1, PixelsPerSpace, CharPositionAfter) //recursivity
+      move(NOfSpaces - 1, PixelsPerSpace, CharPositionAfter) //recursivity
     }else{
       CharacterPosition //return
     }
   }
   def throwDice(): Int={
       val r = new scala.util.Random
-      r.nextInt(6)
+      r.nextInt(6) //random number between 0-5 wich equates to 1-6 on a dice
   }
 }
 
+/*
 object user{
   type Name = String
   type Color = Color
@@ -55,7 +56,7 @@ object user{
       iterator += 1
     }
     println("Player created successfully!")
-  }
+  e}
 
   def EditPlayerName(PreviousName: String, NewNewName: String): Unit ={
     var iterator: Int = 0
@@ -70,4 +71,4 @@ object user{
       println("Player name doesn't exist.")
     }
   }
-}
+}*/
