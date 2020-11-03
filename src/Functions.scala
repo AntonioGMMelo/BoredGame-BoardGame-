@@ -9,7 +9,7 @@ object player {
   val BOUNDARY_TOP: Int = 0; //Where the center of the top most spaces are
   val BOUNDARY_BOTTOM: Int = 1080 //Where the center of the bottom most spaces are
     @tailrec
-  def Move(NOfSpaces: Int, PixelsPerSpace: Int, CharacterPosition: (Int, Int)): Unit = { //Moves the character by PixelsPerSpace NOfSpaces times movement is like a square starts at the bottom right and
+  def Move(NOfSpaces: Int, PixelsPerSpace: Int, CharacterPosition: (Int, Int)): (Int,Int) = { //Moves the character by PixelsPerSpace NOfSpaces times movement is like a square starts at the bottom right and
     var CharPositionAfter: (Int, Int) =(0,0)
     if (NOfSpaces > 0) {
       if (BOUNDARY_BOTTOM == CharacterPosition._2 && BOUNDARY_LEFT < CharacterPosition._1) { //Moves to the left first
