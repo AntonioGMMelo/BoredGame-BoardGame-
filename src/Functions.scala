@@ -8,6 +8,7 @@ object player {
   val BOUNDARY_RIGHT: Int = 1000; //where the center pixel on the right most spaces are
   val BOUNDARY_TOP: Int = 0; //Where the center of the top most spaces are
   val BOUNDARY_BOTTOM: Int = 1000 //Where the center of the bottom most spaces are
+  val dice = List(1, 2, 3, 4, 5,6) // a six faced dice
     @tailrec
   def move(NOfSpaces: Int, PixelsPerSpace: Int, CharacterPosition: (Int, Int)): (Int,Int) = { //Moves the character by PixelsPerSpace NOfSpaces times movement is like a square starts at the bottom right and
     var CharPositionAfter: (Int, Int) =(0,0)
@@ -30,13 +31,17 @@ object player {
       CharacterPosition //return
     }
   }
-  def throwDice(): Int={
+  def throwDice(dice : List[Int]): Int={
       val r = new scala.util.Random
-      r.nextInt(6) //random number between 0-5 wich equates to 1-6 on a dice
+      dice(r.nextInt(dice.size)) //random number between 0-5 wich equates to 1-6 on a dice
   }
   def coinToss(): Int ={
     val r = new scala.util.Random
     r.nextInt(2)//random number between 0-1 equating to a coin toss 1=Heads, 0=Tails
+  }
+  def weightedDice() : Int ={
+      lazy val diceRoll = dice.filter(_ >2)
+      throwDice(diceRoll)
   }
 }
 
