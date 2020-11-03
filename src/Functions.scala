@@ -34,6 +34,10 @@ object player {
       val r = new scala.util.Random
       r.nextInt(6) //random number between 0-5 wich equates to 1-6 on a dice
   }
+  def coinToss(): Int ={
+    val r = new scala.util.Random
+    r.nextInt(2)//random number between 0-1 equating to a coin toss 1=Heads, 0=Tails
+  }
 }
 
 /*
