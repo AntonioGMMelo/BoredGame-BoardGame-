@@ -25,9 +25,14 @@ object player {
           }
         }
       }
-      println(CharacterPosition)
       Move(NOfSpaces - 1, PixelsPerSpace, CharPositionAfter) //recursivity
+    }else{
+      CharacterPosition //return
     }
+  }
+  def throwDice(): Int={
+      val r = new scala.util.Random
+      r.nextInt(6)
   }
 }
 
