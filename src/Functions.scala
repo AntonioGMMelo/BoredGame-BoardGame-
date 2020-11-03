@@ -3,7 +3,7 @@ import java.awt.Color
 import scala.{:+, ::}
 import scala.annotation.tailrec
 
-object a {
+object player {
   val BOUNDARY_LEFT: Int = 0; //Where is the center pixel on the left most spaces
   val BOUNDARY_RIGHT: Int = 1080; //where the center pixel on the right most spaces are
   val BOUNDARY_TOP: Int = 0; //Where the center of the top most spaces are
@@ -31,7 +31,7 @@ object a {
   }
 }
 
-object b{
+object user{
   type Name = String
   type Color = Color
   type Player = (Name, Color)
