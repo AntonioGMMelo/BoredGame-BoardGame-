@@ -50,28 +50,23 @@ object player {
 }
 
 
-
+/*
 object user{
 
   type Name = String
   type Color = Color
   type Player = (Name, Color)
-  var Players: List[Player] = List()//Podemos "criar" uma lista nova toda vez, não é problema
+  val Players: List[Player] = List() //Podemos "criar" uma lista nova toda vez, não é problema
 
   def CreatePlayer(NewName: String, NewColor: Color): Unit = {
     var iterator: Int = 0
     val NewPlayer: Player = (NewName, NewColor)
     while (iterator < Players.length) {
-      if (NewName != Players(iterator)) {
-        Players :+ NewPlayer
-        break
+      NewName match{
+        case NewName => CreatePlayer(NewName, NewColor)
+        case _ => Players :+ NewPlayer
+          CreatePlayer(NewName, NewColor)
       }
-      else {
-        println("Player name already exists. Choose another one!")
-      }
-      iterator += 1
-    }
-    println("Player created successfully!")
   }
 
   def EditPlayerName(PreviousName: String, NewNewName: String): Unit = {
@@ -81,10 +76,10 @@ object user{
         val NewPlayer: Player = (NewNewName, Players(iterator)._2)
         Players.updated(iterator, NewPlayer)
         println("Player edited successfully!")
+        break
       }
-      else {
-        println("Player name doesn't exist.")
-      }
+      iterator += 1
     }
+    println("Player name doesn't exist.")
   }
-}
+}*/
