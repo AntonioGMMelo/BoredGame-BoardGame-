@@ -3,15 +3,15 @@ import scala.annotation.tailrec
 import scala.util.control.Breaks.break
 
 object player {
-  val BOUNDARY_LEFT: Int = 0; //Where is the center pixel on the left most spaces
-  val BOUNDARY_RIGHT: Int = 1000; //where the center pixel on the right most spaces are
-  val BOUNDARY_TOP: Int = 0; //Where the center of the top most spaces are
-  val BOUNDARY_BOTTOM: Int = 1000 //Where the center of the bottom most spaces are
-  val dice = List(1, 2, 3, 4, 5,6) // a six faced dice
-  val wheelItems = List("Move Back 1 Space","Move Back 1 Space","Move Back 1 Space","Move Back 2 Spaces","Move Back 2 Spaces","All Players Move Back 2 Spaces","Move Forward 1 Space","Move Forward 1 Space","Move Forward 1 Space","Move Forward 2 Spaces","Move Forward 2 Spaces","All Players Move Forwards 2 Spaces","Go To Jail","Move Forward 3 Spaces","Stay","Roll The dice","Roll The Weighted Dice")
-  val cards = List("Roll The dice","Roll The Weighted Dice","Go To Jail","Get Out Of Jail Free Card","50/50","Skip Question","Dilate Time")
+  private val BOUNDARY_LEFT: Int = 0; //Where is the center pixel on the left most spaces
+  private val BOUNDARY_RIGHT: Int = 1000; //where the center pixel on the right most spaces are
+  private val BOUNDARY_TOP: Int = 0; //Where the center of the top most spaces are
+  private val BOUNDARY_BOTTOM: Int = 1000 //Where the center of the bottom most spaces are
+  private val dice = List(1, 2, 3, 4, 5,6) // a six faced dice
+  private val wheelItems = List("Move Back 1 Space","Move Back 1 Space","Move Back 1 Space","Move Back 2 Spaces","Move Back 2 Spaces","All Players Move Back 2 Spaces","Move Forward 1 Space","Move Forward 1 Space","Move Forward 1 Space","Move Forward 2 Spaces","Move Forward 2 Spaces","All Players Move Forwards 2 Spaces","Go To Jail","Move Forward 3 Spaces","Stay","Roll The dice","Roll The Weighted Dice") //Wheel options
+  private val cards = List("Roll The dice","Roll The Weighted Dice","Go To Jail","Get Out Of Jail Free Card","50/50","Skip Question","Dilate Time")//card options
 
-  def move(NOfSpaces: Int, PixelsPerSpace: Int, CharacterPosition: (Int, Int),forwards: Boolean): (Int,Int) = {
+  def move(NOfSpaces: Int, PixelsPerSpace: Int, CharacterPosition: (Int, Int),forwards: Boolean): (Int,Int) = { //move if forwards == true call moveForward else calls moveBackward
     if(forwards == true) moveForward(NOfSpaces,PixelsPerSpace,CharacterPosition) else moveBackward(NOfSpaces,PixelsPerSpace,CharacterPosition)
 
   }
