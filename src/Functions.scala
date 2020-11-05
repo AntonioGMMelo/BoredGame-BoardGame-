@@ -31,16 +31,17 @@ object player {
       CharacterPosition //return
     }
   }
-  def throwDice(dice : List[Int]): Int={
+  def throwDice(dice : List[Int]): Int={//random number between 0-dice.length wich equates to one of the faces on a dice
       val r = new scala.util.Random
-      dice(r.nextInt(dice.size)) //random number between 0-5 wich equates to 1-6 on a dice
+      dice(r.nextInt(dice.size))
   }
-  def coinToss(): Int ={
+  def coinToss(): Int ={//random number between 0-1 equating to a coin toss 1=Heads, 0=Tails
     val r = new scala.util.Random
-    r.nextInt(2)//random number between 0-1 equating to a coin toss 1=Heads, 0=Tails
+    r.nextInt(2)
   }
-  def weightedDice() : Int ={
-      lazy val diceRoll = dice.filter(_ >2)
+  def weightedDice() : Int ={  //a 3 faced dice with the values 2,4 or 6
+      val aux =dice.filter(_ <4)  //filters dice to List(1,2,3).
+      lazy val diceRoll = aux.map(x=>x*2) //maps dice to List(2,4,6)
       throwDice(diceRoll)
   }
 }
