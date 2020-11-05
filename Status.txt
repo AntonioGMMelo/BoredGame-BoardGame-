@@ -6,7 +6,7 @@ Jogar moeda DONE
 Andar x DONE
 Abrir ação da casa x
 Responder pergunta
-Tirar carta
+Tirar carta DONE
 Pausar jogo
 Resumir jogo
 Terminar jogo
