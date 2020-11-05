@@ -1,35 +1,65 @@
-import java.awt.Color
-
 import scala.Console.println
-import scala.{:+, ::}
 import scala.annotation.tailrec
-import scala.util.control.Breaks
 import scala.util.control.Breaks.break
 
 object player {
-  val BOUNDARY_LEFT: Int = 0; //Where is the center pixel on the left most spaces
-  val BOUNDARY_RIGHT: Int = 1000; //where the center pixel on the right most spaces are
-  val BOUNDARY_TOP: Int = 0; //Where the center of the top most spaces are
-  val BOUNDARY_BOTTOM: Int = 1000 //Where the center of the bottom most spaces are
-  val dice = List(1, 2, 3, 4, 5,6) // a six faced dice
+  private val BOUNDARY_LEFT: Int = 0; //Where is the center pixel on the left most spaces
+  private val BOUNDARY_RIGHT: Int = 1000; //where the center pixel on the right most spaces are
+  private val BOUNDARY_TOP: Int = 0; //Where the center of the top most spaces are
+  private val BOUNDARY_BOTTOM: Int = 1000 //Where the center of the bottom most spaces are
+  private val dice = List(1, 2, 3, 4, 5,6) // a six faced dice
+  private val wheelItems = List("Move Back 1 Space","Move Back 1 Space","Move Back 1 Space","Move Back 2 Spaces","Move Back 2 Spaces","All Players Move Back 2 Spaces","Move Forward 1 Space","Move Forward 1 Space","Move Forward 1 Space","Move Forward 2 Spaces","Move Forward 2 Spaces","All Players Move Forwards 2 Spaces","Go To Jail","Move Forward 3 Spaces","Stay","Roll The dice","Roll The Weighted Dice") //Wheel options
+  private val cards = List("Roll The dice","Roll The Weighted Dice","Go To Jail","Get Out Of Jail Free Card","50/50","Skip Question","Dilate Time")//card options
+
+  def move(NOfSpaces: Int, PixelsPerSpace: Int, CharacterPosition: (Int, Int),forwards: Boolean): (Int,Int) = { //move if forwards == true call moveForward else calls moveBackward
+    if(forwards == true) moveForward(NOfSpaces,PixelsPerSpace,CharacterPosition) else moveBackward(NOfSpaces,PixelsPerSpace,CharacterPosition)
+
+  }
     @tailrec
-  def move(NOfSpaces: Int, PixelsPerSpace: Int, CharacterPosition: (Int, Int)): (Int,Int) = { //Moves the character by PixelsPerSpace NOfSpaces times movement is like a square starts at the bottom right and
-    var CharPositionAfter: (Int, Int) =(0,0)
+  def moveForward(NOfSpaces: Int, PixelsPerSpace: Int, CharacterPosition: (Int, Int)): (Int,Int) = { //Moves the character by PixelsPerSpace NOfSpaces times movement is like a square starts at the bottom right and
     if (NOfSpaces > 0) {
       if (BOUNDARY_BOTTOM == CharacterPosition._2 && BOUNDARY_LEFT < CharacterPosition._1) { //Moves to the left first
-        CharPositionAfter = (CharacterPosition._1 - PixelsPerSpace, CharacterPosition._2)
+        val CharPositionAfter = (CharacterPosition._1 - PixelsPerSpace, CharacterPosition._2)
+        moveForward(NOfSpaces - 1, PixelsPerSpace, CharPositionAfter) //recursivity
       } else {
         if (BOUNDARY_TOP < CharacterPosition._2 && BOUNDARY_LEFT == CharacterPosition._1) {//then up
-          CharPositionAfter = (CharacterPosition._1, CharacterPosition._2 - PixelsPerSpace)
+          val CharPositionAfter = (CharacterPosition._1, CharacterPosition._2 - PixelsPerSpace)
+          moveForward(NOfSpaces - 1, PixelsPerSpace, CharPositionAfter) //recursivity
         } else {
           if (BOUNDARY_TOP == CharacterPosition._2 && BOUNDARY_RIGHT > CharacterPosition._1) { //then to the right
-            CharPositionAfter = (CharacterPosition._1 + PixelsPerSpace, CharacterPosition._2)
+            val CharPositionAfter = (CharacterPosition._1 + PixelsPerSpace, CharacterPosition._2)
+            moveForward(NOfSpaces - 1, PixelsPerSpace, CharPositionAfter) //recursivity
           } else {
-            CharPositionAfter = (CharacterPosition._1, CharacterPosition._2 + PixelsPerSpace) //then down
+            val CharPositionAfter = (CharacterPosition._1, CharacterPosition._2 + PixelsPerSpace) //then down
+            moveForward(NOfSpaces - 1, PixelsPerSpace, CharPositionAfter) //recursivity
           }
         }
       }
-      move(NOfSpaces - 1, PixelsPerSpace, CharPositionAfter) //recursivity
+    }else{
+      CharacterPosition //return
+    }
+  }
+  @tailrec
+  def moveBackward(NOfSpaces: Int, PixelsPerSpace: Int, CharacterPosition: (Int, Int)): (Int,Int) = { //Moves the character by PixelsPerSpace NOfSpaces times movement is like a square starts at the bottom right and
+    if (NOfSpaces > 0) {
+      if (BOUNDARY_BOTTOM == CharacterPosition._2 && BOUNDARY_LEFT < CharacterPosition._1) { //Moves up first
+        val CharPositionAfter = (CharacterPosition._1, CharacterPosition._2 - PixelsPerSpace)
+        moveBackward(NOfSpaces - 1, PixelsPerSpace, CharPositionAfter) //recursivity
+      } else {
+        if (BOUNDARY_TOP < CharacterPosition._2 && BOUNDARY_LEFT == CharacterPosition._1) {//then left
+          val CharPositionAfter = (CharacterPosition._1- PixelsPerSpace, CharacterPosition._2 )
+          moveBackward(NOfSpaces - 1, PixelsPerSpace, CharPositionAfter) //recursivity
+        } else {
+          if (BOUNDARY_TOP == CharacterPosition._2 && BOUNDARY_RIGHT > CharacterPosition._1) { //then down
+            val CharPositionAfter = (CharacterPosition._1 , CharacterPosition._2 + PixelsPerSpace)
+            moveBackward(NOfSpaces - 1, PixelsPerSpace, CharPositionAfter) //recursivity
+          } else {
+            val CharPositionAfter = (CharacterPosition._1+ PixelsPerSpace, CharacterPosition._2 ) //then right
+            moveBackward(NOfSpaces - 1, PixelsPerSpace, CharPositionAfter) //recursivity
+          }
+        }
+      }
+
     }else{
       CharacterPosition //return
     }
@@ -47,6 +77,14 @@ object player {
       lazy val diceRoll = aux.map(x=>x*2) //maps dice to List(2,4,6)
       throwDice(diceRoll)
   }
+  def spinTheWheel(wheelItems:List[String]): String ={ //returns a String wth the action where the wheel landed
+    val r = new scala.util.Random
+    wheelItems(r.nextInt(wheelItems.size)) //Makes the wheel spin random with different odds for different actions because of the number of times an action is in the list
+  }
+  def pullCard(cards:List[String]): String ={ //returns a String wth the action where the wheel landed
+    val r = new scala.util.Random
+    cards(r.nextInt(cards.size)) //Makes the wheel spin random with different odds for different actions because of the number of times an action is in the list
+  }
 }
 
 
@@ -56,7 +94,11 @@ object user{
   type Name = String
   type Color = Color
   type Player = (Name, Color)
+<<<<<<< HEAD
   val Players: List[Player] = List() //Podemos "criar" uma lista nova toda vez, não é problema
+=======
+  var Players: List[Player] = List()
+>>>>>>> 959e2836439cabe55483237ceee0058aa14ce532
 
   def CreatePlayer(NewName: String, NewColor: Color): Unit = {
     var iterator: Int = 0

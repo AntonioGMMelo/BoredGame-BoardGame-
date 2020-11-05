@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 Criar Jogador-> Inserir o nome e a cor desejada -> DONE + needs to be tested
 Editar Jogador -> Mudar o nome e/ou a cor -> DONE + needs to be tested
 Começar o jogo ->
@@ -18,4 +19,37 @@ Jogar dado novamente ->
 Pedir mais tempo para responder a pergunta ->
 Diminuir o número de opções a selecionar ->
 Adicionar texto de vitória ->
+=======
+Criar Jogador-> Inserir o nome e a cor desejada DONE + needs to be tested
+Editar Jogador -> Mudar o nome e/ou a cor DONE + needs to be tested
+Começar o jogo
+Jogar dado DONE
+Jogar moeda DONE
+Andar x DONE
+Abrir ação da casa x
+Responder pergunta
+Tirar carta
+Pausar jogo
+Resumir jogo
+Terminar jogo
+Recomeçar o jogo
+Ir a cadeia ou voltar x casas
+Viciar dado DONE
+Rodar a roleta DONE
+Jogar dado novamente
+Pedir mais tempo para responder a pergunta
+Diminuir o número de opções a selecionar
+Adicionar texto de vitória
+>>>>>>> 959e2836439cabe55483237ceee0058aa14ce532
 
+Recursividade (no lugar de iteratividade); DONE
+• Imutabilidade; DONE
+• Pure functions (exceto na camada interativa); DONE
+• Tail recursion; DONE
+• Lazy evaluation; DONE
+• Pattern matching;
+• Funções de ordem superior;
+• Padrões recorrentes sobre listas (incluir: map DONE, filter DONE e fold);
+• Partially Applied Functions e/ou Currying;
+• Try e Option;
+• Functional Object-Oriented programming.
