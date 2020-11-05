@@ -49,7 +49,7 @@ object player {
 }
 
 
-/*
+
 object user{
 
   type Name = String
@@ -86,4 +86,4 @@ object user{
       }
     }
   }
-}*/
+}
