@@ -11,7 +11,7 @@ object player {
   private val wheelItems = List("Move Back 1 Space","Move Back 1 Space","Move Back 1 Space","Move Back 2 Spaces","Move Back 2 Spaces","All Players Move Back 2 Spaces","Move Forward 1 Space","Move Forward 1 Space","Move Forward 1 Space","Move Forward 2 Spaces","Move Forward 2 Spaces","All Players Move Forwards 2 Spaces","Go To Jail","Move Forward 3 Spaces","Stay","Roll The dice","Roll The Weighted Dice") //Wheel options
   private val cards = List("Roll The dice","Roll The Weighted Dice","Go To Jail","Get Out Of Jail Free Card","50/50","Skip Question","Dilate Time")//card options
 
-  def move(NOfSpaces: Int, PixelsPerSpace: Int, CharacterPosition: (Int, Int),f: (Int,Int,(Int,Int)) => (Int,Int)): (Int,Int) = { //move if forwards == true call moveForward else calls moveBackward
+  def move(NOfSpaces: Int, PixelsPerSpace: Int, CharacterPosition: (Int, Int),f: (Int,Int,(Int,Int)) => (Int,Int)): (Int,Int) = { //higher order functions that calls the function given to it with the atributes given to it i.e. move(3,20,(1000,1000),moveForward) calls moveForward(3, 20, (1000,1000))
     f(NOfSpaces, PixelsPerSpace, CharacterPosition)
   }
     @tailrec
