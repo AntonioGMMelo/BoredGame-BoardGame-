@@ -1,7 +1,10 @@
 import java.awt.Color
 
+import scala.Console.println
 import scala.{:+, ::}
 import scala.annotation.tailrec
+import scala.util.control.Breaks
+import scala.util.control.Breaks.break
 
 object player {
   val BOUNDARY_LEFT: Int = 0; //Where is the center pixel on the left most spaces
@@ -46,39 +49,42 @@ object player {
   }
 }
 
+
 /*
 object user{
+
   type Name = String
   type Color = Color
   type Player = (Name, Color)
-  var Players = List[Player] //Podemos "criar" uma lista nova toda vez, não é problema
+  var Players: List[Player] //Podemos "criar" uma lista nova toda vez, não é problema
 
-  def CreatePlayer(NewName: String, NewColor: Color): Unit ={
+  def CreatePlayer(NewName: String, NewColor: Color): Unit = {
     var iterator: Int = 0
-    var NewPlayer: Player = (NewName, NewColor)
-    while (iterator < Players.length {
+    val NewPlayer: Player = (NewName, NewColor)
+    while (iterator < Players.length) {
       if (NewName != Players(iterator)) {
-        Player += NewPlayer
+        Players += NewPlayer
+        break
       }
-      else{
+      else {
         println("Player name already exists. Choose another one!")
       }
       iterator += 1
     }
     println("Player created successfully!")
-  e}
+  }
 
-  def EditPlayerName(PreviousName: String, NewNewName: String): Unit ={
+  def EditPlayerName(PreviousName: String, NewNewName: String): Unit = {
     var iterator: Int = 0
-    while(iterator < Players.length){
-      if(PreviousName == Players(iterator)){
-        NewPlayer: Player = (NewNewName, Players(iterator)._2)
-        Players updated (iterator, NewPlayer)
+    while (iterator < Players.length) {
+      if (PreviousName == Players(iterator)) {
+        val NewPlayer: Player = (NewNewName, Players(iterator)._2)
+        Players.updated(iterator, NewPlayer)
         println("Player edited successfully!")
       }
-    }
-    else{
-      println("Player name doesn't exist.")
+      else {
+        println("Player name doesn't exist.")
+      }
     }
   }
 }*/
