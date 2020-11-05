@@ -61,7 +61,7 @@ object user{
   type Name = String
   type Color = Color
   type Player = (Name, Color)
-  var Players: List[Player] = List()//Podemos "criar" uma lista nova toda vez, não é problema
+  var Players: List[Player] = List()
 
   def CreatePlayer(NewName: String, NewColor: Color): Unit = {
     var iterator: Int = 0

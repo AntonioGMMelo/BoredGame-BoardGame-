@@ -19,3 +19,14 @@ Pedir mais tempo para responder a pergunta
 Diminuir o número de opções a selecionar
 Adicionar texto de vitória
 
+Recursividade (no lugar de iteratividade); DONE
+• Imutabilidade; DONE
+• Pure functions (exceto na camada interativa); DONE
+• Tail recursion; DONE
+• Lazy evaluation; DONE
+• Pattern matching;
+• Funções de ordem superior;
+• Padrões recorrentes sobre listas (incluir: map DONE, filter DONE e fold);
+• Partially Applied Functions e/ou Currying;
+• Try e Option;
+• Functional Object-Oriented programming.
