@@ -35,7 +35,7 @@ object player {
       CharacterPosition //return
     }
   }
-  def throwDice(dice : List[Int]): Int={//random number between 0-dice.length wich equates to one of the faces on a dice
+  def throwDice(dice : List[Int]): Int={//random number between 0-dice.length which equates to one of the faces on a dice
       val r = new scala.util.Random
       dice(r.nextInt(dice.size))
   }
@@ -55,20 +55,20 @@ object player {
 }
 
 
-/*
+
 object user{
 
   type Name = String
   type Color = Color
   type Player = (Name, Color)
-  var Players: List[Player] //Podemos "criar" uma lista nova toda vez, não é problema
+  var Players: List[Player] = List()//Podemos "criar" uma lista nova toda vez, não é problema
 
   def CreatePlayer(NewName: String, NewColor: Color): Unit = {
     var iterator: Int = 0
     val NewPlayer: Player = (NewName, NewColor)
     while (iterator < Players.length) {
       if (NewName != Players(iterator)) {
-        Players += NewPlayer
+        Players :+ NewPlayer
         break
       }
       else {
@@ -92,4 +92,4 @@ object user{
       }
     }
   }
-}*/
+}
