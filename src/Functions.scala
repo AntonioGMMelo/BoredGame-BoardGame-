@@ -88,40 +88,31 @@ object player {
 }
 
 
-/*
+
 object user{
 
   type Name = String
   type Color = Color
   type Player = (Name, Color)
-<<<<<<< HEAD
   val Players: List[Player] = List() //Podemos "criar" uma lista nova toda vez, não é problema
-=======
-  var Players: List[Player] = List()
->>>>>>> 959e2836439cabe55483237ceee0058aa14ce532
 
+  @tailrec
   def CreatePlayer(NewName: String, NewColor: Color): Unit = {
-    var iterator: Int = 0
     val NewPlayer: Player = (NewName, NewColor)
-    while (iterator < Players.length) {
-      NewName match{
-        case NewName => CreatePlayer(NewName, NewColor)
-        case _ => Players :+ NewPlayer
-          CreatePlayer(NewName, NewColor)
-      }
+    NewName match {
+      case NewName => CreatePlayer(NewName, NewColor)
+      case _ => Players :+ NewPlayer
+        println("Player created successfully!")
+    }
   }
 
-  def EditPlayerName(PreviousName: String, NewNewName: String): Unit = {
-    var iterator: Int = 0
-    while (iterator < Players.length) {
-      if (PreviousName == Players(iterator)) {
-        val NewPlayer: Player = (NewNewName, Players(iterator)._2)
-        Players.updated(iterator, NewPlayer)
-        println("Player edited successfully!")
-        break
+    @tailrec
+    def EditPlayerName(PreviousName: String, NewNewName: String): Unit = {
+      val NewPlayer: Player = (NewNewName, Players(Players.indexOf(PreviousName))._2)
+      NewNewName match {
+        case NewNewName => EditPlayerName(PreviousName, NewNewName)
+        case _ => Players.updated(Players.indexOf(PreviousName), NewPlayer)
+          println("Player edited successfully!")
       }
-      iterator += 1
     }
-    println("Player name doesn't exist.")
-  }
-}*/
+}
