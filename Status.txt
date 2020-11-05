@@ -19,12 +19,12 @@ Pedir mais tempo para responder a pergunta
 Diminuir o número de opções a selecionar
 Adicionar texto de vitória
 
-Recursividade (no lugar de iteratividade); DONE
-• Imutabilidade; DONE
+Recursividade (no lugar de iteratividade); DONE I.E. NO WHILE OR FOR LOOPS
+• Imutabilidade; DONE I.E. ALWAYS USE VAL NOT VAR
 • Pure functions (exceto na camada interativa); DONE
 • Tail recursion; DONE
-• Lazy evaluation; DONE
-• Pattern matching; DONE
+• Lazy evaluation; DONE I.E. MAKE EVERY VAL THAT IS NOT IMEDIATLY USED A LAZY VAL
+• Pattern matching; DONE    NO IFS OR ELSES USE MATCH -CASE
 • Funções de ordem superior; DONE
 • Padrões recorrentes sobre listas (incluir: map DONE, filter DONE e fold);
 • Partially Applied Functions e/ou Currying;
