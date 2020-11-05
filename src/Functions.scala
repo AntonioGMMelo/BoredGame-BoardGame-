@@ -88,7 +88,7 @@ object player {
 
 
 /*
-object user{
+object user {
 
   type Name = String
   type Color = Color
@@ -105,18 +105,13 @@ object user{
     }
   }
 
-    @tailrec
-    def EditPlayerName(PreviousName: String, NewNewName: String): Unit = {
-      val NewPlayer: Player = (NewNewName, Players(Players.indexOf(PreviousName))._2)
-      NewNewName match {
-        case NewNewName => EditPlayerName(PreviousName, NewNewName)
-        case _ => Players.updated(Players.indexOf(PreviousName), NewPlayer)
-          println("Player edited successfully!")
-      }
+  @tailrec
+  def EditPlayerName(PreviousName: String, NewNewName: String): Unit = {
+    val EditedPlayer: Player = (NewNewName, Players(Players.indexOf(PreviousName))._2)
+    NewNewName match {
+      case NewNewName => EditPlayerName(PreviousName, NewNewName)
+      case _ => Players.updated(Players.indexOf(PreviousName), EditedPlayer)
+        println("Player edited successfully!")
     }
-<<<<<<< HEAD
-}
-=======
   }
 }*/
->>>>>>> 9bd93d393cf6e49f69661b2041fd86207bac4b68
