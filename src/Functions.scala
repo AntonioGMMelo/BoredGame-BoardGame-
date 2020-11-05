@@ -17,44 +17,49 @@ object player {
   }
     @tailrec
   def moveForward(NOfSpaces: Int, PixelsPerSpace: Int, CharacterPosition: (Int, Int)): (Int,Int) = { //Moves the character by PixelsPerSpace NOfSpaces times movement is like a square starts at the bottom right and
-    var CharPositionAfter: (Int, Int) =(0,0)
     if (NOfSpaces > 0) {
       if (BOUNDARY_BOTTOM == CharacterPosition._2 && BOUNDARY_LEFT < CharacterPosition._1) { //Moves to the left first
-        CharPositionAfter = (CharacterPosition._1 - PixelsPerSpace, CharacterPosition._2)
+        val CharPositionAfter = (CharacterPosition._1 - PixelsPerSpace, CharacterPosition._2)
+        moveForward(NOfSpaces - 1, PixelsPerSpace, CharPositionAfter) //recursivity
       } else {
         if (BOUNDARY_TOP < CharacterPosition._2 && BOUNDARY_LEFT == CharacterPosition._1) {//then up
-          CharPositionAfter = (CharacterPosition._1, CharacterPosition._2 - PixelsPerSpace)
+          val CharPositionAfter = (CharacterPosition._1, CharacterPosition._2 - PixelsPerSpace)
+          moveForward(NOfSpaces - 1, PixelsPerSpace, CharPositionAfter) //recursivity
         } else {
           if (BOUNDARY_TOP == CharacterPosition._2 && BOUNDARY_RIGHT > CharacterPosition._1) { //then to the right
-            CharPositionAfter = (CharacterPosition._1 + PixelsPerSpace, CharacterPosition._2)
+            val CharPositionAfter = (CharacterPosition._1 + PixelsPerSpace, CharacterPosition._2)
+            moveForward(NOfSpaces - 1, PixelsPerSpace, CharPositionAfter) //recursivity
           } else {
-            CharPositionAfter = (CharacterPosition._1, CharacterPosition._2 + PixelsPerSpace) //then down
+            val CharPositionAfter = (CharacterPosition._1, CharacterPosition._2 + PixelsPerSpace) //then down
+            moveForward(NOfSpaces - 1, PixelsPerSpace, CharPositionAfter) //recursivity
           }
         }
       }
-      moveForward(NOfSpaces - 1, PixelsPerSpace, CharPositionAfter) //recursivity
     }else{
       CharacterPosition //return
     }
   }
   @tailrec
   def moveBackward(NOfSpaces: Int, PixelsPerSpace: Int, CharacterPosition: (Int, Int)): (Int,Int) = { //Moves the character by PixelsPerSpace NOfSpaces times movement is like a square starts at the bottom right and
-    var CharPositionAfter: (Int, Int) =(0,0)
     if (NOfSpaces > 0) {
       if (BOUNDARY_BOTTOM == CharacterPosition._2 && BOUNDARY_LEFT < CharacterPosition._1) { //Moves up first
-        CharPositionAfter = (CharacterPosition._1, CharacterPosition._2 - PixelsPerSpace)
+        val CharPositionAfter = (CharacterPosition._1, CharacterPosition._2 - PixelsPerSpace)
+        moveBackward(NOfSpaces - 1, PixelsPerSpace, CharPositionAfter) //recursivity
       } else {
         if (BOUNDARY_TOP < CharacterPosition._2 && BOUNDARY_LEFT == CharacterPosition._1) {//then left
-          CharPositionAfter = (CharacterPosition._1- PixelsPerSpace, CharacterPosition._2 )
+          val CharPositionAfter = (CharacterPosition._1- PixelsPerSpace, CharacterPosition._2 )
+          moveBackward(NOfSpaces - 1, PixelsPerSpace, CharPositionAfter) //recursivity
         } else {
           if (BOUNDARY_TOP == CharacterPosition._2 && BOUNDARY_RIGHT > CharacterPosition._1) { //then down
-            CharPositionAfter = (CharacterPosition._1 , CharacterPosition._2 + PixelsPerSpace)
+            val CharPositionAfter = (CharacterPosition._1 , CharacterPosition._2 + PixelsPerSpace)
+            moveBackward(NOfSpaces - 1, PixelsPerSpace, CharPositionAfter) //recursivity
           } else {
-            CharPositionAfter = (CharacterPosition._1+ PixelsPerSpace, CharacterPosition._2 ) //then right
+            val CharPositionAfter = (CharacterPosition._1+ PixelsPerSpace, CharacterPosition._2 ) //then right
+            moveBackward(NOfSpaces - 1, PixelsPerSpace, CharPositionAfter) //recursivity
           }
         }
       }
-      moveBackward(NOfSpaces - 1, PixelsPerSpace, CharPositionAfter) //recursivity
+
     }else{
       CharacterPosition //return
     }
