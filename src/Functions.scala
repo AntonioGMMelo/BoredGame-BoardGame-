@@ -12,6 +12,7 @@ object player {
   val BOUNDARY_TOP: Int = 0; //Where the center of the top most spaces are
   val BOUNDARY_BOTTOM: Int = 1000 //Where the center of the bottom most spaces are
   val dice = List(1, 2, 3, 4, 5,6) // a six faced dice
+  val wheelItems = List("Move Back 1 Space","Move Back 1 Space","Move Back 1 Space","Move Back 2 Spaces","Move Back 2 Spaces","All Players Move Back 2 Spaces","Move Forward 1 Space","Move Forward 1 Space","Move Forward 1 Space","Move Forward 2 Spaces","Move Forward 2 Spaces","All Players Move Forwards 2 Spaces","Go To Jail","Move Forward 3 Spaces","Stay","Roll The dice","Roll The Weighted Dice")
     @tailrec
   def move(NOfSpaces: Int, PixelsPerSpace: Int, CharacterPosition: (Int, Int)): (Int,Int) = { //Moves the character by PixelsPerSpace NOfSpaces times movement is like a square starts at the bottom right and
     var CharPositionAfter: (Int, Int) =(0,0)
@@ -46,6 +47,10 @@ object player {
       val aux =dice.filter(_ <4)  //filters dice to List(1,2,3).
       lazy val diceRoll = aux.map(x=>x*2) //maps dice to List(2,4,6)
       throwDice(diceRoll)
+  }
+  def spinTheWheel(wheelItems:List[String]): String ={ //returns a String wth the action where the wheel landed
+    val r = new scala.util.Random
+    wheelItems(r.nextInt(wheelItems.size)) //Makes the wheel spin random with different odds for different actions because of the number of times an action is in the list
   }
 }
 

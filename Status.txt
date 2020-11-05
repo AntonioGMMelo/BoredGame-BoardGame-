@@ -13,7 +13,7 @@ Terminar jogo
 Recomeçar o jogo
 Ir a cadeia ou voltar x casas
 Viciar dado DONE
-Rodar a roleta
+Rodar a roleta DONE
 Jogar dado novamente
 Pedir mais tempo para responder a pergunta
 Diminuir o número de opções a selecionar
