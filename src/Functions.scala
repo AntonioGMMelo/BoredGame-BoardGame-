@@ -85,7 +85,7 @@ object player {
       cards(r.nextInt(cards.size)) //Makes the wheel spin random with different odds for different actions because of the number of times an action is in the list
   }
 }
-pilinha
+
 
 /*
 object user {
