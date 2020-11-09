@@ -1,6 +1,9 @@
 import scala.Console.println
 import scala.annotation.tailrec
 import scala.util.control.Breaks.break
+import io.AnsiColor._
+import scala.io.AnsiColor
+import scala.io.AnsiColor._
 
 class player {
   private val BOUNDARY_LEFT: Int = 0; //Where is the center pixel on the left most spaces
@@ -91,17 +94,17 @@ class player {
 object user {
 
   type Name = String
-  type Color = Color
+  type Color = AnsiColor
   type Player = (Name, Color)
   val Players: List[Player] = List() //Podemos "criar" uma lista nova toda vez, não é problema
 
   @tailrec
-  def CreatePlayer(NewName: String, NewColor: Color): Unit = {
+  def CreatePlayer(NewName: String, NewColor: AnsiColor): Unit = {
     val NewPlayer: Player = (NewName, NewColor)
     NewName match {
       case NewName => CreatePlayer(NewName, NewColor)
       case _ => Players :+ NewPlayer
-        println("Player created successfully!")
+        println(s"${NewColor}Player created successfully!${RESET}")
     }
   }
 
@@ -111,7 +114,7 @@ object user {
     NewNewName match {
       case NewNewName => EditPlayerName(PreviousName, NewNewName)
       case _ => Players.updated(Players.indexOf(PreviousName), EditedPlayer)
-        println("Player edited successfully!")
+        println(s"${Players(Players.indexOf(EditedPlayer))._2}Player edited successfully!${RESET}")
     }
   }
 }
