@@ -94,6 +94,7 @@ def gameAux(): Unit ={ //Actual Game
   }
   generatePlayerStats(user.Players)//calls generatePlayerStats
 }
+@tailrec
 def gameAux2(PlayerStats:List[PlayerWithOptions]): Unit ={
   println("Have The Playing Order Be The (i)nsertion Order Or (r)andom") //prompts the user for the playing order
   val option = scala.io.StdIn.readChar() //reads user's input
@@ -103,11 +104,14 @@ def gameAux2(PlayerStats:List[PlayerWithOptions]): Unit ={
     case 'r' => //if users input is 'r' thi case is activated
      val list= Random.shuffle(PlayerStats) //shuffles the List making the playing order random
       game(list)//calls game with a shuffled list
-    case _ => //if users input is any other char this case is ativated
+    case _ => //if users input is any other char this case is activated
       println("Wrong Input Please Restrain Yourself To The Options Listed")//prints this message for the user
       gameAux2(PlayerStats)//returns player to the start of gameAux2
   }
 }
 def game(PlayerStats:List[PlayerWithOptions]): Unit ={
+    PlayerStats.size match{
+      case _ > 0 =>
 
+    }
 }
