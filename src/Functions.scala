@@ -5,7 +5,7 @@ import io.AnsiColor._
 import scala.io.AnsiColor
 import scala.io.AnsiColor._
 
-object player {
+class player {
   private val BOUNDARY_LEFT: Int = 0; //Where is the center pixel on the left most spaces
   private val BOUNDARY_RIGHT: Int = 1000; //where the center pixel on the right most spaces are
   private val BOUNDARY_TOP: Int = 0; //Where the center of the top most spaces are
@@ -17,9 +17,14 @@ object player {
   def move(NOfSpaces: Int, PixelsPerSpace: Int, CharacterPosition: (Int, Int), f: (Int, Int, (Int, Int)) => (Int, Int)): (Int, Int) = { //higher order functions that calls the function given to it with the atributes given to it i.e. move(3,20,(1000,1000),moveForward) calls moveForward(3, 20, (1000,1000))
     f(NOfSpaces, PixelsPerSpace, CharacterPosition)
   }
+<<<<<<< HEAD
 
   @tailrec
   def moveForward(NOfSpaces: Int, PixelsPerSpace: Int, CharacterPosition: (Int, Int)): (Int, Int) = { //Moves the character by PixelsPerSpace NOfSpaces times movement is like a square starts at the bottom right and
+=======
+    @tailrec
+  private def moveForward(NOfSpaces: Int, PixelsPerSpace: Int, CharacterPosition: (Int, Int)): (Int,Int) = { //Moves the character by PixelsPerSpace NOfSpaces times movement is like a square starts at the bottom right and
+>>>>>>> 062ae9a2c10856d93e6db244be682ad5c1923d31
     if (NOfSpaces > 0) {
       if (BOUNDARY_BOTTOM == CharacterPosition._2 && BOUNDARY_LEFT < CharacterPosition._1) { //Moves to the left first
         val CharPositionAfter = (CharacterPosition._1 - PixelsPerSpace, CharacterPosition._2)
@@ -44,7 +49,11 @@ object player {
   }
 
   @tailrec
+<<<<<<< HEAD
   def moveBackward(NOfSpaces: Int, PixelsPerSpace: Int, CharacterPosition: (Int, Int)): (Int, Int) = { //Moves the character by PixelsPerSpace NOfSpaces times movement is like a square starts at the bottom right and
+=======
+  private def moveBackward(NOfSpaces: Int, PixelsPerSpace: Int, CharacterPosition: (Int, Int)): (Int,Int) = { //Moves the character by PixelsPerSpace NOfSpaces times movement is like a square starts at the bottom right and
+>>>>>>> 062ae9a2c10856d93e6db244be682ad5c1923d31
     if (NOfSpaces > 0) {
       if (BOUNDARY_BOTTOM == CharacterPosition._2 && BOUNDARY_LEFT < CharacterPosition._1) { //Moves up first
         val CharPositionAfter = (CharacterPosition._1, CharacterPosition._2 - PixelsPerSpace)
