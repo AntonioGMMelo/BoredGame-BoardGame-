@@ -1,8 +1,11 @@
 import scala.Console.println
 import scala.annotation.tailrec
 import scala.util.control.Breaks.break
+import io.AnsiColor._
+import scala.io.AnsiColor
+import scala.io.AnsiColor._
 
-object player {
+class player {
   private val BOUNDARY_LEFT: Int = 0; //Where is the center pixel on the left most spaces
   private val BOUNDARY_RIGHT: Int = 1000; //where the center pixel on the right most spaces are
   private val BOUNDARY_TOP: Int = 0; //Where the center of the top most spaces are
@@ -15,8 +18,13 @@ object player {
     f(NOfSpaces, PixelsPerSpace, CharacterPosition)
   }
 
+<<<<<<< HEAD
   @tailrec
   def moveForward(NOfSpaces: Int, PixelsPerSpace: Int, CharacterPosition: (Int, Int)): (Int, Int) = { //Moves the character by PixelsPerSpace NOfSpaces times movement is like a square starts at the bottom right and
+=======
+    @tailrec
+  private def moveForward(NOfSpaces: Int, PixelsPerSpace: Int, CharacterPosition: (Int, Int)): (Int,Int) = { //Moves the character by PixelsPerSpace NOfSpaces times movement is like a square starts at the bottom right and
+>>>>>>> daf4df3875d12e37bc2b544c9eb2f10b7f47dfb9
     if (NOfSpaces > 0) {
       if (BOUNDARY_BOTTOM == CharacterPosition._2 && BOUNDARY_LEFT < CharacterPosition._1) { //Moves to the left first
         val CharPositionAfter = (CharacterPosition._1 - PixelsPerSpace, CharacterPosition._2)
@@ -39,9 +47,13 @@ object player {
       CharacterPosition //return
     }
   }
+<<<<<<< HEAD
 
   @tailrec
   def moveBackward(NOfSpaces: Int, PixelsPerSpace: Int, CharacterPosition: (Int, Int)): (Int, Int) = { //Moves the character by PixelsPerSpace NOfSpaces times movement is like a square starts at the bottom right and
+=======
+  private def moveBackward(NOfSpaces: Int, PixelsPerSpace: Int, CharacterPosition: (Int, Int)): (Int,Int) = { //Moves the character by PixelsPerSpace NOfSpaces times movement is like a square starts at the bottom right and
+>>>>>>> daf4df3875d12e37bc2b544c9eb2f10b7f47dfb9
     if (NOfSpaces > 0) {
       if (BOUNDARY_BOTTOM == CharacterPosition._2 && BOUNDARY_LEFT < CharacterPosition._1) { //Moves up first
         val CharPositionAfter = (CharacterPosition._1, CharacterPosition._2 - PixelsPerSpace)
@@ -94,33 +106,33 @@ object player {
 }
 
 
-/*
-object user {
+object user{
 
   type Name = String
-  type Color = Color
+  type Color = AnsiColor
   type Player = (Name, Color)
   val Players: List[Player] = List() //Podemos "criar" uma lista nova toda vez, não é problema
 
   @tailrec
-  def CreatePlayer(NewName: String, NewColor: Color): Unit = {
+  def CreatePlayer(NewName: Name, NewColor: Color): Unit = {
     val NewPlayer: Player = (NewName, NewColor)
     NewName match {
       case NewName => CreatePlayer(NewName, NewColor)
       case _ => Players :+ NewPlayer
-        println("Player created successfully!")
+        println(s"${NewColor}${BOLD}Player created successfully!${RESET}")
     }
   }
 
   @tailrec
-  def EditPlayerName(PreviousName: String, NewNewName: String): Unit = {
+  def EditPlayerName(PreviousName: Name, NewNewName: Name): Unit = {
     val EditedPlayer: Player = (NewNewName, Players(Players.indexOf(PreviousName))._2)
     NewNewName match {
       case NewNewName => EditPlayerName(PreviousName, NewNewName)
       case _ => Players.updated(Players.indexOf(PreviousName), EditedPlayer)
-        println("Player edited successfully!")
+        println(s"${Players(Players.indexOf(EditedPlayer))._2}${BOLD}Player edited successfully!${RESET}")
     }
   }
+<<<<<<< HEAD
 }*/
 //case class Tema(tema: String, perguntas: List[Pergunta]) {
 //
@@ -162,3 +174,6 @@ object user {
 //}
 //
 //
+=======
+}
+>>>>>>> daf4df3875d12e37bc2b544c9eb2f10b7f47dfb9
