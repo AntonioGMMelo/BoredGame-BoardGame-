@@ -1,5 +1,8 @@
 import scala.annotation.tailrec
 import scala.io.AnsiColor
+import scala.util.Random
+
+type PlayerWithOptions =(String,AnsiColor,(Int,Int),Boolean,Boolean,Boolean,Boolean,Boolean) //i.e. PlayerWithOptions(Name,Color,playerPosition(X,Y),has50/50,hasSkipQuestion,hasAskForMoreTime,hasWeighDice,hasReRollDice)
 
 def mainMenuOptions(): Unit ={
   println("(a)dd player")
@@ -63,7 +66,7 @@ def mainMenu(): Unit ={
         case 's' => //if the user input is 's' this case gets activated
           user.Players.size match{ //matches the number of players to the case
             case _ >= 2 => //if there are 2 or more players this case is activated
-              game() //starts the game
+              gameAux() //starts the game
             case _ => //if there are less than 2 payers this case gets activated
               println("Not Enough Players to Start Game") //prints  the error message
               mainMenu() //re-sends player to the top
@@ -76,10 +79,8 @@ def mainMenu(): Unit ={
       }
   }
 }
-def game(): Unit ={ //Actual Game
-  type PlayerWithOptions =(String,AnsiColor,(Int,Int),Boolean,Boolean,Boolean,Boolean,Boolean) //i.e. PlayerWithOptions(Name,Color,playerPosition(X,Y),has50/50,hasSkipQuestion,hasAskForMoreTime,hasWeighDice,hasReRollDice)
+def gameAux(): Unit ={ //Actual Game
   lazy val PlayerStats : List[PlayerWithOptions] = List() //List of PlayerWithOptions instances
-
   @tailrec
   def generatePlayerStats(Players:List[user.Player]): Unit ={
     Players.size match { //matches the number of Players in the list to the cases ensuring recursion
@@ -88,9 +89,25 @@ def game(): Unit ={ //Actual Game
         PlayerStats :+ player //adds player to the PlayerStatsList
         generatePlayerStats(Players.tail) //recursive call
       case _ => //if there are no more players on the list this case gets activated
-        println("Have The Playing Order Be The (i)nsertion Order Or (r)andom") //prompts the user for the playing order
+        gameAux2(PlayerStats) //calls the function gameAux2()
     }
   }
   generatePlayerStats(user.Players)//calls generatePlayerStats
+}
+def gameAux2(PlayerStats:List[PlayerWithOptions]): Unit ={
+  println("Have The Playing Order Be The (i)nsertion Order Or (r)andom") //prompts the user for the playing order
+  val option = scala.io.StdIn.readChar() //reads user's input
+  option match{ //matches user input
+    case 'i' => //if user's input is 'i' this case is activated
+      game(PlayerStats) //calls game()
+    case 'r' => //if users input is 'r' thi case is activated
+     val list= Random.shuffle(PlayerStats) //shuffles the List making the playing order random
+      game(list)//calls game with a shuffled list
+    case _ => //if users input is any other char this case is ativated
+      println("Wrong Input Please Restrain Yourself To The Options Listed")//prints this message for the user
+      gameAux2(PlayerStats)//returns player to the start of gameAux2
+  }
+}
+def game(PlayerStats:List[PlayerWithOptions]): Unit ={
 
 }
