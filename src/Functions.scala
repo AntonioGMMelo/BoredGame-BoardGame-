@@ -2,7 +2,7 @@ import scala.Console.println
 import scala.annotation.tailrec
 import scala.util.control.Breaks.break
 
-object player {
+class player {
   private val BOUNDARY_LEFT: Int = 0; //Where is the center pixel on the left most spaces
   private val BOUNDARY_RIGHT: Int = 1000; //where the center pixel on the right most spaces are
   private val BOUNDARY_TOP: Int = 0; //Where the center of the top most spaces are
@@ -87,7 +87,7 @@ object player {
 }
 
 
-/*
+
 object user {
 
   type Name = String
@@ -114,4 +114,4 @@ object user {
         println("Player edited successfully!")
     }
   }
-}*/
+}
