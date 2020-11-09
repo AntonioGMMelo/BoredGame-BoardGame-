@@ -1,4 +1,5 @@
 import scala.annotation.tailrec
+import scala.io.AnsiColor
 
 def mainMenuOptions(): Unit ={
   println("(a)dd player")
@@ -28,7 +29,8 @@ def mainMenu(): Unit ={
                   println("Type Player Name And Color") //prompts the user for a name and a color
               }
             }
-            val name = scala.io.StdIn.readLine() //Reads name input from user
+            printAvailableColors(user.Colors)//calls printAvailableColors
+            lazy val name = scala.io.StdIn.readLine() //Reads name input from user
             val color = scala.io.StdIn.readInt() //reads color input from user
             user.CreatePlayer(name,color) //calls CreatePlayer with the user inputs
             mainMenu() //re-sends player to the start
@@ -51,7 +53,8 @@ def mainMenu(): Unit ={
               case _ => //if there are no more players on the list this case gets activated
                 println("Type Player Name") //prompts the user for a player's name
             }
-            val playerToEdit = scala.io.StdIn.readLine() //reads user input for the previous name of the player
+            printAvailablePlayers(user.Players)//calls printAvailablePlayers
+            lazy val playerToEdit = scala.io.StdIn.readLine() //reads user input for the previous name of the player
             println("Type New Player Name") //prompts user for the new name for the player
             val playerNewName = scala.io.StdIn.readLine() //reads user input for the new player name
             user.EditPlayerName(playerToEdit, playerNewName) //calls EditPlayerName with user's inputs
@@ -74,5 +77,20 @@ def mainMenu(): Unit ={
   }
 }
 def game(): Unit ={ //Actual Game
+  type PlayerWithOptions =(String,AnsiColor,(Int,Int),Boolean,Boolean,Boolean,Boolean,Boolean) //i.e. PlayerWithOptions(Name,Color,playerPosition(X,Y),has50/50,hasSkipQuestion,hasAskForMoreTime,hasWeighDice,hasReRollDice)
+  lazy val PlayerStats : List[PlayerWithOptions] = List() //List of PlayerWithOptions instances
+
+  @tailrec
+  def generatePlayerStats(Players:List[user.Player]): Unit ={
+    Players.size match { //matches the number of Players in the list to the cases ensuring recursion
+      case _ > 0 => // if there are still Players in the List this case gets activated
+        val player = new PlayerWithOptions(Players.head._1,Players.head._2,(1000,1000),false,false,false,true,true)//Instantiates a Player to a PlayerWithOptions
+        PlayerStats :+ player //adds player to the PlayerStatsList
+        generatePlayerStats(Players.tail) //recursive call
+      case _ => //if there are no more players on the list this case gets activated
+        println("Have The Playing Order Be The (i)nsertion Order Or (r)andom") //prompts the user for the playing order
+    }
+  }
+  generatePlayerStats(user.Players)//calls generatePlayerStats
 
 }
