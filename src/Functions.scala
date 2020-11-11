@@ -111,19 +111,29 @@ class player {
       val Players: List[Player] = List() //Podemos "criar" uma lista nova toda vez, não é problema
 
       def CreatePlayer(NewName: Name, NewColor: Int): Unit = {
-        val NewPlayer: Player = (NewName, Colors(NewColor))
+        val NewPlayerColor: Color = Colors(NewColor)
+        val NewPlayer: Player = (NewName, NewPlayerColor)
+
         IsTheNameUsed(Players, NewName) match {
-          case false => println("Player name already exists. Choose another one.")
-          case true => Players :+ NewPlayer
-            Colors.updated(NewColor, (Colors(NewColor)._1, true))
-            println(s"${NewColor}${BOLD}Player created successfully!${RESET}")
+          case true => println("Player name already exists. Choose another name.")
+          case false => {
+            if (NewPlayerColor._2 == false) {
+              Players :+ NewPlayer
+              Colors.updated(NewColor, (Colors(NewColor)._1, true))
+            }
+            else{
+              println("Player color is already selected. Choose another color.")
+            }
+            println(s"${NewPlayerColor._1}${BOLD}Player created successfully!${RESET}")
+          }
         }
       }
 
       def EditPlayerName(PreviousName: Name, NewNewName: Name): Unit = {
         val EditedPlayer: Player = (NewNewName, Players(Players.indexOf(PreviousName))._2)
+
         IsTheNameUsed(Players, PreviousName) match {
-          case false => println("Player name does not exist. Choose an existant name to be changed.")
+          case false => println("Player name does not exist. Choose an existent name to be changed.")
           case true => Players.updated(Players.indexOf(PreviousName), EditedPlayer)
             println(s"${Players(Players.indexOf(EditedPlayer))._2}${BOLD}Player edited successfully!${RESET}")
         }
@@ -137,16 +147,6 @@ class player {
           case Nil => false
         }
       }
-
-      @tailrec
-      def IsTheColorUsed(ListOfColors: List[Color], Color: Int): Boolean = {
-        ListOfColors match {
-          case x :: tail => IsTheColorUsed(tail, Color)
-          case head._2 == true => true //é aqui q n consigo chegar pq preciso de dizer q se o valor boolean da cor for true, devolve true aqui nesta linha
-          case Nil => false
-        }
-      }
-
     }
   }
 }
