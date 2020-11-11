@@ -105,37 +105,38 @@ class player {
     object user {
 
       type Name = String
-      type Color = AnsiColor
+      type Color = (String, Boolean)
       type Player = (Name, Color)
+      val Colors: List[Color] = List((BLACK, false), (WHITE, false), (BLUE, false), (CYAN, false), (RED, false), (GREEN, false), (MAGENTA, false), (YELLOW, false))
       val Players: List[Player] = List() //Podemos "criar" uma lista nova toda vez, não é problema
 
-      @tailrec
-      def CreatePlayer(NewName: Name, NewColor: Color): Unit = {
-        val NewPlayer: Player = (NewName, NewColor)
-        NewName match {
-          case NewName => CreatePlayer(NewName, NewColor)
-          case _ => Players :+ NewPlayer
+      def CreatePlayer(NewName: Name, NewColor: Int): Unit = {
+        val NewPlayer: Player = (NewName, Colors(NewColor))
+        IsTheNameUsed(Players, NewName) match {
+          case false => println("Player name already exists. Choose another one.")
+          case true => Players :+ NewPlayer
             println(s"${NewColor}${BOLD}Player created successfully!${RESET}")
         }
       }
 
-      @tailrec
       def EditPlayerName(PreviousName: Name, NewNewName: Name): Unit = {
         val EditedPlayer: Player = (NewNewName, Players(Players.indexOf(PreviousName))._2)
-        NewNewName match {
-          case NewNewName => EditPlayerName(PreviousName, NewNewName)
-          case _ => Players.updated(Players.indexOf(PreviousName), EditedPlayer)
+        IsTheNameUsed(Players, PreviousName) match {
+          case false => println("Player name does not exist. Choose an existant name to be changed.")
+          case true => Players.updated(Players.indexOf(PreviousName), EditedPlayer)
             println(s"${Players(Players.indexOf(EditedPlayer))._2}${BOLD}Player edited successfully!${RESET}")
         }
       }
 
+      @tailrec
+      def IsTheNameUsed(ListOfPlayers: List[Player], NameOfPlayer: String): Boolean= {
+        ListOfPlayers match {
+          case head :: tail => IsTheNameUsed(tail, NameOfPlayer)
+          case nameOfPlayer :: tail => true
+          case Nil => false
+        }
+      }
+
     }
-
-
-
-
-
-
-
-
-
+  }
+}
