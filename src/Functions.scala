@@ -117,12 +117,12 @@ class player {
         IsTheNameUsed(Players, NewName) match {
           case true => println("Player name already exists. Choose another name.")
           case false => {
-            if (NewPlayerColor._2 == false) {
-              Players :+ NewPlayer
-              Colors.updated(NewColor, (Colors(NewColor)._1, true))
-            }
-            else{
-              println("Player color is already selected. Choose another color.")
+            NewPlayerColor._2 match{
+              case false => {
+                Players :+ NewPlayer
+                Colors.updated(NewColor, (Colors(NewColor)._1, true))
+              }
+              case false => println("Player color is already selected. Choose another color.")
             }
             println(s"${NewPlayerColor._1}${BOLD}Player created successfully!${RESET}")
           }
@@ -134,8 +134,10 @@ class player {
 
         IsTheNameUsed(Players, PreviousName) match {
           case false => println("Player name does not exist. Choose an existent name to be changed.")
-          case true => Players.updated(Players.indexOf(PreviousName), EditedPlayer)
-            println(s"${Players(Players.indexOf(EditedPlayer))._2}${BOLD}Player edited successfully!${RESET}")
+          case true => {
+            Players.updated(Players.indexOf(PreviousName), EditedPlayer)
+            println(s"${Players(Players.indexOf(EditedPlayer))._2._1}${BOLD}Player edited successfully!${RESET}")
+          }
         }
       }
 
