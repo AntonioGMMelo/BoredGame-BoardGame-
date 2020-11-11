@@ -121,7 +121,7 @@ class player {
               case false =>
                 Players :+ NewPlayer
                 Colors.updated(NewColor, (Colors(NewColor)._1, true))
-              case true => println("Player color is already selected. Choose another color.")
+              case true => println("Player color is already selected. Choose another color.") //nao prefcisas verificar se a cor ja esta usada olha o o game.scala
             }
             println(s"${NewPlayerColor._1}${BOLD}Player created successfully!${RESET}")
           }
