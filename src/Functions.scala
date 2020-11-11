@@ -105,25 +105,24 @@ class player {
       val Colors: List[Color] = List((BLACK, false), (WHITE, false), (BLUE, false), (CYAN, false), (RED, false), (GREEN, false), (MAGENTA, false), (YELLOW, false))
       val Players: List[Player] = List() //Podemos "criar" uma lista nova toda vez, não é problema
 
-      def CreatePlayer(NewName: Name, NewColor: Int): Unit = {
+      def CreatePlayer(NewName: Name, NewColor: Int, PlayerList: List[Player]): Unit = {
         val NewPlayerColor: Color = Colors(NewColor)
         val NewPlayer: Player = (NewName, NewPlayerColor)
 
         IsTheNameUsed(Players, NewName) match {
           case true => println("Player name already exists. Choose another name.")
           case false => {
-            NewPlayerColor._2 match{
-              case false =>
-                Players :+ NewPlayer
-                Colors.updated(NewColor, (Colors(NewColor)._1, true))
-              case true => println("Player color is already selected. Choose another color.") //nao prefcisas verificar se a cor ja esta usada olha o o game.scala
-            }
+            val UpdatedPlayerList: List[Player] = UpdatePlayerList(PlayerList, NewPlayer)
+            val UpdatedColorList: List[Color] = UpdateColorList(Colors, NewPlayerColor, NewColor)
+            Colors.updated(NewColor, (Colors(NewColor)._1, true))
             println(s"${NewPlayerColor._1}${BOLD}Player created successfully!${RESET}")
+            println(UpdatedPlayerList)
+            println(UpdatedColorList)
           }
         }
       }
 
-      def EditPlayerName(PreviousName: Name, NewNewName: Name): Unit = {
+      def EditPlayerName(PreviousName: Name, NewNewName: Name, PlayerList: List[Player]): Unit = {
         val EditedPlayer: Player = (NewNewName, Players(Players.indexOf(PreviousName))._2)
 
         IsTheNameUsed(Players, PreviousName) match {
@@ -133,13 +132,25 @@ class player {
             println(s"${Players(Players.indexOf(EditedPlayer))._2._1}${BOLD}Player edited successfully!${RESET}")
         }
       }
+      def UpdatePlayerList(List: List[Player], Player: Player): List[Player] = {
+        val List2: List[Player] = List :+ Player
+        List2
+      }
+
+      def UpdateColorList(List: List[Color], Color: Color, Index: Int): List[Color] = {
+        val List2: List[Color] =  List.updated(Index, (List(Index)._1, true))
+        List2
+      }
 
       @tailrec
       def IsTheNameUsed(ListOfPlayers: List[Player], NameOfPlayer: String): Boolean = {
         ListOfPlayers match {
-          case head :: tail => IsTheNameUsed(tail, NameOfPlayer)
-          case nameOfPlayer :: tail => true
           case Nil => false
+          case _ =>
+            ListOfPlayers.head._1 match{
+              case NameOfPlayer => true
+              case _ => IsTheNameUsed (ListOfPlayers.tail, NameOfPlayer)
+            }
         }
       }
     }
