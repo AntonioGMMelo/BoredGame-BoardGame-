@@ -115,6 +115,7 @@ class player {
         IsTheNameUsed(Players, NewName) match {
           case false => println("Player name already exists. Choose another one.")
           case true => Players :+ NewPlayer
+            Colors.updated(NewColor, (Colors(NewColor)._1, true))
             println(s"${NewColor}${BOLD}Player created successfully!${RESET}")
         }
       }
@@ -129,10 +130,19 @@ class player {
       }
 
       @tailrec
-      def IsTheNameUsed(ListOfPlayers: List[Player], NameOfPlayer: String): Boolean= {
+      def IsTheNameUsed(ListOfPlayers: List[Player], NameOfPlayer: String): Boolean = {
         ListOfPlayers match {
           case head :: tail => IsTheNameUsed(tail, NameOfPlayer)
           case nameOfPlayer :: tail => true
+          case Nil => false
+        }
+      }
+
+      @tailrec
+      def IsTheColorUsed(ListOfColors: List[Color], Color: Int): Boolean = {
+        ListOfColors match {
+          case x :: tail => IsTheColorUsed(tail, Color)
+          case head._2 == true => true //é aqui q n consigo chegar pq preciso de dizer q se o valor boolean da cor for true, devolve true aqui nesta linha
           case Nil => false
         }
       }
