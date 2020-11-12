@@ -1,31 +1,55 @@
-<<<<<<< HEAD
-case class Tema(tema: String, perguntas: List[Pergunta]) {
+import Pergunta.Alternativa
+//case class Tema(tema: String, perguntas: List[Pergunta]) {
+//
+//
+//  def add_Pergunta(pergunta: Pergunta) = {
+//    Tema.add_Pergunta(pergunta, this)
+//  }
+//}
+//
+//object Tema {
+//  def add_Pergunta(pergunta: Pergunta, tema: Tema): Unit = {
+//
+//  }
+//}
 
+case class Pergunta(pergunta: String, alternativas: List[Alternativa]) {
 
-  def add_Pergunta(pergunta: Pergunta) = {
-    Tema.add_Pergunta(pergunta, this)
-  }
-}
-
-object Tema {
-  def add_Pergunta(pergunta: Pergunta, tema: Tema): Unit = {
-    
-  }
-}
-
-case class Pergunta(pergunta: String, alternativas: List[(String, Boolean)]) {
-  def create_Pergunta() = {
-    Pergunta.create_Pergunta(this)
-  }
+  def receive_answer(alternativa: Alternativa): Boolean = Pergunta.receive_answer(alternativa, this.alternativas)
 }
 
 object Pergunta {
-  def create_Pergunta(): Unit = {
+  type Alternativa = (String, Boolean)
 
+  def receive_answer(alternativa: Alternativa, alternativas: List[Alternativa]): Boolean = {
+    alternativas match {
+      case Nil => false
+      case x :: t => {
+        if (x._1 == alternativa._1) {
+          if (x._2 == alternativa._2 && x._2 == true)
+            true
+          else
+            false
+        }
+        else
+          receive_answer(alternativa, t)
+      }
+    }
   }
 
+  def main(args: Array[String]): Unit = {
+    val alternativas = List[("Não", false),("Talvez", false),("Sim", true)]
+    val pergunta:Pergunta = ("O Miguel é gay?",alternativas)
+    val x : Boolean = pergunta.receive_answer(("Sim", true))
+    val y : Boolean = pergunta.receive_answer(("Sim", false))
+    println(pergunta.pergunta + x)
+    println(pergunta.pergunta + y)
+  }
 }
-=======
+
+
+
+
 //case class Tema(tema: String, perguntas: List[Pergunta]) {
 ////  type tema = tema
 ////  type perguntas = perguntas
@@ -61,4 +85,4 @@ object Pergunta {
 //    }
 //  }
 //}
->>>>>>> d94c62b80dd1578a1c8d2f6d994fe32efa725645
+
