@@ -18,9 +18,7 @@ class player {
     f(NOfSpaces, PixelsPerSpace, CharacterPosition)
   }
 
-  @tailrec
-  def moveForward(NOfSpaces: Int, PixelsPerSpace: Int, CharacterPosition: (Int, Int)): (Int, Int) = { //Moves the character by PixelsPerSpace NOfSpaces times movement is like a square starts at the bottom right and
-    @tailrec
+     @tailrec
     private def moveForward(NOfSpaces: Int, PixelsPerSpace: Int, CharacterPosition: (Int, Int)): (Int, Int) = { //Moves the character by PixelsPerSpace NOfSpaces times movement is like a square starts at the bottom right and
       if (NOfSpaces > 0) {
         if (BOUNDARY_BOTTOM == CharacterPosition._2 && BOUNDARY_LEFT < CharacterPosition._1) { //Moves to the left first
@@ -45,11 +43,8 @@ class player {
       }
     }
 
-
-    @tailrec
-    def moveBackward(NOfSpaces: Int, PixelsPerSpace: Int, CharacterPosition: (Int, Int)): (Int, Int) = { //Moves the character by PixelsPerSpace NOfSpaces times movement is like a square starts at the bottom right and
-
-      private def moveBackward(NOfSpaces: Int, PixelsPerSpace: Int, CharacterPosition: (Int, Int)): (Int, Int) = { //Moves the character by PixelsPerSpace NOfSpaces times movement is like a square starts at the bottom right and
+      @tailrec
+    private def moveBackward(NOfSpaces: Int, PixelsPerSpace: Int, CharacterPosition: (Int, Int)): (Int, Int) = { //Moves the character by PixelsPerSpace NOfSpaces times movement is like a square starts at the bottom right and
         if (NOfSpaces > 0) {
           if (BOUNDARY_BOTTOM == CharacterPosition._2 && BOUNDARY_LEFT < CharacterPosition._1) { //Moves up first
             val CharPositionAfter = (CharacterPosition._1, CharacterPosition._2 - PixelsPerSpace)
@@ -105,37 +100,58 @@ class player {
     object user {
 
       type Name = String
-      type Color = AnsiColor
+      type Color = (String, Boolean)
       type Player = (Name, Color)
+      val Colors: List[Color] = List((BLACK, false), (WHITE, false), (BLUE, false), (CYAN, false), (RED, false), (GREEN, false), (MAGENTA, false), (YELLOW, false))
       val Players: List[Player] = List() //Podemos "criar" uma lista nova toda vez, não é problema
 
-      @tailrec
-      def CreatePlayer(NewName: Name, NewColor: Color): Unit = {
-        val NewPlayer: Player = (NewName, NewColor)
-        NewName match {
-          case NewName => CreatePlayer(NewName, NewColor)
-          case _ => Players :+ NewPlayer
-            println(s"${NewColor}${BOLD}Player created successfully!${RESET}")
+      def CreatePlayer(NewName: Name, NewColor: Int, PlayerList: List[Player]): Unit = {
+        val NewPlayerColor: Color = Colors(NewColor)
+        val NewPlayer: Player = (NewName, NewPlayerColor)
+
+        IsTheNameUsed(Players, NewName) match {
+          case true => println("Player name already exists. Choose another name.")
+          case false => {
+            val UpdatedPlayerList: List[Player] = UpdatePlayerList(PlayerList, NewPlayer)
+            val UpdatedColorList: List[Color] = UpdateColorList(Colors, NewPlayerColor, NewColor)
+            Colors.updated(NewColor, (Colors(NewColor)._1, true))
+            println(s"${NewPlayerColor._1}${BOLD}Player created successfully!${RESET}")
+            println(UpdatedPlayerList)
+            println(UpdatedColorList)
+          }
         }
       }
 
-      @tailrec
-      def EditPlayerName(PreviousName: Name, NewNewName: Name): Unit = {
+      def EditPlayerName(PreviousName: Name, NewNewName: Name, PlayerList: List[Player]): Unit = {
         val EditedPlayer: Player = (NewNewName, Players(Players.indexOf(PreviousName))._2)
-        NewNewName match {
-          case NewNewName => EditPlayerName(PreviousName, NewNewName)
-          case _ => Players.updated(Players.indexOf(PreviousName), EditedPlayer)
-            println(s"${Players(Players.indexOf(EditedPlayer))._2}${BOLD}Player edited successfully!${RESET}")
+
+        IsTheNameUsed(Players, PreviousName) match {
+          case false => println("Player name does not exist. Choose an existent name to be changed.")
+          case true =>
+            Players.updated(Players.indexOf(PreviousName), EditedPlayer)
+            println(s"${Players(Players.indexOf(EditedPlayer))._2._1}${BOLD}Player edited successfully!${RESET}")
         }
       }
+      def UpdatePlayerList(List: List[Player], Player: Player): List[Player] = {
+        val List2: List[Player] = List :+ Player
+        List2
+      }
 
+      def UpdateColorList(List: List[Color], Color: Color, Index: Int): List[Color] = {
+        val List2: List[Color] =  List.updated(Index, (List(Index)._1, true))
+        List2
+      }
+
+      @tailrec
+      def IsTheNameUsed(ListOfPlayers: List[Player], NameOfPlayer: String): Boolean = {
+        ListOfPlayers match {
+          case Nil => false
+          case _ =>
+            ListOfPlayers.head._1 match{
+              case NameOfPlayer => true
+              case _ => IsTheNameUsed (ListOfPlayers.tail, NameOfPlayer)
+            }
+        }
+      }
     }
-
-
-
-
-
-
-
-
 

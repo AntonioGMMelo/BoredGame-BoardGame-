@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 Criar Jogador-> Inserir o nome e a cor desejada -> DONE + needs to be tested
 Editar Jogador -> Mudar o nome e/ou a cor -> DONE + needs to be tested
 Começar o jogo ->
