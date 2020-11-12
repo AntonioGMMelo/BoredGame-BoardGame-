@@ -18,7 +18,7 @@ class player {
     f(NOfSpaces, PixelsPerSpace, CharacterPosition)
   }
 
-     @tailrec
+    @tailrec
     private def moveForward(NOfSpaces: Int, PixelsPerSpace: Int, CharacterPosition: (Int, Int)): (Int, Int) = { //Moves the character by PixelsPerSpace NOfSpaces times movement is like a square starts at the bottom right and
       if (NOfSpaces > 0) {
         if (BOUNDARY_BOTTOM == CharacterPosition._2 && BOUNDARY_LEFT < CharacterPosition._1) { //Moves to the left first
@@ -43,7 +43,7 @@ class player {
       }
     }
 
-      @tailrec
+    @tailrec
     private def moveBackward(NOfSpaces: Int, PixelsPerSpace: Int, CharacterPosition: (Int, Int)): (Int, Int) = { //Moves the character by PixelsPerSpace NOfSpaces times movement is like a square starts at the bottom right and
         if (NOfSpaces > 0) {
           if (BOUNDARY_BOTTOM == CharacterPosition._2 && BOUNDARY_LEFT < CharacterPosition._1) { //Moves up first
@@ -114,7 +114,7 @@ class player {
           case false => {
             val UpdatedPlayerList: List[Player] = UpdatePlayerList(PlayerList, NewPlayer)
             val UpdatedColorList: List[Color] = UpdateColorList(Colors, NewPlayerColor, NewColor)
-            Colors.updated(NewColor, (Colors(NewColor)._1, true))
+//            Colors.updated(NewColor, (Colors(NewColor)._1, true))
             println(s"${NewPlayerColor._1}${BOLD}Player created successfully!${RESET}")
             println(UpdatedPlayerList)
             println(UpdatedColorList)
