@@ -1,22 +1,39 @@
 import Pergunta.Alternativa
-//case class Tema(tema: String, perguntas: List[Pergunta]) {
-//
-//
-//  def add_Pergunta(pergunta: Pergunta) = {
-//    Tema.add_Pergunta(pergunta, this)
-//  }
-//}
-//
-//object Tema {
-//  def add_Pergunta(pergunta: Pergunta, tema: Tema): Unit = {
-//
-//  }
-//}
 
-case class Pergunta(pergunta: String, alternativas: List[Alternativa]) {
+case class Tema(tema: String, perguntas: List[Pergunta]) {
+
+
+  def add_Pergunta(pergunta: Pergunta) = {
+    Tema.add_Pergunta(pergunta, this.perguntas)
+  }
+
+  def select_Pergunta(): Pergunta = {
+    Tema.select_Pergunta(this)
+  }
+}
+
+object Tema {
+  def add_Pergunta(pergunta: Pergunta, perguntas: List[Pergunta]): Unit = {
+//    perguntas match {
+//      case Nil => perguntas :+ pergunta
+//      case x :: t => {
+//        if(x.pergunta == pergunta.pergunta)
+//      }
+//    }
+  }
+
+  def select_Pergunta(tema: Tema): Pergunta = {
+    val r = new scala.util.Random
+    tema.perguntas(r.nextInt(tema.perguntas.size))
+  }
+
+}
+
+case class Pergunta(pergunta: String, alternativas: List[(String, Boolean)]) {
 
   def receive_answer(alternativa: Alternativa): Boolean = Pergunta.receive_answer(alternativa, this.alternativas)
 }
+
 
 object Pergunta {
   type Alternativa = (String, Boolean)
@@ -37,17 +54,16 @@ object Pergunta {
     }
   }
 
+
   def main(args: Array[String]): Unit = {
-    val alternativas = List[("Não", false),("Talvez", false),("Sim", true)]
-    val pergunta:Pergunta = ("O Miguel é gay?",alternativas)
-    val x : Boolean = pergunta.receive_answer(("Sim", true))
-    val y : Boolean = pergunta.receive_answer(("Sim", false))
+    val alternativas = List(("Não", false), ("Talvez", false), ("Sim", true))
+    val pergunta: Pergunta = Pergunta("O Miguel é gay?", alternativas)
+    val x: Boolean = pergunta.receive_answer(("Sim", true))
+    val y: Boolean = pergunta.receive_answer(("Sim", false))
     println(pergunta.pergunta + x)
     println(pergunta.pergunta + y)
   }
 }
-
-
 
 
 //case class Tema(tema: String, perguntas: List[Pergunta]) {
