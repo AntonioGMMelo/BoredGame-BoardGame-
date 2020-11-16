@@ -1,23 +1,23 @@
 Criar Jogador-> Inserir o nome e a cor desejada -> DONE + needs to be tested
 Editar Jogador -> Mudar o nome e/ou a cor -> DONE + needs to be tested
-Começar o jogo ->
+Começar o jogo ->INTERFACE
 Jogar dado -> DONE
 Jogar moeda -> DONE
 Andar x -> DONE
-Abrir ação da casa -> x
-Responder pergunta ->
+Abrir ação da casa x-> INTEFACE
+Responder pergunta -> DONE
 Tirar carta ->DONE
-Pausar jogo ->
-Resumir jogo ->
-Terminar jogo ->
-Recomeçar o jogo ->
-Ir a cadeia ou voltar x casas ->
+Pausar jogo ->INTERFACE
+Resumir jogo ->INTERFACE
+Terminar jogo ->INTERFACE
+Recomeçar o jogo ->INTERFACE
+Ir a cadeia ou voltar x casas -> INTERFACE
 Viciar dado -> DONE
-Rodar a roleta ->
-Jogar dado novamente ->
-Pedir mais tempo para responder a pergunta ->
-Diminuir o número de opções a selecionar ->
-Adicionar texto de vitória ->
+Rodar a roleta ->DONE
+Jogar dado novamente ->INTERFACE
+Pedir mais tempo para responder a pergunta ->INTERFACE
+Diminuir o número de opções a selecionar ->INTERFACE
+Adicionar texto de vitória ->INTERFACE
 Family Feud Like querry -> DONE
 
 Recursividade (no lugar de iteratividade); DONE I.E. NO WHILE OR FOR LOOPS
