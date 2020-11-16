@@ -13,6 +13,30 @@ class player {
   private val dice = List(1, 2, 3, 4, 5, 6) // a six faced dice
   private val wheelItems = List("Move Back 1 Space", "Move Back 1 Space", "Move Back 1 Space", "Move Back 2 Spaces", "Move Back 2 Spaces", "All Players Move Back 2 Spaces", "Move Forward 1 Space", "Move Forward 1 Space", "Move Forward 1 Space", "Move Forward 2 Spaces", "Move Forward 2 Spaces", "All Players Move Forwards 2 Spaces", "Go To Jail", "Move Forward 3 Spaces", "Stay", "Roll The dice", "Roll The Weighted Dice") //Wheel options
   private val cards = List("Roll The dice", "Roll The Weighted Dice", "Go To Jail", "Get Out Of Jail Free Card", "50/50", "Skip Question", "Dilate Time") //card options
+  type feud = (String,List[String])
+  private val feudList: List(feud)= List(feud("Top 5 Pets"),List("Dog","Cat","Rat","Fish","Bird"))
+
+  def getFeud(): Unit ={
+    val r = new scala.util.Random
+    feudList(r.nextInt(feudList.size))
+  }
+
+  def answerFeud(feud: feud, answer: String): Int = {
+    answer match {
+      case (feud._2)._1 =>
+        3
+      case (feud._2)._2 =>
+        2
+      case (feud._2)._3 =>
+        2
+      case (feud._2)._4=>
+        1
+      case (feud._2)._5=>
+        1
+      case _ =>
+        0
+    }
+  }
 
   def move(NOfSpaces: Int, PixelsPerSpace: Int, CharacterPosition: (Int, Int), f: (Int, Int, (Int, Int)) => (Int, Int)): (Int, Int) = { //higher order functions that calls the function given to it with the atributes given to it i.e. move(3,20,(1000,1000),moveForward) calls moveForward(3, 20, (1000,1000))
     f(NOfSpaces, PixelsPerSpace, CharacterPosition)
