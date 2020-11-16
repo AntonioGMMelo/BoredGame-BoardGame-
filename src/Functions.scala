@@ -10,6 +10,7 @@ object player {
   private val dice = List(1, 2, 3, 4, 5, 6) // a six faced dice
   private val wheelItems = List("Price Aint Right Round","Move Back 1 Space", "Move Back 1 Space", "Move Back 1 Space", "Move Back 2 Spaces", "Move Back 2 Spaces", "All Players Move Back 2 Spaces", "Move Forward 1 Space", "Move Forward 1 Space", "Move Forward 1 Space", "Move Forward 2 Spaces", "Move Forward 2 Spaces", "All Players Move Forwards 2 Spaces", "Go To Jail", "Move Forward 3 Spaces", "Stay", "Roll The dice", "Roll The Weighted Dice") //Wheel options
   private val cards = List("Roll The dice", "Roll The Weighted Dice", "Go To Jail", "Get Out Of Jail Free Card", "50/50", "Skip Question", "Dilate Time") //card options
+  private val coin = List("Heads","Tails")
   type feud = (String,List[String])
   type item = (String,Double)
   private val feudEX: feud =("Top 5 Pets",List("Dog","Cat","Rat","Fish","Bird"))
@@ -17,7 +18,7 @@ object player {
   private val itemEX:item=("Cheese Cake",39.99)
   private val itemList: List[item] = List(itemEX)
 
-  def getSomething(list:List[AnyVal]): AnyVal ={ //gets a random item of a list use "dice" list for a dice roll or "wheelItems" for a wheel spin or "cards" to draw a card or "feudList" for a feud or "itemList" for an item
+  def getSomething(list:List[AnyVal]): AnyVal ={ //gets a random item of a list, use "coin" list for a coin toss use "dice" list for a dice roll or "wheelItems" for a wheel spin or "cards" to draw a card or "feudList" for a feud or "itemList" for an item
     val r = new scala.util.Random
     list(r.nextInt(list.size))
   }
@@ -99,15 +100,10 @@ object player {
         }
       }
 
-      def coinToss(): Int = { //random number between 0-1 equating to a coin toss 1=Heads, 0=Tails
-        val r = new scala.util.Random
-        r.nextInt(2)
-      }
-
       def weightedDice(): Int = { //a 3 faced dice with the values 2,4 or 6
         val aux = dice.filter(_ < 4) //filters dice to List(1,2,3).
         lazy val diceRoll = aux.map(x => x * 2) //maps dice to List(2,4,6)
-        (getSomething(diceRoll).toString.toInt)
+        getSomething(diceRoll).toString.toInt //rolls the dice with the weight
       }
     }
 
