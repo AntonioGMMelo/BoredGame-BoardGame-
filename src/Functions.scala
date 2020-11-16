@@ -16,24 +16,24 @@ class player {
   type feud = (String,List[String])
   private val feudList: List(feud)= List(feud("Top 5 Pets"),List("Dog","Cat","Rat","Fish","Bird"))
 
-  def getFeud(): Unit ={
+  def getFeud(): Unit ={ //gets a random feud question
     val r = new scala.util.Random
     feudList(r.nextInt(feudList.size))
   }
 
-  def answerFeud(feud: feud, answer: String): Int = {
+  def answerFeud(feud: feud, answer: String): Int = { //takes user's answer and compares it to the answers in the feud and returns the number of spaces the user advances according to the answer.
     answer match {
-      case (feud._2)._1 =>
+      case (feud._2)._1 => //best answer means player moves 3 spaces
         3
-      case (feud._2)._2 =>
+      case (feud._2)._2 => //medium answer means player moves 2 spaces
         2
       case (feud._2)._3 =>
         2
-      case (feud._2)._4=>
+      case (feud._2)._4=> //acceptable answer mean player moves 1 space
         1
       case (feud._2)._5=>
         1
-      case _ =>
+      case _ => //wrong answer no movement for the player
         0
     }
   }

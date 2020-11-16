@@ -18,7 +18,7 @@ Jogar dado novamente ->
 Pedir mais tempo para responder a pergunta ->
 Diminuir o número de opções a selecionar ->
 Adicionar texto de vitória ->
-Family Feud Like querry ->
+Family Feud Like querry -> DONE
 
 Recursividade (no lugar de iteratividade); DONE I.E. NO WHILE OR FOR LOOPS
 • Imutabilidade; DONE I.E. ALWAYS USE VAL NOT VAR
