@@ -8,7 +8,7 @@ object player {
   private val BOUNDARY_TOP: Int = 0; //Where the center of the top most spaces are
   private val BOUNDARY_BOTTOM: Int = 1000 //Where the center of the bottom most spaces are
   private val dice = List(1, 2, 3, 4, 5, 6) // a six faced dice
-  private val wheelItems = List("Move Back 1 Space", "Move Back 1 Space", "Move Back 1 Space", "Move Back 2 Spaces", "Move Back 2 Spaces", "All Players Move Back 2 Spaces", "Move Forward 1 Space", "Move Forward 1 Space", "Move Forward 1 Space", "Move Forward 2 Spaces", "Move Forward 2 Spaces", "All Players Move Forwards 2 Spaces", "Go To Jail", "Move Forward 3 Spaces", "Stay", "Roll The dice", "Roll The Weighted Dice") //Wheel options
+  private val wheelItems = List("Price Aint Right Round","Move Back 1 Space", "Move Back 1 Space", "Move Back 1 Space", "Move Back 2 Spaces", "Move Back 2 Spaces", "All Players Move Back 2 Spaces", "Move Forward 1 Space", "Move Forward 1 Space", "Move Forward 1 Space", "Move Forward 2 Spaces", "Move Forward 2 Spaces", "All Players Move Forwards 2 Spaces", "Go To Jail", "Move Forward 3 Spaces", "Stay", "Roll The dice", "Roll The Weighted Dice") //Wheel options
   private val cards = List("Roll The dice", "Roll The Weighted Dice", "Go To Jail", "Get Out Of Jail Free Card", "50/50", "Skip Question", "Dilate Time") //card options
   type feud = (String,List[String])
   type item = (String,Double)
@@ -35,6 +35,12 @@ object player {
       case answer if answer.compareTo(aux4)==0 => 1 //acceptable answer mean player moves 1 space
       case answer if answer.compareTo(aux5)==0 => 1
       case _ => 0 //wrong answer no movement for the player
+    }
+  }
+  def priceAintRight(item:item, list:List[Double]): Int ={ //returns the index of the player who was closest
+    list match{
+      case Nil => -1
+      case list => list.indexOf(list.minBy(v => math.abs(v - item._2 ))) //functions that gives the number on the list that is closest to the items price(Inside the indexOF() function)
     }
   }
 
