@@ -19,7 +19,7 @@ Pedir mais tempo para responder a pergunta ->INTERFACE
 Diminuir o número de opções a selecionar ->INTERFACE
 Adicionar texto de vitória ->INTERFACE
 Family Feud Like querry -> DONE
-The price is right kinda querry ->
+The price is right kinda querry ->DONE
 
 Recursividade (no lugar de iteratividade); DONE I.E. NO WHILE OR FOR LOOPS
 • Imutabilidade; DONE I.E. ALWAYS USE VAL NOT VAR
