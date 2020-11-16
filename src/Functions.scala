@@ -1,11 +1,8 @@
 import scala.Console.println
 import scala.annotation.tailrec
-import scala.util.control.Breaks.break
-import io.AnsiColor._
-import scala.io.AnsiColor
 import scala.io.AnsiColor._
 
-class player {
+object player {
   private val BOUNDARY_LEFT: Int = 0; //Where is the center pixel on the left most spaces
   private val BOUNDARY_RIGHT: Int = 1000; //where the center pixel on the right most spaces are
   private val BOUNDARY_TOP: Int = 0; //Where the center of the top most spaces are
@@ -14,31 +11,30 @@ class player {
   private val wheelItems = List("Move Back 1 Space", "Move Back 1 Space", "Move Back 1 Space", "Move Back 2 Spaces", "Move Back 2 Spaces", "All Players Move Back 2 Spaces", "Move Forward 1 Space", "Move Forward 1 Space", "Move Forward 1 Space", "Move Forward 2 Spaces", "Move Forward 2 Spaces", "All Players Move Forwards 2 Spaces", "Go To Jail", "Move Forward 3 Spaces", "Stay", "Roll The dice", "Roll The Weighted Dice") //Wheel options
   private val cards = List("Roll The dice", "Roll The Weighted Dice", "Go To Jail", "Get Out Of Jail Free Card", "50/50", "Skip Question", "Dilate Time") //card options
   type feud = (String,List[String])
-  type item = (String,Float)
-  private val feudEX: feud =(("Top 5 Pets"),List("Dog","Cat","Rat","Fish","Bird"))
+  type item = (String,Double)
+  private val feudEX: feud =("Top 5 Pets",List("Dog","Cat","Rat","Fish","Bird"))
   private val feudList: List[feud]= List(feudEX)
   private val itemEX:item=("Cheese Cake",39.99)
   private val itemList: List[item] = List(itemEX)
 
-  def getSomething(list:List[AnyVal]): Unit ={ //gets a random item of a list use "dice" list for a dice roll or "wheelItems" for a wheel spin or "cards" to draw a card or "feudList" for a feud or "itemList" for an item
+  def getSomething(list:List[AnyVal]): AnyVal ={ //gets a random item of a list use "dice" list for a dice roll or "wheelItems" for a wheel spin or "cards" to draw a card or "feudList" for a feud or "itemList" for an item
     val r = new scala.util.Random
     list(r.nextInt(list.size))
   }
 
-  def answerFeud(feud: feud, answer: String): Int = { //takes user's answer and compares it to the answers in the feud and returns the number of spaces the user advances according to the answer.
+  def answerFeud(f: feud, answer: String): Int = { //takes user's answer and compares it to the answers in the feud and returns the number of spaces the user advances according to the answer.
+    val aux1 = f._2(0)
+    val aux2 = f._2(1)
+    val aux3 = f._2(2)
+    val aux4 = f._2(3)
+    val aux5 = f._2(4)
     answer match {
-      case (feud._2)._1 => //best answer means player moves 3 spaces
-        3
-      case (feud._2)._2 => //medium answer means player moves 2 spaces
-        2
-      case (feud._2)._3 =>
-        2
-      case (feud._2)._4=> //acceptable answer mean player moves 1 space
-        1
-      case (feud._2)._5=>
-        1
-      case _ => //wrong answer no movement for the player
-        0
+      case answer if answer.compareTo(aux1)==0 => 3 //best answer means player moves 3 spaces
+      case answer if answer.compareTo(aux2)==0 => 2//medium answer means player moves 2 spaces
+      case answer if answer.compareTo(aux3)==0 => 2
+      case answer if answer.compareTo(aux4)==0 => 1 //acceptable answer mean player moves 1 space
+      case answer if answer.compareTo(aux5)==0 => 1
+      case _ => 0 //wrong answer no movement for the player
     }
   }
 
@@ -105,7 +101,7 @@ class player {
       def weightedDice(): Int = { //a 3 faced dice with the values 2,4 or 6
         val aux = dice.filter(_ < 4) //filters dice to List(1,2,3).
         lazy val diceRoll = aux.map(x => x * 2) //maps dice to List(2,4,6)
-        getSomething(diceRoll)
+        (getSomething(diceRoll).toString.toInt)
       }
     }
 
