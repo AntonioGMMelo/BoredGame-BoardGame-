@@ -4,7 +4,7 @@ case class Tema(tema: String, perguntas: List[Pergunta]) {
 
 
   def add_Pergunta(pergunta: Pergunta) = {
-    Tema.add_Pergunta(pergunta, this.perguntas)
+    Tema.add_Pergunta(pergunta, this)
   }
 
   def select_Pergunta(): Pergunta = {
@@ -13,16 +13,22 @@ case class Tema(tema: String, perguntas: List[Pergunta]) {
 }
 
 object Tema {
-  def add_Pergunta(pergunta: Pergunta, perguntas: List[Pergunta]): Unit = {
-    perguntas match {
-      case Nil => perguntas :+ pergunta
-      case x :: t => {
-        if (x.pergunta == pergunta.pergunta)
-          println("Essa pergunta já existe!")
-        else
-          add_Pergunta(pergunta, t)
+  def add_Pergunta(pergunta: Pergunta, tema : Tema): Unit = {
+    def check_pergunta(perguntas: List[Pergunta]): Unit = {
+      perguntas match {
+        case Nil => {
+          tema.perguntas :+ pergunta
+          println("tema.perguntas :+ pergunta")
+        }
+        case x :: t => {
+          if (x.pergunta == pergunta.pergunta)
+            println("Essa pergunta já existe!")
+          else
+            check_pergunta(t)
+        }
       }
     }
+    check_pergunta(tema.perguntas)
   }
 
   //  def remove_pergunta(pergunta:String, perguntas : List[Pergunta]): Unit = {
@@ -75,6 +81,7 @@ object Pergunta {
     println(pergunta.pergunta)
 
     def print_Alternativas(alternativas: List[(String, Boolean)]): Unit = {
+      println(alternativas.head._1)
       alternativas match {
         case x :: t => {
           println(x._1)
@@ -104,8 +111,7 @@ object Pergunta {
             }
           }
         }
-
-      }
+    }
     print_Alternativas(pergunta.alternativas,0)
     }
 
@@ -123,16 +129,18 @@ object Pergunta {
     val b : Pergunta = Pergunta(pergunta_a,alternativas_a)
     val pergunta_c: String = "Quem é o atual campeão da F1?"
     val alternativas_c : List[(String,Boolean)] = List(("Hamilton", true), ("Leclerc", false),("Vettel", false), ("Verstappen", false))
-    val c : Pergunta = Pergunta(pergunta_a,alternativas_a)
+    val c : Pergunta = Pergunta(pergunta_c,alternativas_c)
     esporte.add_Pergunta(a)
     esporte.add_Pergunta(b)
     esporte.add_Pergunta(c)
     println("aaaaa")
-    val pergunta_X : Pergunta = esporte.select_Pergunta()
-    println("Pergunta_c:")
-    pergunta_X.print_Pergunta()
+//    val pergunta_X : Pergunta = esporte.select_Pergunta()
+//    val pergunta_X = esporte.perguntas(1)
+    println("Pergunta_X:")
+    a.print_Pergunta()
     println("Dica pergunta_X: ")
-    pergunta_X.tip_Alternativas()
+//    a.tip_Alternativas()
+    println("a")
   }
 }
 
