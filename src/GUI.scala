@@ -1,8 +1,4 @@
-import javafx.application.*
-import javafx.event.*
-import javafx.scene.*
-import javafx.stage.*
-import javafx.geometry.*
+import scala.annotation.tailrec
 
 class MainMenu extends Application{
   @Override
@@ -15,6 +11,36 @@ class MainMenu extends Application{
     //creating buttons
     //Create Player Button setup
     val CreatePlayer : Button = new Button("Create Player")
+    CreatePlayer.setOnAction(e ->{
+      val layout : VBox = new VBox(10)
+      user.Players.size match { //Checks the amount o players already created
+        case _ < 8 => //if there are less than 8 players this case gets activated
+          @tailrec
+          def listAvailableColors(Colors:List[(String,Boolean)]): Unit = { //prints all the available colors by checking the Boolean in the list true if the color has been used and false if it hasn't
+            Colors.size match { //matches the number of colors in the list to the cases ensuring recursion
+              case _ > 0 => // if there are still colors in the List this case gets activated
+                Colors.head._2 match { //Matches the boolean to see weather the color is still unused
+                  case false => //if the color hasn't been used this case gets activated
+                    val label: Label = new Label()
+                    label.setText(Colors.head._1)
+                    layout.getChildren().add(label)//the color is added as an option for the user
+                    listAvailableColors(Colors.tail) //recursive call
+                  case _ => //if the color has been used this case gets activated
+                    listAvailableColors(Colors.tail) //recursive call
+                }
+              case _ => //if there are no colors left in the list this case is activated
+                println("Choose Color") //prompts the user for a name and a color
+            }
+          }
+          listAvailableColors(user.Colors)//calls printAvailableColors
+          CreatePlayer.display()
+          lazy val name =  //Reads name input from user
+          val color =  //reads color input from user
+          user.CreatePlayer(name,color) //calls CreatePlayer with the user inputs
+        case _ => //if there are 8 players this case is activated
+          ErrorMessage.display("SPACE ERROR","Players list is at maximum capacity i.e. 8")//Shows error message
+      }
+    })
     //Edit Player Button setup
     val EditPlayer : Button = new Button("Edit Player")
     //StartGame Button setup
