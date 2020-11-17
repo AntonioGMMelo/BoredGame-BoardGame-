@@ -4,6 +4,8 @@ import scala.util.control.Breaks.break
 import io.AnsiColor._
 import scala.io.AnsiColor
 import scala.io.AnsiColor._
+import scala.io.Source
+import scala.scalax.io._
 
 class player {
   private val BOUNDARY_LEFT: Int = 0; //Where is the center pixel on the left most spaces
@@ -99,51 +101,57 @@ class player {
 
     object user {
 
-      type Name = String
-      type Color = (String, Boolean)
-      type Player = (Name, Color)
-      val Colors: List[Color] = List((BLACK, false), (WHITE, false), (BLUE, false), (CYAN, false), (RED, false), (GREEN, false), (MAGENTA, false), (YELLOW, false))
-      val Players: List[Player] = List() //Podemos "criar" uma lista nova toda vez, não é problema
+      type Name = String // Name of the Player
+      type Color = (String, Boolean) // Color of the Player
+      type Player = (Name, Color) // Player type
+      val Colors: List[Color] = List((BLACK, false), (WHITE, false), (BLUE, false), (CYAN, false), (RED, false), (GREEN, false), (MAGENTA, false), (YELLOW, false)) // List of all possible selectable Colors
+//      val Players: List[Player] = List() // List of all Players
 
-      def CreatePlayer(NewName: Name, NewColor: Int, PlayerList: List[Player]): Unit = {
+      def CreatePlayer(NewName: Name, NewColor: Int): Unit = { // Creates a player, given a Name, Int and List of Players
         val NewPlayerColor: Color = Colors(NewColor)
         val NewPlayer: Player = (NewName, NewPlayerColor)
+        val Players: List[Player] = Source.fromFile("Players.txt").getLines().toList
 
         IsTheNameUsed(Players, NewName) match {
           case true => println("Player name already exists. Choose another name.")
           case false => {
-            val UpdatedPlayerList: List[Player] = UpdatePlayerList(PlayerList, NewPlayer)
+            val UpdatedPlayerList: List[Player] = UpdatePlayerList(Players, NewPlayer)
+
+
             val UpdatedColorList: List[Color] = UpdateColorList(Colors, NewPlayerColor, NewColor)
-//            Colors.updated(NewColor, (Colors(NewColor)._1, true))
             println(s"${NewPlayerColor._1}${BOLD}Player created successfully!${RESET}")
             println(UpdatedPlayerList)
+            println(Players)
             println(UpdatedColorList)
+            println(Colors)
           }
         }
       }
 
-      def EditPlayerName(PreviousName: Name, NewNewName: Name, PlayerList: List[Player]): Unit = {
+      def EditPlayerName(PreviousName: Name, NewNewName: Name): Unit = { // Edits Player Name, given Previous Name, New Name and List of Players
+        val Players: List[Player] = Source.fromFile("Players.txt").getLines().toList
         val EditedPlayer: Player = (NewNewName, Players(Players.indexOf(PreviousName))._2)
 
         IsTheNameUsed(Players, PreviousName) match {
           case false => println("Player name does not exist. Choose an existent name to be changed.")
           case true =>
-            Players.updated(Players.indexOf(PreviousName), EditedPlayer)
+            val UpdatedPlayerList: List[Player] = UpdatePlayerList(Players, EditedPlayer)
             println(s"${Players(Players.indexOf(EditedPlayer))._2._1}${BOLD}Player edited successfully!${RESET}")
+            UpdatedPlayerList
         }
       }
-      def UpdatePlayerList(List: List[Player], Player: Player): List[Player] = {
+      def UpdatePlayerList(List: List[Player], Player: Player): List[Player] = { // Updates the List of Players
         val List2: List[Player] = List :+ Player
         List2
       }
 
-      def UpdateColorList(List: List[Color], Color: Color, Index: Int): List[Color] = {
+      def UpdateColorList(List: List[Color], Color: Color, Index: Int): List[Color] = { // Updates the List of Colors
         val List2: List[Color] =  List.updated(Index, (List(Index)._1, true))
         List2
       }
 
       @tailrec
-      def IsTheNameUsed(ListOfPlayers: List[Player], NameOfPlayer: String): Boolean = {
+      def IsTheNameUsed(ListOfPlayers: List[Player], NameOfPlayer: String): Boolean = { // Checks if a Name is already used by one Player
         ListOfPlayers match {
           case Nil => false
           case _ =>

@@ -37,14 +37,14 @@ object Pergunta {
     }
   }
 
-  def main(args: Array[String]): Unit = {
-    val alternativas = List[("Não", false),("Talvez", false),("Sim", true)]
-    val pergunta:Pergunta = ("O Miguel é gay?",alternativas)
-    val x : Boolean = pergunta.receive_answer(("Sim", true))
-    val y : Boolean = pergunta.receive_answer(("Sim", false))
-    println(pergunta.pergunta + x)
-    println(pergunta.pergunta + y)
-  }
+//  def main(args: Array[String]): Unit = {
+//    val alternativas = List(("Não", false),("Talvez", false),("Sim", true))
+//    val pergunta: Pergunta = ("O Miguel é gay?", alternativas)
+//    val x : Boolean = pergunta.receive_answer(("Sim", true))
+//    val y : Boolean = pergunta.receive_answer(("Sim", false))
+//    println(pergunta.pergunta + x)
+//    println(pergunta.pergunta + y)
+//  }
 }
 
 
