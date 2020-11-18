@@ -118,12 +118,13 @@ object player {
       val Colors: List[Color] = List((BLACK, false), (WHITE, false), (BLUE, false), (CYAN, false), (RED, false), (GREEN, false), (MAGENTA, false), (YELLOW, false)) // List of all possible selectable Colors
       val Players: List[Player] = List() // List of all Players
 
-      def CreatePlayer(NewName: Name, NewColor: Int): Unit = { // Creates a player, given a Name, Int and List of Players
+      def CreatePlayer(NewName: Name, NewColor: Int, ListOfPlayers: List[Player], ListOfColors: List[Color]): (List[Player], List[Color]) = { // Creates a player, given a Name, Int and List of Players
         val NewPlayerColor: Color = Colors(NewColor)
         val NewPlayer: Player = (NewName, NewPlayerColor)
 
         IsTheNameUsed(Players, NewName) match {
           case true => println("Player name already exists. Choose another name.")
+            (ListOfPlayers, ListOfColors)
           case false => {
             val UpdatedPlayerList: List[Player] = UpdatePlayerList(Players, NewPlayer)
             val UpdatedColorList: List[Color] = UpdateColorList(Colors, NewPlayerColor, NewColor)
@@ -132,20 +133,24 @@ object player {
 //            println(Players)
 //            println(UpdatedColorList)
 //            println(Colors)
+            (UpdatedPlayerList, UpdatedColorList)
           }
         }
       }
 
-      def EditPlayerName(PreviousName: Name, NewNewName: Name): Unit = { // Edits Player Name, given Previous Name, New Name and List of Players
+      def EditPlayerName(PreviousName: Name, NewNewName: Name, ListOfPlayers: List[Player]): List[Player] = { // Edits Player Name, given Previous Name, New Name and List of Players
         val EditedPlayer: Player = (NewNewName, Players(Players.indexOf(PreviousName))._2)
 
         IsTheNameUsed(Players, PreviousName) match {
           case false => println("Player name does not exist. Choose an existent name to be changed.")
+            ListOfPlayers
           case true =>
             val UpdatedPlayerList: List[Player] = UpdatePlayerList(Players, EditedPlayer)
             println(s"${Players(Players.indexOf(EditedPlayer))._2._1}${BOLD}Player edited successfully!${RESET}")
+            UpdatedPlayerList
         }
       }
+
       def UpdatePlayerList(List: List[Player], Player: Player): List[Player] = { // Updates the List of Players
         val List2: List[Player] = List :+ Player
         List2

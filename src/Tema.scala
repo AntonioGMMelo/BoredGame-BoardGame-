@@ -1,9 +1,6 @@
-import Pergunta.Alternativa
-
 case class Tema(tema: String, perguntas: List[Pergunta]) {
 
-
-  def add_Pergunta(pergunta: Pergunta) = {
+  def add_Pergunta(pergunta: Pergunta): Tema = {
     Tema.add_Pergunta(pergunta, this)
   }
 
@@ -13,22 +10,29 @@ case class Tema(tema: String, perguntas: List[Pergunta]) {
 }
 
 object Tema {
-  def add_Pergunta(pergunta: Pergunta, tema : Tema): Unit = {
-    def check_pergunta(perguntas: List[Pergunta]): Unit = {
-      perguntas match {
-        case Nil => {
-          tema.perguntas :+ pergunta
-          println("tema.perguntas :+ pergunta")
-        }
-        case x :: t => {
-          if (x.pergunta == pergunta.pergunta)
-            println("Essa pergunta já existe!")
-          else
-            check_pergunta(t)
+  def add_Pergunta(pergunta: Pergunta, tema: Tema): Tema = {
+    Tema(tema.tema, new_perguntas(tema.perguntas, pergunta))
+  }
+
+  def new_perguntas(perguntas: List[Pergunta], pergunta: Pergunta): List[Pergunta] = {
+    if (existe_pergunta(perguntas, pergunta))
+      perguntas
+    else
+      perguntas :+ pergunta
+  }
+
+  def existe_pergunta(perguntas: List[Pergunta], pergunta: Pergunta): Boolean = {
+    perguntas match {
+      case Nil => false
+      case x :: t => {
+        if (x == pergunta) {
+          println("Essa pergunta já existe")
+          true
+        } else {
+          existe_pergunta(t, pergunta)
         }
       }
     }
-    check_pergunta(tema.perguntas)
   }
 
   //  def remove_pergunta(pergunta:String, perguntas : List[Pergunta]): Unit = {
@@ -48,8 +52,8 @@ object Tema {
 
 }
 
-case class Pergunta(pergunta: String, alternativas: List[(String, Boolean)]) {
 
+<<<<<<< HEAD
   def receive_answer(alternativa: Alternativa): Boolean = Pergunta.receive_answer(alternativa, this.alternativas)
 
   def print_Pergunta(): Unit ={Pergunta.print_Pergunta(this)}
@@ -154,6 +158,8 @@ object Pergunta {
   }
 >>>>>>> 778461c05512429b8e936cc9aeb31b1cd735ebf3
 }
+=======
+>>>>>>> c57ff73a4b1acbbf06fd5614c8835b607c61d391
 
 
 

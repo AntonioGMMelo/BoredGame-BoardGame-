@@ -1,6 +1,12 @@
 import scala.annotation.tailrec
+import scala.io.AnsiColor.{BLACK, BLUE, CYAN, GREEN, MAGENTA, RED, WHITE, YELLOW}
 
 class MainMenu extends Application{
+  var Players:List[user.Player]=List()
+  var Questions:List[]=List()
+  var Themes:List[]=List()
+  var Colors:List[user.Color]=List((BLACK, false), (WHITE, false), (BLUE, false), (CYAN, false), (RED, false), (GREEN, false), (MAGENTA, false), (YELLOW, false))
+}
   @Override
   def start(primaryStage: Stage): Unit throws Exception={
     //titling the stage as Main Menu
@@ -29,20 +35,39 @@ class MainMenu extends Application{
                     listAvailableColors(Colors.tail) //recursive call
                 }
               case _ => //if there are no colors left in the list this case is activated
-                println("Choose Color") //prompts the user for a name and a color
             }
           }
           listAvailableColors(user.Colors)//calls printAvailableColors
-          CreatePlayer.display()
-          lazy val name =  //Reads name input from user
-          val color =  //reads color input from user
-          user.CreatePlayer(name,color) //calls CreatePlayer with the user inputs
+          val ColorAndName: (String,String) = CreatePlayer.display(layout)
+          user.CreatePlayer(ColorAndName._2,ColorAndName._1 ) //calls CreatePlayer with the user inputs
         case _ => //if there are 8 players this case is activated
           ErrorMessage.display("SPACE ERROR","Players list is at maximum capacity i.e. 8")//Shows error message
       }
     })
     //Edit Player Button setup
     val EditPlayer : Button = new Button("Edit Player")
+    EditPlayer.setOnAction(e ->{
+      user.Players match { //matches weather there are any players to be edited
+        case nil => //if there are no players this case is activated
+          ErrorMessage.display("SPACE ERROR","Players list empty")
+        case _ => //if there are players to edit this case is activated
+          val layout : VBox = new VBox(10)
+          @tailrec
+          def listAvailablePlayers(Players: List[user.Player]): Unit = { //prints all the available Players
+             Players.size match { //matches the number of Players in the list to the cases ensuring recursion
+               case _ > 0 => // if there are still Players in the List this case gets activated
+                 val label: Label = new Label()
+                 label.setText(Players.head._1)
+                 layout.getChildren().add(label)
+                 listAvailablePlayers(Players.tail) //recursive call
+               case _ => //if there are no more players on the list this case gets activated
+                 println("Type Player Name") //prompts the user for a player's name
+             }
+          listAvailablePlayers(user.Players)//calls printAvailablePlayers
+          val OldAndNewName: (String,String) = EditPlayer.status(layout)
+          EditPlayer(OldAndNewName._1,OldAndNewName._2)
+        }
+    })
     //StartGame Button setup
     val StartGame : Button = new Button("Start Game")
     //Add Question Button setup
@@ -73,3 +98,4 @@ class MainMenu extends Application{
       }
     }
   }
+

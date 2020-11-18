@@ -17,27 +17,7 @@
 //    case 'a' => //if user inputted 'a' this case is activated
 //
 //    case 'e' => //if user input is 'e' this case is activated
-//      user.Players match { //matches weather there are any players to be edited
-//        case nil => //if there are no players this case is activated
-//          println("No Players To Edit") //prints error message
-//          mainMenu() //re-sends the user to the start
-//        case _ => //if there are players to edit this case is activated
-//          @tailrec
-//          def printAvailablePlayers(Players: List[user.Player]): Unit = { //prints all the available Players
-//            Players.size match { //matches the number of Players in the list to the cases ensuring recursion
-//              case _ > 0 => // if there are still Players in the List this case gets activated
-//                println(Players.head._1) //the player is printed as an option for the user
-//                printAvailablePlayers(Players.tail) //recursive call
-//              case _ => //if there are no more players on the list this case gets activated
-//                println("Type Player Name") //prompts the user for a player's name
-//            }
-//            printAvailablePlayers(user.Players)//calls printAvailablePlayers
-//            lazy val playerToEdit = scala.io.StdIn.readLine() //reads user input for the previous name of the player
-//            println("Type New Player Name") //prompts user for the new name for the player
-//            val playerNewName = scala.io.StdIn.readLine() //reads user input for the new player name
-//            user.EditPlayerName(playerToEdit, playerNewName) //calls EditPlayerName with user's inputs
-//            mainMenu() //re-sends the user to the start
-//          }
+//
 //        case 's' => //if the user input is 's' this case gets activated
 //          user.Players.size match{ //matches the number of players to the case
 //            case _ >= 2 => //if there are 2 or more players this case is activated
