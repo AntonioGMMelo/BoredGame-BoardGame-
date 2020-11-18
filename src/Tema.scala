@@ -51,9 +51,6 @@ object Tema {
   }
 
 }
-
-
-<<<<<<< HEAD
   def receive_answer(alternativa: Alternativa): Boolean = Pergunta.receive_answer(alternativa, this.alternativas)
 
   def print_Pergunta(): Unit ={Pergunta.print_Pergunta(this)}
@@ -81,16 +78,6 @@ object Pergunta {
     }
   }
 
-<<<<<<< HEAD
-//  def main(args: Array[String]): Unit = {
-//    val alternativas = List(("Não", false),("Talvez", false),("Sim", true))
-//    val pergunta: Pergunta = ("O Miguel é gay?", alternativas)
-//    val x : Boolean = pergunta.receive_answer(("Sim", true))
-//    val y : Boolean = pergunta.receive_answer(("Sim", false))
-//    println(pergunta.pergunta + x)
-//    println(pergunta.pergunta + y)
-//  }
-=======
   def print_Pergunta(pergunta: Pergunta): Unit = {
     println(pergunta.pergunta)
 
@@ -156,10 +143,8 @@ object Pergunta {
 //    a.tip_Alternativas()
     println("a")
   }
->>>>>>> 778461c05512429b8e936cc9aeb31b1cd735ebf3
 }
-=======
->>>>>>> c57ff73a4b1acbbf06fd5614c8835b607c61d391
+
 
 
 
