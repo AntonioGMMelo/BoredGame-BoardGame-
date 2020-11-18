@@ -6,6 +6,11 @@ import javafx.stage.*
 import javafx.geometry.*
 
 class MainMenu extends Application{
+  var Players:List[user.Player]=List()
+  var Questions:List[]=List()
+  var Themes:List[]=List()
+  var Colors:List[user.Color]=List()
+}
   @Override
   def start(primaryStage: Stage): Unit throws Exception={
     //titling the stage as Main Menu
