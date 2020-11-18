@@ -1,15 +1,11 @@
 import scala.annotation.tailrec
-import javafx.application.*
-import javafx.event.*
-import javafx.scene.*
-import javafx.stage.*
-import javafx.geometry.*
+import scala.io.AnsiColor.{BLACK, BLUE, CYAN, GREEN, MAGENTA, RED, WHITE, YELLOW}
 
 class MainMenu extends Application{
   var Players:List[user.Player]=List()
-  var Questions:List[Pergunta.type ]=List()
-  var Themes:List[Tema.type ]=List()
-  var Colors:List[user.Color]=List()
+  var Questions:List[]=List()
+  var Themes:List[]=List()
+  var Colors:List[user.Color]=List((BLACK, false), (WHITE, false), (BLUE, false), (CYAN, false), (RED, false), (GREEN, false), (MAGENTA, false), (YELLOW, false))
 }
   @Override
   def start(primaryStage: Stage): Unit throws Exception={
