@@ -4,7 +4,7 @@ import scala.io.AnsiColor.{BLACK, BLUE, CYAN, GREEN, MAGENTA, RED, WHITE, YELLOW
 class MainMenu extends Application{
   var Players:List[user.Player]=List()
   var Questions:List[Pergunta.type ]=List()
-  var Themes:List[Tema]=List()
+  var Themes:List[Tema.type ]=List()
   var Colors:List[user.Color]=List((BLACK, false), (WHITE, false), (BLUE, false), (CYAN, false), (RED, false), (GREEN, false), (MAGENTA, false), (YELLOW, false))
 }
   @Override
