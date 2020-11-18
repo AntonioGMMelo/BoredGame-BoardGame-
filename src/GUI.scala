@@ -7,8 +7,8 @@ import javafx.geometry.*
 
 class MainMenu extends Application{
   var Players:List[user.Player]=List()
-  var Questions:List[]=List()
-  var Themes:List[]=List()
+  var Questions:List[Pergunta.type ]=List()
+  var Themes:List[Tema.type ]=List()
   var Colors:List[user.Color]=List()
 }
   @Override
