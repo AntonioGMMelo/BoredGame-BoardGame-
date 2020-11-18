@@ -51,9 +51,6 @@ object Tema {
   }
 
 }
-
-
-<<<<<<< HEAD
   def receive_answer(alternativa: Alternativa): Boolean = Pergunta.receive_answer(alternativa, this.alternativas)
 
   def print_Pergunta(): Unit ={Pergunta.print_Pergunta(this)}
