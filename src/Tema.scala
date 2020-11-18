@@ -1,7 +1,6 @@
 case class Tema(tema: String, perguntas: List[Pergunta]) {
 
-
-  def add_Pergunta(pergunta: Pergunta): List[Pergunta] = {
+  def add_Pergunta(pergunta: Pergunta): Tema = {
     Tema.add_Pergunta(pergunta, this)
   }
 
@@ -11,23 +10,29 @@ case class Tema(tema: String, perguntas: List[Pergunta]) {
 }
 
 object Tema {
-  def add_Pergunta(pergunta: Pergunta, tema : Tema): List[Pergunta] = {
-    def check_pergunta(perguntas: List[Pergunta]): List[Pergunta] = {
-      perguntas match {
-        case Nil => {
-          println("tema.perguntas :+ pergunta")
-          tema.perguntas :+ pergunta
-        }
-        case x :: t => {
-          if (x.pergunta == pergunta.pergunta) {
-            println("Essa pergunta já existe!")
-            tema.perguntas
-          } else
-            check_pergunta(t)
+  def add_Pergunta(pergunta: Pergunta, tema: Tema): Tema = {
+    Tema(tema.tema, new_perguntas(tema.perguntas, pergunta))
+  }
+
+  def new_perguntas(perguntas: List[Pergunta], pergunta: Pergunta): List[Pergunta] = {
+    if (existe_pergunta(perguntas, pergunta))
+      perguntas
+    else
+      perguntas :+ pergunta
+  }
+
+  def existe_pergunta(perguntas: List[Pergunta], pergunta: Pergunta): Boolean = {
+    perguntas match {
+      case Nil => false
+      case x :: t => {
+        if (x == pergunta) {
+          println("Essa pergunta já existe")
+          true
+        } else {
+          existe_pergunta(t, pergunta)
         }
       }
     }
-    check_pergunta(tema.perguntas)
   }
 
   //  def remove_pergunta(pergunta:String, perguntas : List[Pergunta]): Unit = {
