@@ -156,10 +156,8 @@ object Pergunta {
 //    a.tip_Alternativas()
     println("a")
   }
->>>>>>> 778461c05512429b8e936cc9aeb31b1cd735ebf3
 }
-=======
->>>>>>> c57ff73a4b1acbbf06fd5614c8835b607c61d391
+
 
 
 
