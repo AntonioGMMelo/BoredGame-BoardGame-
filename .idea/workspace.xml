@@ -20,15 +20,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4b2267cb-615b-4fd9-86b7-d566b82b2b7f" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/javafx_sdk_15.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/BoredGame(BoardGame).iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/BoredGame(BoardGame).iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/scala_sdk_2_13_4.xml" beforeDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/codeStyles/Project.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/CreatePlayer.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/CreatePlayer.scala" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ErrorMessage.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/ErrorMessage.scala" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Status.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Status.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Functions.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/Functions.scala" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/GUI.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI.scala" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Main_temp.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main_temp.scala" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -218,7 +215,7 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="scala-line">
           <url>file://$PROJECT_DIR$/src/Functions.scala</url>
-          <line>4</line>
+          <line>5</line>
           <option name="timeStamp" value="1" />
         </line-breakpoint>
       </breakpoints>

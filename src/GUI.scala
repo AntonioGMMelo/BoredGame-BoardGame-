@@ -9,6 +9,7 @@ import javafx.geometry._
 import javafx.scene.control.{Button, Label}
 import javafx.scene.layout.VBox
 
+
 class GUI extends Application{
   type Name = String // Name of the Player
   type Color = (String, Boolean) // Color of the Player
