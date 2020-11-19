@@ -15,19 +15,17 @@
         <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
         <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
       </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:originPI" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
     </expand>
     <select />
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4b2267cb-615b-4fd9-86b7-d566b82b2b7f" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/codeStyles/Project.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/codeStyles/codeStyleConfig.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/CreatePlayer.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/CreatePlayer.scala" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/GUI.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI.scala" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -120,6 +118,10 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="WindowStateProjectService">
+    <state x="520" y="256" key="#Notifications" timestamp="1605819857009">
+      <screen x="0" y="0" width="1536" height="864" />
+    </state>
+    <state x="520" y="256" key="#Notifications/0.0.1536.864@0.0.1536.864" timestamp="1605819857009" />
     <state x="440" y="94" key="#Project_Structure" timestamp="1605810072108">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -144,9 +146,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="681" y="209" key="#com.intellij.ide.util.frameworkSupport.AddFrameworkSupportDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1605810768612" />
-    <state x="739" y="261" key="FileChooserDialogImpl" timestamp="1605810637726">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state x="591" y="217" key="FileChooserDialogImpl" timestamp="1605819915438">
+      <screen x="0" y="0" width="1536" height="864" />
     </state>
+    <state x="591" y="217" key="FileChooserDialogImpl/0.0.1536.864@0.0.1536.864" timestamp="1605819915438" />
     <state x="739" y="261" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1605810637726" />
     <state width="1877" height="227" key="GridCell.Tab.0.bottom" timestamp="1605812654841">
       <screen x="0" y="0" width="1920" height="1040" />
