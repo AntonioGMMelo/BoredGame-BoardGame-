@@ -1,5 +1,11 @@
 import scala.annotation.tailrec
 import scala.io.AnsiColor.{BLACK, BLUE, CYAN, GREEN, MAGENTA, RED, WHITE, YELLOW}
+import javafx.application.*
+import javafx.event.*
+import javafx.scene.*
+import javafx.stage.*
+import javafx.geometry.*
+
 
 class MainMenu extends Application{
   var Players:List[user.Player]=List()
