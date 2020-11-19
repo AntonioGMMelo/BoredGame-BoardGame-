@@ -4,9 +4,6 @@ case class Pergunta(pergunta: String, alternativas: List[(String, Boolean)]) {
 
   def receive_answer(alternativa: Alternativa): Boolean = Pergunta.receive_answer(alternativa, this.alternativas)
 
-//  def print_Pergunta(): Unit = {
-//    Pergunta.print_Pergunta(this)
-//  }
 
   def tip_Alternativa(): List[Alternativa] = {
     Pergunta.tip_Alternativa(this.alternativas)
