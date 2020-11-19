@@ -1,9 +1,9 @@
-import javafx.application._
-import javafx.event._
+import javafx.collections.FXCollections
 import javafx.scene._
 import javafx.stage._
 import javafx.geometry._
-import javafx.collections._
+import javafx.scene.control.{Button, ComboBox, Label, TextField}
+import javafx.scene.layout.{BorderPane, VBox}
 
 class CreatePlayer {
   def display(layout: VBox): (String,String) ={
@@ -17,20 +17,18 @@ class CreatePlayer {
 
     // Create a combo box
     val Colors :ComboBox = new ComboBox(FXCollections.observableArrayList(layout));
-    val name : TextField = new TextFIeld("Player Name")
-    BoarderPane.setAllignement(Colors,Pos.CENTER)
+    val name : TextField = new TextField("Player Name")
+    BorderPane.setAlignment(Colors,Pos.CENTER)
 
     val ok : Button = new Button("OK")
-    ok.setOnAction(e ->{
-      (Colors.getValue(),name.getCharacters())
+    ok.setOnAction({
+      (toString(Colors.getValue()),toString(name.getCharacters()))
       popUp.close()
     })
 
     //adding button and message to a layout
     val layout2 = new BorderPane()
-    layout2.getChilderen().addAll(Colors,name)
-    layout2.setAlignment(Pos.CENTER)
-
+    layout2.getChildren.addAll(Colors,name)
     //creating scene and setting stage to scene
     val scene: Scene= new Scene(layout2)
     popUp.setScene(scene)

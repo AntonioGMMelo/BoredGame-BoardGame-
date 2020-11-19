@@ -1,9 +1,8 @@
-import javafx.application.*
-import javafx.event.*
-import javafx.scene.*
-import javafx.stage.*
-import javafx.geometry.*
-
+import javafx.scene._
+import javafx.stage._
+import javafx.geometry._
+import javafx.scene.control.{Label,Button, ComboBox, TextField}
+import javafx.scene.layout.VBox
 class ErrorMessage {
   def display(title: String, message: String): Unit ={
     //creating stage
@@ -15,7 +14,7 @@ class ErrorMessage {
     popUp.setMinHeight(300)
 
     //assigning message to a label
-    val label : Lable = new Lable()
+    val label: Label= new Label()
     label.setText(message)
     //creating ok button
     val ok : Button = new Button("OK")
@@ -23,7 +22,7 @@ class ErrorMessage {
 
     //adding button and message to a layout
     val layout : VBox= new VBox(2)
-    layout.getChilderen().addAll(label,ok)
+    layout.getChildren.addAll(label,ok)
     layout.setAlignment(Pos.CENTER)
 
     //creating scene and setting stage to scene
