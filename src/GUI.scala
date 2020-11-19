@@ -1,27 +1,28 @@
-import user.{Color, Player}
-import javafx.application.*
-import javafx.event.*
-import javafx.scene.*
-import javafx.stage.*
-import javafx.geometry.*
 import scala.annotation.tailrec
-import scala.io.AnsiColor.{BLACK, BLUE, CYAN, GREEN, MAGENTA, RED, WHITE, YELLOW}
-import javafx.application.*
-import javafx.event.*
-import javafx.scene.*
-import javafx.stage.*
-import javafx.geometry.*
+import scala.io.AnsiColor._
+import javafx.application._
+import javafx._
+import javafx.fxml.FXMLLoader
+import javafx.scene._
+import javafx.stage._
+import javafx.geometry._
+import javafx.scene.control.{Button, Label}
+import javafx.scene.layout.VBox
 
 
 class GUI extends Application{
-  var Players:List[user.Player]=List()
+  type Name = String // Name of the Player
+  type Color = (String, Boolean) // Color of the Player
+  type Player = (Name, Color) // Player type
+
+  var Players:List[Player]=List()
   var Questions:List[Pergunta.type ]=List()
   var Themes:List[Tema.type ]=List()
-  var Colors:List[user.Color]=List((BLACK, false), (WHITE, false), (BLUE, false), (CYAN, false), (RED, false), (GREEN, false), (MAGENTA, false), (YELLOW, false))
+  var Colors:List[Color]=List((BLACK, false), (WHITE, false), (BLUE, false), (CYAN, false), (RED, false), (GREEN, false), (MAGENTA, false), (YELLOW, false))
 
   override def start(primaryStage: Stage): Unit ={
     //titling the stage as Main Menu
-    primaryStage.setTittle("Main Menu")
+    primaryStage.setTitle("Main Menu")
     //loading  fmxl
     val fxmlLoader = new FXMLLoader(getClass.getResource("controller.fxml"))
     val mainViewRoot: Parent = fxmlLoader.load()
@@ -30,7 +31,7 @@ class GUI extends Application{
     val CreatePlayer : Button = new Button("Create Player")
     CreatePlayer.setOnAction(e ->{
       val layout : VBox = new VBox(10)
-      user.Players.size match { //Checks the amount o players already created
+      Players.size match { //Checks the amount o players already created
         case _ < 8 => //if there are less than 8 players this case gets activated
           @tailrec
           def listAvailableColors(Colors:List[(String,Boolean)]): Unit = { //prints all the available colors by checking the Boolean in the list true if the color has been used and false if it hasn't
@@ -38,6 +39,7 @@ class GUI extends Application{
               case _ > 0 => // if there are still colors in the List this case gets activated
                 Colors.head._2 match { //Matches the boolean to see weather the color is still unused
                   case false => //if the color hasn't been used this case gets activated
+
                     val label: Label = new Label()
                     label.setText(Colors.head._1)
                     layout.getChildren().add(label)//the color is added as an option for the user
@@ -50,7 +52,7 @@ class GUI extends Application{
           }
           listAvailableColors(Colors)//calls printAvailableColors
           val ColorAndName: (String,String) = CreatePlayer.display(layout)
-          val auxiliar:(List[user.Player], List[user.Color])=user.CreatePlayer(ColorAndName._2,ColorAndName._1,Players,Colors) //calls CreatePlayer with the user inputs
+          val auxiliar:(List[Player], List[Color])=CreatePlayer(ColorAndName._2,ColorAndName._1,Players,Colors) //calls CreatePlayer with the user inputs
           Players=auxiliar._1 //updates players list
           Colors=auxiliar._2 //updates colors ist
         case _ => //if there are 8 players this case is activated
@@ -60,26 +62,29 @@ class GUI extends Application{
     //Edit Player Button setup+
     val EditPlayer : Button = new Button("Edit Player")
     EditPlayer.setOnAction(e ->{
-      user.Players match { //matches weather there are any players to be edited
+      Players match { //matches weather there are any players to be edited
         case nil => //if there are no players this case is activated
-          ErrorMessage.display("SPACE ERROR","Players list empty")
+          ErrorMessage.display("SPACE ERROR", "Players list empty")
         case _ => //if there are players to edit this case is activated
-          val layout : VBox = new VBox(10)
+          val layout: VBox = new VBox(10)
+
           @tailrec
-          def listAvailablePlayers(Players: List[user.Player]): Unit = { //prints all the available Players
-             Players.size match { //matches the number of Players in the list to the cases ensuring recursion
-               case _ > 0 => // if there are still Players in the List this case gets activated
-                 val label: Label = new Label()
-                 label.setText(Players.head._1)
-                 layout.getChildren().add(label)
-                 listAvailablePlayers(Players.tail) //recursive call
-               case _ => //if there are no more players on the list this case gets activated
-                 println("Type Player Name") //prompts the user for a player's name
-             }
-          listAvailablePlayers(Players)//calls printAvailablePlayers
-          val OldAndNewName: (String,String) = EditPlayer.status(layout)
-          Players = EditPlayer(OldAndNewName._1,OldAndNewName._2,Players)
-        }
+          def listAvailablePlayers(Players: List[Player]): Unit = { //prints all the available Players
+            Players.size match { //matches the number of Players in the list to the cases ensuring recursion
+              case _ > 0 => // if there are still Players in the List this case gets activated
+                val label: Label = new Label()
+                label.setText(Players.head._1)
+                layout.getChildren().add(label)
+                listAvailablePlayers(Players.tail) //recursive call
+              case _ => //if there are no more players on the list this case gets activated
+                println("Type Player Name") //prompts the user for a player's name
+            }
+            listAvailablePlayers(Players) //calls printAvailablePlayers
+            val OldAndNewName: (String, String) = EditPlayer.status(layout)
+            val aux =EditPlayer(OldAndNewName._1, OldAndNewName._2, Players)
+            Players=aux
+          }
+      }
     })
     //StartGame Button setup
     val StartGame : Button = new Button("Start Game")
@@ -98,21 +103,17 @@ class GUI extends Application{
 
     //adding the grid pane with the buttons to a Border Pane and centering the grid pane
     BorderPane.setAllignment(mainMenuButtons,Pos.CENTER)
-    val root: BorderPane  = new BoarderPane(mainMenuButtons)
+    val root: BorderPane  = new boarderPane(mainMenuButtons)
     root.setPrefixSize(1000,1000)
     //Creating the scene and setting the stage to the scene and showing it
     Scene scene = new Scene(root);
     primaryStage.setScene(scene)
     primaryStage.show()
 
-    }
   }
 }
-object mainMenu {
+object Menu{
   def main(args: Array[String]): Unit = {
-    Application.launch(classOf[GUI], args: _*)
+    application.launch(classOf[GUI], args: _*)
   }
 }
-
-
-

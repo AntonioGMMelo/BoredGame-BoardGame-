@@ -25,7 +25,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4b2267cb-615b-4fd9-86b7-d566b82b2b7f" name="Default Changelist" comment="">
+<<<<<<< HEAD
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+=======
+      <change afterPath="$PROJECT_DIR$/.idea/codeStyles/Project.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Status.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Status.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Functions.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/Functions.scala" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GUI.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI.scala" afterDir="false" />
+>>>>>>> c137f798aaa56b31e998dd98271d5cf56daccbbd
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -52,25 +61,28 @@
     <property name="Repository.Attach.JavaDocs" value="false" />
     <property name="Repository.Attach.Sources" value="false" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-    <property name="project.structure.last.edited" value="Libraries" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../../../Program Files/javafx-sdk-15/lib" />
+    <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
+    <property name="scala_project_settings_configurable.last_selected_tab_index" value="7" />
+    <property name="settings.editor.selected.configurable" value="org.jetbrains.plugins.scala.settings.ScalaProjectSettingsConfigurable" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\Anton\IdeaProjects\untitled\src" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.mainMenu">
-    <configuration name="mainMenu" type="Application" factoryName="Application" temporary="true">
-      <option name="MAIN_CLASS_NAME" value="mainMenu" />
+  <component name="RunManager" selected="Application.Menu">
+    <configuration name="Menu" type="Application" factoryName="Application">
+      <option name="MAIN_CLASS_NAME" value="Menu" />
       <module name="BoredGame(BoardGame)" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Scala REPL" type="ScalaScriptConsoleRunConfiguration" factoryName="Scala Console" temporary="true" show_console_on_std_err="false" show_console_on_std_out="false">
+    <configuration name="Scala REPL" type="ScalaScriptConsoleRunConfiguration" factoryName="Scala Console" show_console_on_std_err="false" show_console_on_std_out="false">
       <module name="BoredGame(BoardGame)" />
       <option name="allowRunningInParallel" value="false" />
       <option name="javaOptions" value="-Djline.terminal=NONE" />
@@ -84,15 +96,9 @@
       </method>
     </configuration>
     <list>
-      <item itemvalue="Application.mainMenu" />
+      <item itemvalue="Application.Menu" />
       <item itemvalue="Scala REPL.Scala REPL" />
     </list>
-    <recent_temporary>
-      <list>
-        <item itemvalue="Application.mainMenu" />
-        <item itemvalue="Scala REPL.Scala REPL" />
-      </list>
-    </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -118,33 +124,38 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="WindowStateProjectService">
+<<<<<<< HEAD
     <state x="520" y="256" key="#Notifications" timestamp="1605819857009">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
     <state x="520" y="256" key="#Notifications/0.0.1536.864@0.0.1536.864" timestamp="1605819857009" />
     <state x="440" y="94" key="#Project_Structure" timestamp="1605810072108">
+=======
+    <state x="440" y="94" key="#Project_Structure" timestamp="1605818618690">
+>>>>>>> c137f798aaa56b31e998dd98271d5cf56daccbbd
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="440" y="94" key="#Project_Structure/0.0.1920.1040@0.0.1920.1040" timestamp="1605810072108" />
+    <state x="440" y="94" key="#Project_Structure/0.0.1920.1040@0.0.1920.1040" timestamp="1605818618690" />
     <state x="690" y="275" key="#com.intellij.codeInsight.editorActions.RestoreReferencesDialog" timestamp="1605732217511">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="690" y="275" key="#com.intellij.codeInsight.editorActions.RestoreReferencesDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1605732217511" />
-    <state x="644" y="0" width="1092" height="1040" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1605812687904">
+    <state x="644" y="0" width="1092" height="1040" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1605818592737">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="644" y="0" width="1092" height="1040" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1605812687904" />
+    <state x="644" y="0" width="1092" height="1040" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1605818592737" />
     <state x="724" y="434" key="#com.intellij.framework.addSupport.AddSupportForSingleFrameworkDialog" timestamp="1605810683890">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="724" y="434" key="#com.intellij.framework.addSupport.AddSupportForSingleFrameworkDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1605810683890" />
-    <state x="689" y="322" key="#com.intellij.ide.util.TreeClassChooserDialog" timestamp="1605812678343">
+    <state x="920" y="296" key="#com.intellij.ide.util.PackageChooserDialog" timestamp="1605813749678">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="689" y="322" key="#com.intellij.ide.util.TreeClassChooserDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1605812678343" />
-    <state x="681" y="209" key="#com.intellij.ide.util.frameworkSupport.AddFrameworkSupportDialog" timestamp="1605810768612">
+    <state x="920" y="296" key="#com.intellij.ide.util.PackageChooserDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1605813749678" />
+    <state x="689" y="322" key="#com.intellij.ide.util.TreeClassChooserDialog" timestamp="1605818416847">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
+<<<<<<< HEAD
     <state x="681" y="209" key="#com.intellij.ide.util.frameworkSupport.AddFrameworkSupportDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1605810768612" />
     <state x="591" y="217" key="FileChooserDialogImpl" timestamp="1605819915438">
       <screen x="0" y="0" width="1536" height="864" />
@@ -152,33 +163,61 @@
     <state x="591" y="217" key="FileChooserDialogImpl/0.0.1536.864@0.0.1536.864" timestamp="1605819915438" />
     <state x="739" y="261" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1605810637726" />
     <state width="1877" height="227" key="GridCell.Tab.0.bottom" timestamp="1605812654841">
+=======
+    <state x="689" y="322" key="#com.intellij.ide.util.TreeClassChooserDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1605818416847" />
+    <state x="681" y="209" key="#com.intellij.ide.util.frameworkSupport.AddFrameworkSupportDialog" timestamp="1605817861644">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="681" y="209" key="#com.intellij.ide.util.frameworkSupport.AddFrameworkSupportDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1605817861644" />
+    <state x="739" y="261" key="FileChooserDialogImpl" timestamp="1605818533782">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="739" y="261" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1605818533782" />
+    <state width="1877" height="285" key="GridCell.Tab.0.bottom" timestamp="1605818483453">
+>>>>>>> c137f798aaa56b31e998dd98271d5cf56daccbbd
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1877" height="227" key="GridCell.Tab.0.bottom/0.0.1920.1040/1920.0.1280.680@0.0.1920.1040" timestamp="1605564004991" />
-    <state width="1877" height="227" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1605812654841" />
-    <state width="1877" height="227" key="GridCell.Tab.0.center" timestamp="1605812654841">
+    <state width="1877" height="285" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1605818483453" />
+    <state width="1877" height="285" key="GridCell.Tab.0.center" timestamp="1605818483453">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1877" height="227" key="GridCell.Tab.0.center/0.0.1920.1040/1920.0.1280.680@0.0.1920.1040" timestamp="1605564004991" />
-    <state width="1877" height="227" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1605812654841" />
-    <state width="1877" height="227" key="GridCell.Tab.0.left" timestamp="1605812654841">
+    <state width="1877" height="285" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1605818483453" />
+    <state width="1877" height="285" key="GridCell.Tab.0.left" timestamp="1605818483453">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1877" height="227" key="GridCell.Tab.0.left/0.0.1920.1040/1920.0.1280.680@0.0.1920.1040" timestamp="1605564004991" />
-    <state width="1877" height="227" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1605812654841" />
-    <state width="1877" height="227" key="GridCell.Tab.0.right" timestamp="1605812654841">
+    <state width="1877" height="285" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1605818483453" />
+    <state width="1877" height="285" key="GridCell.Tab.0.right" timestamp="1605818483453">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1877" height="227" key="GridCell.Tab.0.right/0.0.1920.1040/1920.0.1280.680@0.0.1920.1040" timestamp="1605564004991" />
-    <state width="1877" height="227" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1605812654841" />
-    <state x="440" y="94" key="SettingsEditor" timestamp="1605810871685">
+    <state width="1877" height="285" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1605818483453" />
+    <state width="1877" height="348" key="GridCell.Tab.1.bottom" timestamp="1605814061506">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="440" y="94" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1605810871685" />
-    <state x="664" y="411" key="com.intellij.jarRepository.RepositoryAttachDialog-DOWNLOAD" timestamp="1605810525254">
+    <state width="1877" height="348" key="GridCell.Tab.1.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1605814061506" />
+    <state width="1877" height="348" key="GridCell.Tab.1.center" timestamp="1605814061506">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="664" y="411" key="com.intellij.jarRepository.RepositoryAttachDialog-DOWNLOAD/0.0.1920.1040@0.0.1920.1040" timestamp="1605810525254" />
+    <state width="1877" height="348" key="GridCell.Tab.1.center/0.0.1920.1040@0.0.1920.1040" timestamp="1605814061506" />
+    <state width="1877" height="348" key="GridCell.Tab.1.left" timestamp="1605814061506">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="348" key="GridCell.Tab.1.left/0.0.1920.1040@0.0.1920.1040" timestamp="1605814061506" />
+    <state width="1877" height="348" key="GridCell.Tab.1.right" timestamp="1605814061506">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="348" key="GridCell.Tab.1.right/0.0.1920.1040@0.0.1920.1040" timestamp="1605814061506" />
+    <state x="440" y="94" key="SettingsEditor" timestamp="1605818216080">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="440" y="94" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1605818216080" />
+    <state x="664" y="411" key="com.intellij.jarRepository.RepositoryAttachDialog-DOWNLOAD" timestamp="1605813196594">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="664" y="411" key="com.intellij.jarRepository.RepositoryAttachDialog-DOWNLOAD/0.0.1920.1040@0.0.1920.1040" timestamp="1605813196594" />
     <state x="667" y="76" width="585" height="888" key="find.popup" timestamp="1604957073439">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -197,5 +236,16 @@
     </state>
     <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040/1920.0.1280.680@0.0.1920.1040" timestamp="1604953867774" />
     <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1605623818213" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="scala-line">
+          <url>file://$PROJECT_DIR$/src/Functions.scala</url>
+          <line>5</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>
