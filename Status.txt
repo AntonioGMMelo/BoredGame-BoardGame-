@@ -5,6 +5,9 @@ Jogar dado -> DONE
 Jogar moeda -> DONE
 Andar x -> DONE
 Abrir ação da casa x-> INTEFACE
+Adicionar Pergunta -> DONE
+Remover Pergunta -> DONE
+Dar Dica -> DONE
 Responder pergunta -> DONE
 Tirar carta ->DONE
 Pausar jogo ->INTERFACE
