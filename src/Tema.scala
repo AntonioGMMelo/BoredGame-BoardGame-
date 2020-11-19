@@ -7,6 +7,10 @@ case class Tema(tema: String, perguntas: List[Pergunta]) {
   def select_Pergunta(): Pergunta = {
     Tema.select_Pergunta(this)
   }
+
+  def remove_pergunta(pergunta: Pergunta):Tema = {
+    Tema.remove_pergunta(pergunta, this)
+  }
 }
 
 object Tema {
@@ -35,15 +39,9 @@ object Tema {
     }
   }
 
-  //  def remove_pergunta(pergunta:String, perguntas : List[Pergunta]): Unit = {
-  //    perguntas match {
-  //      case Nil => println("Essa pergunta não existe")
-  //      case x :: t => {
-  //        if(x.pergunta == pergunta)
-  //
-  //      }
-  //    }
-  //  }
+  def remove_pergunta(pergunta: Pergunta, tema: Tema): Tema = {
+    Tema(tema.tema, tema.perguntas filter (x => x != pergunta))
+  }
 
   def select_Pergunta(tema: Tema): Pergunta = {
     val r = new scala.util.Random
