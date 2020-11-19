@@ -101,8 +101,12 @@ object player {
       }
 
       def weightedDice(): Int = { //a 3 faced dice with the values 2,4 or 6
-        val aux = dice.filter(_ < 4) //filters dice to List(1,2,3).
-        lazy val diceRoll = aux.map(x => x * 2) //maps dice to List(2,4,6)
+        lazy val aux = dice.filter(_ < 4) //filters dice to List(1,2,3).
+        lazy val aux2 = aux.foldLeft(0)(_+_)//folds aux list to int 6
+        lazy val aux3 = dice.filter(_ < 3) //filters dice to List(1,2).
+        lazy val aux4 = aux3.map(x => x * 2) //maps dice to List(2,4)
+        val diceRoll=aux3 :+ aux2 //concatenates List(2,4) with 6 = List(2,4,6)
+        println(diceRoll)
         getSomething(diceRoll).toString.toInt //rolls the dice with the weight
       }
     }
