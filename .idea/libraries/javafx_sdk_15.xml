@@ -1,0 +1,10 @@
+<component name="libraryTable">
+  <library name="javafx-sdk-15">
+    <CLASSES />
+    <JAVADOC />
+    <NATIVE>
+      <root url="file://$PROJECT_DIR$/../../../../Program Files/javafx-sdk-15" />
+    </NATIVE>
+    <SOURCES />
+  </library>
+</component>
