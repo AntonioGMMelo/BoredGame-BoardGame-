@@ -1,7 +1,5 @@
-import scala.Console.println
 import scala.annotation.tailrec
 import scala.io.AnsiColor._
-import scala.io.Source
 
 object player {
   private val BOUNDARY_LEFT: Int = 0; //Where is the center pixel on the left most spaces
@@ -145,6 +143,22 @@ object player {
         }
       }
 
+      def EditPlayerColor(Player: Player, Color: Int, ListOfPlayers: List[Player], ListOfColors: List[Color]): (List[Player], List[Color]) = {
+        val CurrentColor: Color = Player._2
+        val NewColor: Color = (ListOfColors(Color)._1, true)
+        val EditedPlayer: Player = (Player._1, NewColor)
+
+        IsTheColorUsed(CurrentColor, ListOfColors) match{
+          case true => println("Color is already being used. Choose another one.")
+            (ListOfPlayers, ListOfColors)
+          case false =>
+            val UpdatedPlayerList: List[Player] = UpdatePlayerListIndex(ListOfPlayers, Player, ListOfPlayers.indexOf(Player))
+            val UpdatedColorList: List[Color] = UpdateColorList(ListOfColors, NewColor, Color)
+            (UpdatedPlayerList, UpdatedColorList)
+        }
+
+      }
+
       def UpdatePlayerListIndex(List: List[Player], Player: Player, Index: Int): List[Player] = { // Updates the Player list given an index
         val List2: List[Player] = List.updated(Index, Player) // Creates a new Player list by updating a specific index
         List2 // Outputs the new Player list
@@ -159,6 +173,18 @@ object player {
       def UpdateColorList(List: List[Color], Color: Color, Index: Int): List[Color] = { // Updates the List of Colors by changing its boolean parameter
         val List2: List[Color] =  List.updated(Index, (List(Index)._1, true)) // Creates a new Color list by updating a specific index
         List2 // Outputs the new Color list
+      }
+
+      @tailrec
+      def IsTheColorUsed(Color: Color, ListOfColors: List[Color]): Boolean = {
+        ListOfColors match {
+          case Nil => false
+          case _ =>
+            ListOfColors.head._2 match {
+              case true => true
+              case _ => IsTheColorUsed(Color, ListOfColors.tail)
+            }
+        }
       }
 
       @tailrec
