@@ -1,14 +1,19 @@
+import user.{Color, Player}
+import javafx.application.*
+import javafx.event.*
+import javafx.scene.*
+import javafx.stage.*
+import javafx.geometry.*
 import scala.annotation.tailrec
 import scala.io.AnsiColor.{BLACK, BLUE, CYAN, GREEN, MAGENTA, RED, WHITE, YELLOW}
 
-class MainMenu extends Application{
+class GUI extends Application{
   var Players:List[user.Player]=List()
   var Questions:List[Pergunta.type ]=List()
   var Themes:List[Tema.type ]=List()
   var Colors:List[user.Color]=List((BLACK, false), (WHITE, false), (BLUE, false), (CYAN, false), (RED, false), (GREEN, false), (MAGENTA, false), (YELLOW, false))
-}
-  @Override
-  def start(primaryStage: Stage): Unit throws Exception={
+
+  override def start(primaryStage: Stage): Unit ={
     //titling the stage as Main Menu
     primaryStage.setTittle("Main Menu")
     //loading  fmxl
@@ -37,14 +42,16 @@ class MainMenu extends Application{
               case _ => //if there are no colors left in the list this case is activated
             }
           }
-          listAvailableColors(user.Colors)//calls printAvailableColors
+          listAvailableColors(Colors)//calls printAvailableColors
           val ColorAndName: (String,String) = CreatePlayer.display(layout)
-          user.CreatePlayer(ColorAndName._2,ColorAndName._1 ) //calls CreatePlayer with the user inputs
+          val auxiliar:(List[user.Player], List[user.Color])=user.CreatePlayer(ColorAndName._2,ColorAndName._1,Players,Colors) //calls CreatePlayer with the user inputs
+          Players=auxiliar._1 //updates players list
+          Colors=auxiliar._2 //updates colors ist
         case _ => //if there are 8 players this case is activated
-          ErrorMessage.display("SPACE ERROR","Players list is at maximum capacity i.e. 8")//Shows error message
+          //ErrorMessage.display("SPACE ERROR","Players list is at maximum capacity i.e. 8")//Shows error message
       }
     })
-    //Edit Player Button setup
+    //Edit Player Button setup+
     val EditPlayer : Button = new Button("Edit Player")
     EditPlayer.setOnAction(e ->{
       user.Players match { //matches weather there are any players to be edited
@@ -63,9 +70,9 @@ class MainMenu extends Application{
                case _ => //if there are no more players on the list this case gets activated
                  println("Type Player Name") //prompts the user for a player's name
              }
-          listAvailablePlayers(user.Players)//calls printAvailablePlayers
+          listAvailablePlayers(Players)//calls printAvailablePlayers
           val OldAndNewName: (String,String) = EditPlayer.status(layout)
-          EditPlayer(OldAndNewName._1,OldAndNewName._2)
+          Players = EditPlayer(OldAndNewName._1,OldAndNewName._2,Players)
         }
     })
     //StartGame Button setup
@@ -92,10 +99,14 @@ class MainMenu extends Application{
     primaryStage.setScene(scene)
     primaryStage.show()
 
-    object mainMenu {
-      def main(args: Array[String]): Unit = {
-        Application.launch(classOf[MainMenu], args: _*)
-      }
     }
   }
+}
+object mainMenu {
+  def main(args: Array[String]): Unit = {
+    Application.launch(classOf[GUI], args: _*)
+  }
+}
+
+
 
