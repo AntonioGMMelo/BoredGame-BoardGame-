@@ -33,6 +33,6 @@ Recursividade (no lugar de iteratividade); DONE I.E. NO WHILE OR FOR LOOPS
 • Funções de ordem superior; DONE
 • Padrões recorrentes sobre listas (incluir: map DONE, filter DONE e fold);
 • Partially Applied Functions e/ou Currying; DONE I THINK
-• Try; DONE
-• Option;
+• Try;
+• Option; DONE
 • Functional Object-Oriented programming. DONE
