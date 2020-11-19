@@ -139,7 +139,8 @@ object player {
             ListOfPlayers // If the name isn't used, the output will be the current Player list
           case true =>
             val UpdatedPlayerList: List[Player] = UpdatePlayerList(ListOfPlayers, EditedPlayer, Some(Index)) // New Player list, which is the previous version plus the new Player created
-            println(s"${ListOfPlayers(ListOfPlayers.indexOf(EditedPlayer))._2._1}${BOLD}Player edited successfully!${RESET}") // Print to check the Color and confirm the creation and proper addition to the Player list
+            println(s"${ListOfPlayers(ListOfPlayers.indexOf(
+              EditedPlayer))._2._1}${BOLD}Player edited successfully!${RESET}") // Print to check the Color and confirm the creation and proper addition to the Player list
             UpdatedPlayerList // If the name is used, the output will be the new Player list
         }
       }
