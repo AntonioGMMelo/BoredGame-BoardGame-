@@ -20,12 +20,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4b2267cb-615b-4fd9-86b7-d566b82b2b7f" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/codeStyles/Project.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Status.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Status.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Functions.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/Functions.scala" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/GUI.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI.scala" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
