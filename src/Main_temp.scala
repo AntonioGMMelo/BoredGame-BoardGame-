@@ -62,7 +62,7 @@ object Main_temp {
     val w_dice = player.weightedDice()
     println("Roll Of The Weighted Dice :"+w_dice)
     val price_right = player.priceAintRight(itemEX, List(5.5, 10.9, 25.8, 30.1, 40.05, 50.2))
-    println("Item  To Guess Price Of: "itemEX)
+    println("Item  To Guess Price Of: "+itemEX)
     println("Guesses: "+List(5.5, 10.9, 25.8, 30.1, 40.05, 50.2))
     println("Price is Right Round Winner: "+price_right)
   }
