@@ -1,8 +1,5 @@
 import scala.annotation.tailrec
 import scala.io.AnsiColor._
-import scala.util.{Try}
-
-
 
 object user {
 
@@ -42,7 +39,6 @@ object user {
   }
 
   def EditPlayerColor(Player: Player, Color: Int, ListOfPlayers: List[Player], ListOfColors: List[Color]): (List[Player], List[Color]) = {
-    val CurrentColor: Color = Player._2
     val NewColor: Color = (ListOfColors(Color)._1, true)
     val EditedPlayer: Player = (Player._1, NewColor)
 
@@ -50,7 +46,6 @@ object user {
     val UpdatedColorList: List[Color] = UpdateColorList(ListOfColors, NewColor, Color)
     println(s"${ListOfPlayers(ListOfPlayers.indexOf(EditedPlayer))._2._1}${BOLD}Player edited successfully!${RESET}")
     (UpdatedPlayerList, UpdatedColorList)
-
   }
 
   def UpdatePlayerList(List: List[Player], Player: Player, Index: Option[Int]): List[Player] = { // Updates the Player list given a Player list, a Player and an Option[Int]
