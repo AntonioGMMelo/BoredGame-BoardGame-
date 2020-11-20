@@ -154,27 +154,12 @@ object player {
         val NewColor: Color = (ListOfColors(Color)._1, true)
         val EditedPlayer: Player = (Player._1, NewColor)
 
-        IsTheColorUsed(ListOfColors, CurrentColor) match{
-          case true => println("Color is already being used. Choose another one.")
-            (ListOfPlayers, ListOfColors)
-          case false =>
-            val UpdatedPlayerList: List[Player] = UpdatePlayerList(ListOfPlayers, Player, Some(ListOfPlayers.indexOf(Player)))
-            val UpdatedColorList: List[Color] = UpdateColorList(ListOfColors, NewColor, Color)
-            println(s"${ListOfPlayers(ListOfPlayers.indexOf(EditedPlayer))._2._1}${BOLD}Player edited successfully!${RESET}")
-            (UpdatedPlayerList, UpdatedColorList)
-        }
-      }
+        val UpdatedPlayerList: List[Player] = UpdatePlayerList(ListOfPlayers, Player, Some(ListOfPlayers.indexOf(Player)))
+        val UpdatedColorList: List[Color] = UpdateColorList(ListOfColors, NewColor, Color)
+        println(s"${ListOfPlayers(ListOfPlayers.indexOf(EditedPlayer))._2._1}${BOLD}Player edited successfully!${RESET}")
+        (UpdatedPlayerList, UpdatedColorList)
 
-//      def UpdatePlayerListIndex(List: List[Player], Player: Player, Index: Int): List[Player] = { // Updates the Player list given an index
-//        val List2: List[Player] = List.updated(Index, Player) // Creates a new Player list by updating a specific index
-//        List2 // Outputs the new Player list
-//      }
-//
-//
-//      def UpdatePlayerList(List: List[Player], Player: Player): List[Player] = { // Updates the Player list by adding a new Player
-//        val List2: List[Player] = List :+ Player // Creates a new Player list by adding a new Player to the end
-//        List2 // Outputs the new Player list
-//      }
+      }
 
       def UpdatePlayerList(List: List[Player], Player: Player, Index: Option[Int]): List[Player] = { // Updates the Player list given a Player list, a Player and an Option[Int]
         Index match{
@@ -193,19 +178,7 @@ object player {
       }
 
       @tailrec
-      def IsTheColorUsed(ListOfColors: List[Color], Color: Color): Boolean = {
-        ListOfColors match {
-          case Nil => false
-          case _ =>
-            ListOfColors.head._2 match {
-              case true => true
-              case false => IsTheColorUsed(ListOfColors.tail, Color)
-            }
-        }
-      }
-
-      @tailrec
-      def IsTheNameUsed(ListOfPlayers: List[Player], NameOfPlayer: String): Boolean = { // Checks if a Name is already used by one Player
+      def IsTheNameUsed(ListOfPlayers: List[Player], NameOfPlayer: String): Boolean = { // Checks if a Name is already being used by a Player
         ListOfPlayers match { // Match-Case for the input list
           case Nil => false // If the input list is empty, output is false
           case _ => // If the input list isn't empty, proceeds to another Match-Case
