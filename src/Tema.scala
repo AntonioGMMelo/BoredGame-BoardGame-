@@ -8,8 +8,12 @@ case class Tema(tema: String, perguntas: List[Pergunta]) {
     Tema.select_Pergunta(this)
   }
 
-  def remove_pergunta(pergunta: Pergunta):Tema = {
+  def remove_pergunta(pergunta: Pergunta): Tema = {
     Tema.remove_pergunta(pergunta, this)
+  }
+
+  def other_Pergunta(pergunta: Pergunta): Pergunta = {
+    Tema.other_Pergunta(this, pergunta)
   }
 }
 
@@ -44,8 +48,17 @@ object Tema {
   }
 
   def select_Pergunta(tema: Tema): Pergunta = {
-    val r = new scala.util.Random
-    tema.perguntas(r.nextInt(tema.perguntas.size))
+    //    val r = new scala.util.Random
+    //    tema.perguntas(r.nextInt(tema.perguntas.size)
+    player.getSomething(tema.perguntas)
+  }
+
+  def other_Pergunta(tema: Tema, pergunta: Pergunta): Pergunta = {
+    val p = player.getSomething(tema.perguntas)
+    if (p != pergunta)
+      p
+    else
+      other_Pergunta(tema, pergunta)
   }
 
 }

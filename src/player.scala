@@ -16,7 +16,7 @@ object player {
   private val itemEX:item=("Cheese Cake",39.99)
   private val itemList: List[item] = List(itemEX)
 
-  def getSomething(list:List[AnyVal]): AnyVal ={ //gets a random item of a list, use "coin" list for a coin toss use "dice" list for a dice roll or "wheelItems" for a wheel spin or "cards" to draw a card or "feudList" for a feud or "itemList" for an item
+  def getSomething[A](list:List[A]): A ={ //gets a random item of a list, use "coin" list for a coin toss use "dice" list for a dice roll or "wheelItems" for a wheel spin or "cards" to draw a card or "feudList" for a feud or "itemList" for an item
     val r = new scala.util.Random
     list(r.nextInt(list.size))
   }
@@ -48,7 +48,7 @@ object player {
   }
 
   @tailrec
-  private def moveForward(NOfSpaces: Int, PixelsPerSpace: Int, CharacterPosition: (Int, Int)): (Int, Int) = { //Moves the character by PixelsPerSpace NOfSpaces times movement is like a square starts at the bottom right and
+  def moveForward(NOfSpaces: Int, PixelsPerSpace: Int, CharacterPosition: (Int, Int)): (Int, Int) = { //Moves the character by PixelsPerSpace NOfSpaces times movement is like a square starts at the bottom right and
     if (NOfSpaces > 0) {
       if (BOUNDARY_BOTTOM == CharacterPosition._2 && BOUNDARY_LEFT < CharacterPosition._1) { //Moves to the left first
         val CharPositionAfter = (CharacterPosition._1 - PixelsPerSpace, CharacterPosition._2)
@@ -73,17 +73,17 @@ object player {
   }
 
   @tailrec
-  private def moveBackward(NOfSpaces: Int, PixelsPerSpace: Int, CharacterPosition: (Int, Int)): (Int, Int) = { //Moves the character by PixelsPerSpace NOfSpaces times movement is like a square starts at the bottom right and
+  def moveBackward(NOfSpaces: Int, PixelsPerSpace: Int, CharacterPosition: (Int, Int)): (Int, Int) = { //Moves the character by PixelsPerSpace NOfSpaces times movement is like a square starts at the bottom right and
     if (NOfSpaces > 0) {
-      if (BOUNDARY_BOTTOM == CharacterPosition._2 && BOUNDARY_LEFT < CharacterPosition._1) { //Moves up first
+      if (BOUNDARY_RIGHT == CharacterPosition._1 && BOUNDARY_TOP < CharacterPosition._2) { //Moves up first
         val CharPositionAfter = (CharacterPosition._1, CharacterPosition._2 - PixelsPerSpace)
         moveBackward(NOfSpaces - 1, PixelsPerSpace, CharPositionAfter) //recursivity
       } else {
-        if (BOUNDARY_TOP < CharacterPosition._2 && BOUNDARY_LEFT == CharacterPosition._1) { //then left
+        if (BOUNDARY_TOP == CharacterPosition._2 && BOUNDARY_LEFT < CharacterPosition._1) { //then left
           val CharPositionAfter = (CharacterPosition._1 - PixelsPerSpace, CharacterPosition._2)
           moveBackward(NOfSpaces - 1, PixelsPerSpace, CharPositionAfter) //recursivity
         } else {
-          if (BOUNDARY_TOP == CharacterPosition._2 && BOUNDARY_RIGHT > CharacterPosition._1) { //then down
+          if (BOUNDARY_LEFT == CharacterPosition._1 && BOUNDARY_BOTTOM < CharacterPosition._2) { //then down
             val CharPositionAfter = (CharacterPosition._1, CharacterPosition._2 + PixelsPerSpace)
             moveBackward(NOfSpaces - 1, PixelsPerSpace, CharPositionAfter) //recursivity
           } else {
