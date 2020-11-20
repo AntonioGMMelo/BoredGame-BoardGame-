@@ -25,7 +25,7 @@ object user {
 
   def EditPlayerName(PreviousName: Name, NewNewName: Name, ListOfPlayers: List[Player]): List[Player] = { // Edits Player Name, given the previous Name, the Name to be changed to and the current Player list
     val EditedPlayer: Player = (NewNewName, ListOfPlayers(ListOfPlayers.indexOf(PreviousName))._2) // Creates a new Player based on the input Name and gets the Color from its creation
-    val Index: Int = ListOfPlayers.indexOf((PreviousName, _)) // Index of the Player that wants to change the name
+    val Index: Int = ListOfPlayers.indexOf((PreviousName, ListOfPlayers(ListOfPlayers.indexOf(PreviousName))._2)) // Index of the Player that wants to change the name
 
     IsTheNameUsed(ListOfPlayers, PreviousName) match { // Run the function IsTheNameUsed to check if the previous Name has already been used
       case false => println("Player name does not exist. Choose an existent name to be changed.")
