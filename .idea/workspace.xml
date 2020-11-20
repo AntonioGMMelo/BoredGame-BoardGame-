@@ -1,8 +1,45 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select />
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="42f0eb15-85f0-4140-b2c7-32c0344b73f6" name="Default Changelist" comment="">
+<<<<<<< HEAD
       <change beforePath="$PROJECT_DIR$/../.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/vcs.xml" afterDir="false" />
+=======
+      <change afterPath="$PROJECT_DIR$/Projeto_ppm2.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/Projeto_ppm2/Main_temp$.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/Projeto_ppm2/Main_temp.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/Projeto_ppm2/Pergunta$.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/Projeto_ppm2/Pergunta.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/Projeto_ppm2/Tema$.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/Projeto_ppm2/Tema.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/Projeto_ppm2/player$.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/Projeto_ppm2/player.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/codeStyles/Project.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/codeStyles/codeStyleConfig.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/workspace.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Functions.scala" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/codeStyles/Project.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/codeStyles/Project.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/CreatePlayer.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/CreatePlayer.scala" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ErrorMessage.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/ErrorMessage.scala" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GUI.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI.scala" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Tema.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/Tema.scala" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/player.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/player.scala" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/user.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/user.scala" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../README.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../UI.scala" beforeDir="false" />
+>>>>>>> 2fefe0b529489965d0e335c1c36a4b2605bbab51
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -13,7 +50,7 @@
     <option name="done" value="true" />
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="ProjectCodeStyleSettingsMigration">
     <option name="version" value="1" />
@@ -40,13 +77,6 @@
     <property name="project.structure.side.proportion" value="0.0" />
   </component>
   <component name="RunManager">
-    <configuration name="Main_temp" type="Application" factoryName="Application" temporary="true">
-      <option name="MAIN_CLASS_NAME" value="Main_temp" />
-      <module name="Projeto_ppm2" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
       <option name="arquillianRunConfiguration">
         <value>
@@ -54,6 +84,13 @@
         </value>
       </option>
       <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Main_temp" type="Application" factoryName="Application" temporary="true">
+      <option name="MAIN_CLASS_NAME" value="Main_temp" />
+      <module name="Projeto_ppm2" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -78,6 +115,18 @@
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="WindowStateProjectService">
     <state x="249" y="0" key="#Project_Structure" timestamp="1605886382313">

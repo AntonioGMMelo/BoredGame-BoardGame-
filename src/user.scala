@@ -1,7 +1,7 @@
 import scala.annotation.tailrec
 import scala.io.AnsiColor._
-import scala.util.{Try}
 
+import scala.util.{Try}
 
 
 object user {
@@ -35,8 +35,10 @@ object user {
         ListOfPlayers // If the name isn't used, the output will be the current Player list
       case true =>
         val UpdatedPlayerList: List[Player] = UpdatePlayerList(ListOfPlayers, EditedPlayer, Some(Index)) // New Player list, which is the previous version plus the new Player created
-        println(s"${ListOfPlayers(ListOfPlayers.indexOf(
-          EditedPlayer))._2._1}${BOLD}Player edited successfully!${RESET}") // Print to check the Color and confirm the creation and proper addition to the Player list
+        println(s"${
+          ListOfPlayers(ListOfPlayers.indexOf(
+            EditedPlayer))._2._1
+        }${BOLD}Player edited successfully!${RESET}") // Print to check the Color and confirm the creation and proper addition to the Player list
         UpdatedPlayerList // If the name is used, the output will be the new Player list
     }
   }
@@ -54,7 +56,7 @@ object user {
   }
 
   def UpdatePlayerList(List: List[Player], Player: Player, Index: Option[Int]): List[Player] = { // Updates the Player list given a Player list, a Player and an Option[Int]
-    Index match{
+    Index match {
       case Some(index) =>
         val List2: List[Player] = List.updated(index, Player) // Creates a new Player list by updating a specific index
         List2 // Outputs the new Player list
@@ -65,7 +67,7 @@ object user {
   }
 
   def UpdateColorList(List: List[Color], Color: Color, Index: Int): List[Color] = { // Updates the List of Colors by changing its boolean parameter
-    val List2: List[Color] =  List.updated(Index, (List(Index)._1, true)) // Creates a new Color list by updating a specific index
+    val List2: List[Color] = List.updated(Index, (List(Index)._1, true)) // Creates a new Color list by updating a specific index
     List2 // Outputs the new Color list
   }
 
@@ -74,10 +76,13 @@ object user {
     ListOfPlayers match { // Match-Case for the input list
       case Nil => false // If the input list is empty, output is false
       case _ => // If the input list isn't empty, proceeds to another Match-Case
-        ListOfPlayers.head._1 match{ // Match-Case for the first parameter (Name) of the head of the input list
+        ListOfPlayers.head._1 match { // Match-Case for the first parameter (Name) of the head of the input list
           case NameOfPlayer => true // If the Name is the same as the input Name, output is true
-          case _ => IsTheNameUsed (ListOfPlayers.tail, NameOfPlayer) // Recursive call of the same function
+          case _ => IsTheNameUsed(ListOfPlayers.tail, NameOfPlayer) // Recursive call of the same function
         }
     }
   }
+
+
 }
+
