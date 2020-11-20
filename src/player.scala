@@ -103,8 +103,7 @@ object player {
     lazy val aux2 = aux.foldLeft(0)(_+_)//folds aux list to int 6
     lazy val aux3 = dice.filter(_ < 3) //filters dice to List(1,2).
     lazy val aux4 = aux3.map(x => x * 2) //maps dice to List(2,4)
-    val diceRoll=aux3 :+ aux2 //concatenates List(2,4) with 6 = List(2,4,6)
-    println(diceRoll)
+    val diceRoll = aux4 :+ aux2 //concatenates List(2,4) with 6 = List(2,4,6)
     getSomething(diceRoll).toString.toInt //rolls the dice with the weight
   }
 }

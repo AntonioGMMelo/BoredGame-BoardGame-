@@ -4,19 +4,27 @@ import scala.io.AnsiColor
 object Main_temp {
 
   def a(): Unit = {
-    val Player1 = ("Ana", (AnsiColor.BLUE, false))
-    val Player2 = ("Ronaldo", (AnsiColor.RED, false))
+
+    println("----------BEGGINING OF A----------")
+    val Player1 = ("Ana", (AnsiColor.BLUE, true))
+    val Player2 = ("Ronaldo", (AnsiColor.RED, true))
     val Players: List[user.Player] = List(Player1, Player2)
     val Colors: List[user.Color] = List((AnsiColor.BLACK, false), (AnsiColor.WHITE, false), (AnsiColor.BLUE, false), (AnsiColor.CYAN, false), (AnsiColor.RED, false), (AnsiColor.GREEN, false), (AnsiColor.MAGENTA, false), (AnsiColor.YELLOW, false))
     val NewPlayerColor = user.CreatePlayer("Miguel", 7, Players, Colors)
-    println("Output do método CreatePlayer(Lista de Player + Lista de Color) : " + NewPlayerColor)
+    println("Output do método CreatePlayer(Lista de Player) : " + NewPlayerColor._1)
+    println("Output do método CreatePlayer(Lista de Color) : " + NewPlayerColor._2)
     val players_2 = user.EditPlayerName("Ronaldo", "Miguel", Players)
     println("Output do método EditPlayerName(Lista de Player) : " + players_2)
     val newPlayerColor2 = user.EditPlayerColor(Player1, 3, Players, Colors)
-    println("Output do método EditPlayerColor(Lista de Player + Lista de Color) : " + newPlayerColor2)
+    println("Output do método EditPlayerColor(Lista de Player) : " + newPlayerColor2._1)
+    println("Output do método EditPlayerColor(Lista de Color) : " + newPlayerColor2._2)
+    println("----------END OF A----------")
+    println()
+    println()
   }
 
   def b(): Unit = {
+    println("----------BEGGINING OF B----------")
     val BOUNDARY_LEFT: Int = 0; //Where is the center pixel on the left most spaces
     val BOUNDARY_RIGHT: Int = 1000; //where the center pixel on the right most spaces are
     val BOUNDARY_TOP: Int = 0; //Where the center of the top most spaces are
@@ -32,9 +40,9 @@ object Main_temp {
     val itemEX: item = ("Cheese Cake", 39.99) //priceAintRight question list
     val itemList: List[item] = List(itemEX)
     val posicao = player.move(30, 100, (1000, 1000), player.moveForward)
-    println("Move Player Forward 30 Spaces and moving 100 pixels at a time and starting at position 1000,1000 /n NewPosition:" + posicao)
+    println("Move Player Forward 30 Spaces and moving 100 pixels at a time and starting at position 1000,1000 \n NewPosition:" + posicao)
     val posicao2 = player.move(30, 100, (1000, 1000), player.moveBackward)
-    println("Move Player Backward 30 Spaces and moving 100 pixels at a time and starting at position 1000,1000 /n NewPosition:" + posicao2)
+    println("Move Player Backward 30 Spaces and moving 100 pixels at a time and starting at position 1000,1000 \n NewPosition:" + posicao2)
     val item_Aleatorio1 = player.getSomething(feudList)
     println("Random Feud: "+item_Aleatorio1)
     val item_Aleatorio2 = player.getSomething(dice)
@@ -62,12 +70,16 @@ object Main_temp {
     val w_dice = player.weightedDice()
     println("Roll Of The Weighted Dice :"+w_dice)
     val price_right = player.priceAintRight(itemEX, List(5.5, 10.9, 25.8, 30.1, 40.05, 50.2))
-    println("Item  To Guess Price Of: "+itemEX)
+    println("Item To Guess Price Of: "+itemEX)
     println("Guesses: "+List(5.5, 10.9, 25.8, 30.1, 40.05, 50.2))
     println("Price is Right Round Winner: "+price_right)
+    println("----------END OF B----------")
+    println()
+    println()
   }
 
   def c(): Unit = {
+    println("----------BEGGINING OF C----------")
     val pergunta_a: String = "Em que ano o Benfica foi fundado?"
     val alternativas_a: List[(String, Boolean)] = List(("1906", false), ("1902", false), ("1904", true), ("1870", false))
     val a: Pergunta = Pergunta(pergunta_a, alternativas_a)
@@ -92,6 +104,7 @@ object Main_temp {
     val tip = esporte3.perguntas(0).tip_Alternativa()
     println("Opção 1 do 50/50 : " + tip(0))
     println("Opção 2 do 50/50 : " + tip(1))
+    println("----------END OF C----------")
   }
 
   def main(args: Array[String]): Unit = {
