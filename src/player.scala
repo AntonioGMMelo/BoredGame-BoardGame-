@@ -16,7 +16,7 @@ object player {
   private val itemEX:item=("Cheese Cake",39.99)
   private val itemList: List[item] = List(itemEX)
 
-  def getSomething(list:List[AnyVal]): AnyVal ={ //gets a random item of a list, use "coin" list for a coin toss use "dice" list for a dice roll or "wheelItems" for a wheel spin or "cards" to draw a card or "feudList" for a feud or "itemList" for an item
+  def getSomething[A](list:List[A]): A ={ //gets a random item of a list, use "coin" list for a coin toss use "dice" list for a dice roll or "wheelItems" for a wheel spin or "cards" to draw a card or "feudList" for a feud or "itemList" for an item
     val r = new scala.util.Random
     list(r.nextInt(list.size))
   }
