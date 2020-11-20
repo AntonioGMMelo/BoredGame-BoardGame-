@@ -4,16 +4,16 @@ import scala.io.AnsiColor
 object Main_temp {
 
   def a(): Unit = {
-    val player1 = ("Ana", (AnsiColor.BLUE, false))
-    val player2 = ("Ronaldo", (AnsiColor.RED, false))
-    val players: List[user.Player] = List(player1, player2)
+    val Player1 = ("Ana", (AnsiColor.BLUE, false))
+    val Player2 = ("Ronaldo", (AnsiColor.RED, false))
+    val Players: List[user.Player] = List(Player1, Player2)
     val Colors: List[user.Color] = List((AnsiColor.BLACK, false), (AnsiColor.WHITE, false), (AnsiColor.BLUE, false), (AnsiColor.CYAN, false), (AnsiColor.RED, false), (AnsiColor.GREEN, false), (AnsiColor.MAGENTA, false), (AnsiColor.YELLOW, false))
-    val newPlayerColor = user.CreatePlayer("Miguel", 7, players, Colors)
-    println(newPlayerColor)
-    val players_2 = user.EditPlayerName("Ronaldo", "Miguel", players)
-    println(players_2)
-    val newPlayerColor2 = user.EditPlayerColor(player1, 3, players, Colors)
-    println(newPlayerColor2)
+    val NewPlayerColor = user.CreatePlayer("Miguel", 7, Players, Colors)
+    println("Output do método CreatePlayer(Lista de Player + Lista de Color) : " + NewPlayerColor)
+    val players_2 = user.EditPlayerName("Ronaldo", "Miguel", Players)
+    println("Output do método EditPlayerName(Lista de Player) : " + players_2)
+    val newPlayerColor2 = user.EditPlayerColor(Player1, 3, Players, Colors)
+    println("Output do método EditPlayerColor(Lista de Player + Lista de Color) : " + newPlayerColor2)
   }
 
   def b(): Unit = {

@@ -10,6 +10,7 @@
     <select />
   </component>
   <component name="ChangeListManager">
+<<<<<<< HEAD
     <list default="true" id="4b2267cb-615b-4fd9-86b7-d566b82b2b7f" name="Default Changelist" comment="">
       <change afterPath="$PROJECT_DIR$/.idea/codeStyles/Project.xml" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/.idea/codeStyles/codeStyleConfig.xml" afterDir="false" />
@@ -21,6 +22,16 @@
       <change afterPath="$PROJECT_DIR$/out/production/Projeto_ppm2/Tema.class" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/out/production/Projeto_ppm2/player$.class" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/out/production/Projeto_ppm2/player.class" afterDir="false" />
+=======
+    <list default="true" id="42f0eb15-85f0-4140-b2c7-32c0344b73f6" name="Default Changelist" comment="">
+<<<<<<< HEAD
+      <change beforePath="$PROJECT_DIR$/../.idea/codeStyles/Project.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/codeStyles/codeStyleConfig.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/workspace.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Functions.scala" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+=======
+>>>>>>> 6316b70eeb34c788d4838d53a7818e9ba84bb84a
       <change afterPath="$PROJECT_DIR$/out/production/Projeto_ppm2/user$.class" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/out/production/Projeto_ppm2/user.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
@@ -33,6 +44,7 @@
       <change beforePath="$PROJECT_DIR$/src/Main_temp.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main_temp.scala" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Tema.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/Tema.scala" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/player.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/player.scala" afterDir="false" />
+>>>>>>> e7bdd116112767763081b1d7373b95bffab06d84
       <change beforePath="$PROJECT_DIR$/src/user.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/user.scala" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/untitled.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/PPM.iml" afterDir="false" />
     </list>

@@ -1,8 +1,6 @@
 import scala.annotation.tailrec
 import scala.io.AnsiColor._
-
 import scala.util.{Try}
-
 
 object user {
 
