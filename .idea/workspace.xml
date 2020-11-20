@@ -20,6 +20,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4b2267cb-615b-4fd9-86b7-d566b82b2b7f" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/lib.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/player.scala" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/user.scala" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/BoredGame(BoardGame).iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/BoredGame(BoardGame).iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/javafx_sdk_15.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Functions.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/Functions.scala" afterDir="false" />
     </list>
@@ -48,7 +53,8 @@
     <property name="Repository.Attach.JavaDocs" value="false" />
     <property name="Repository.Attach.Sources" value="false" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../../../Program Files/javafx-sdk-15/lib" />
     <property name="project.structure.last.edited" value="Libraries" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
@@ -119,10 +125,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="440" y="94" key="#Project_Structure/0.0.1920.1040@0.0.1920.1040" timestamp="1605818618690" />
-    <state x="690" y="275" key="#com.intellij.codeInsight.editorActions.RestoreReferencesDialog" timestamp="1605732217511">
+    <state x="690" y="275" key="#com.intellij.codeInsight.editorActions.RestoreReferencesDialog" timestamp="1605882477720">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="690" y="275" key="#com.intellij.codeInsight.editorActions.RestoreReferencesDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1605732217511" />
+    <state x="690" y="275" key="#com.intellij.codeInsight.editorActions.RestoreReferencesDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1605882477720" />
     <state x="644" y="0" width="1092" height="1040" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1605818592737">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -143,10 +149,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="681" y="209" key="#com.intellij.ide.util.frameworkSupport.AddFrameworkSupportDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1605823785255" />
-    <state x="739" y="261" key="FileChooserDialogImpl" timestamp="1605824263242">
+    <state x="739" y="261" key="FileChooserDialogImpl" timestamp="1605826911187">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="739" y="261" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1605824263242" />
+    <state x="739" y="261" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1605826911187" />
     <state width="1877" height="285" key="GridCell.Tab.0.bottom" timestamp="1605823771890">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -183,10 +189,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1877" height="348" key="GridCell.Tab.1.right/0.0.1920.1040@0.0.1920.1040" timestamp="1605814061506" />
-    <state x="440" y="94" key="SettingsEditor" timestamp="1605824353228">
+    <state x="440" y="94" key="SettingsEditor" timestamp="1605826919216">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="440" y="94" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1605824353228" />
+    <state x="440" y="94" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1605826919216" />
     <state x="664" y="411" key="com.intellij.jarRepository.RepositoryAttachDialog-DOWNLOAD" timestamp="1605813196594">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -209,16 +215,5 @@
     </state>
     <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040/1920.0.1280.680@0.0.1920.1040" timestamp="1604953867774" />
     <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1605623818213" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="scala-line">
-          <url>file://$PROJECT_DIR$/src/Functions.scala</url>
-          <line>5</line>
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
 </project>
