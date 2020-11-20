@@ -90,8 +90,8 @@ object Main_temp {
     println(esporte3.perguntas(0))
     println(esporte3.perguntas(1))
     val tip = esporte3.perguntas(0).tip_Alternativa()
-    println(tip(0))
-    println(tip(1))
+    println("Opção 1 do 50/50 : " + tip(0))
+    println("Opção 2 do 50/50 : " + tip(1))
   }
 
   def main(args: Array[String]): Unit = {
