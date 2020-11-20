@@ -22,7 +22,7 @@ class CreatePlayer {
 
     val ok : Button = new Button("OK")
     ok.setOnAction({
-      (toString(Colors.getValue()),toString(name.getCharacters()))
+      (Colors.getValue().toString,name.getCharacters().toString)
       popUp.close()
     })
 
