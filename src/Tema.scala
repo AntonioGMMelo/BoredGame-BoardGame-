@@ -44,8 +44,9 @@ object Tema {
   }
 
   def select_Pergunta(tema: Tema): Pergunta = {
-    val r = new scala.util.Random
-    tema.perguntas(r.nextInt(tema.perguntas.size))
+//    val r = new scala.util.Random
+//    tema.perguntas(r.nextInt(tema.perguntas.size)
+    player.getSomething(tema.perguntas)
   }
 
 }
