@@ -51,12 +51,12 @@ class GUI extends Application{
             }
           }
           listAvailableColors(Colors)//calls printAvailableColors
-          val ColorAndName: (String,String) = CreatePlayer.display(layout)
-          val auxiliar:(List[Player], List[Color])=CreatePlayer(ColorAndName._2,ColorAndName._1,Players,Colors) //calls CreatePlayer with the user inputs
+          val ColorAndName: (String,String) = new CreatePlayer().display(layout)
+          val auxiliar:(List[Player], List[Color])=user.CreatePlayer(ColorAndName._2,ColorAndName._1,Players,Colors) //calls CreatePlayer with the user inputs
           Players=auxiliar._1 //updates players list
           Colors=auxiliar._2 //updates colors ist
         case _ => //if there are 8 players this case is activated
-          ErrorMessage.display("SPACE ERROR","Players list is at maximum capacity i.e. 8")//Shows error message
+          new ErrorMessage().display("SPACE ERROR","Players list is at maximum capacity i.e. 8")//Shows error message
       }
     })
     //Edit Player Button setup+
@@ -64,7 +64,7 @@ class GUI extends Application{
     EditPlayer.setOnAction(new EventHandler[ActionEvent]{
       Players match { //matches weather there are any players to be edited
         case nil => //if there are no players this case is activated
-          ErrorMessage.display("SPACE ERROR", "Players list empty")
+          new ErrorMessage().display("SPACE ERROR", "Players list empty")
         case _ => //if there are players to edit this case is activated
           val layout: VBox = new VBox(10)
 
@@ -80,9 +80,9 @@ class GUI extends Application{
                 println("Type Player Name") //prompts the user for a player's name
             }
             listAvailablePlayers(Players) //calls printAvailablePlayers
-            val OldAndNewName: (String, String) = CreatePlayer(layout)
-            val aux =EditPlayer(OldAndNewName._1, OldAndNewName._2, Players)
-            Players=aux
+//            val OldAndNewName: (String, String) = CreatePlayer(layout)
+//            val aux =EditPlayer(OldAndNewName._1, OldAndNewName._2, Players)
+//            Players=aux
           }
       }
     })

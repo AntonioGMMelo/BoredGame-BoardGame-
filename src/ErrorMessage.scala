@@ -1,8 +1,10 @@
+import javafx.event.{ActionEvent, EventHandler}
 import javafx.scene._
 import javafx.stage._
 import javafx.geometry._
-import javafx.scene.control.{Label,Button, ComboBox, TextField}
+import javafx.scene.control.{Button, ComboBox, Label, TextField}
 import javafx.scene.layout.VBox
+
 class ErrorMessage {
   def display(title: String, message: String): Unit ={
     //creating stage
@@ -18,7 +20,10 @@ class ErrorMessage {
     label.setText(message)
     //creating ok button
     val ok : Button = new Button("OK")
-    ok.setOnAction(popUp.close())
+    ok.setOnAction(new EventHandler[ActionEvent]{
+      def handle(event:ActionEvent)  = {
+        popUp.close()
+      }})
 
     //adding button and message to a layout
     val layout : VBox= new VBox(2)
