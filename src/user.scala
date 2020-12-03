@@ -8,8 +8,8 @@ object user {
   type Color = (String, Boolean) // Color of the Player
   type Player = (Name, Color) // Player type
 
-  def CreatePlayer(NewName: Name, NewColor: Int, ListOfPlayers: List[Player], ListOfColors: List[Color]): (List[Player], List[Color]) = { // Creates a Player, given a Name, "Color", list of Player and list of Color
-    val NewPlayerColor: Color = ListOfColors(NewColor) // Gets the Color from the Colors list
+  def CreatePlayer(NewName: Name, NewColor: String, ListOfPlayers: List[Player], ListOfColors: List[Color]): (List[Player], List[Color]) = { // Creates a Player, given a Name, "Color", list of Player and list of Color
+    val NewPlayerColor: Color = ListOfColors(ListOfColors.indexOf(NewColor)) // Gets the Color from the Colors list
     val NewPlayer: Player = (NewName, NewPlayerColor) // Creates a new Player based on the input Name and the Color from the line before
 
     IsTheNameUsed(ListOfPlayers, NewName) match { // Run the function IsTheNameUsed to check if the input Name has already been used
