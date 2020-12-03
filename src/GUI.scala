@@ -30,7 +30,7 @@ class GUI extends Application{
     //Create Player Button setup
     val CreatePlayer : Button = new Button("Create Player")
     CreatePlayer.setOnAction(new EventHandler[ActionEvent]{
-      val layout : VBox = new VBox(10)
+      var list : List[String] = List()
       Players.size match { //Checks the amount o players already created
         case _ < 8 => //if there are less than 8 players this case gets activated
           @tailrec
@@ -39,10 +39,8 @@ class GUI extends Application{
               case _ > 0 => // if there are still colors in the List this case gets activated
                 Colors.head._2 match { //Matches the boolean to see weather the color is still unused
                   case false => //if the color hasn't been used this case gets activated
-
                     val label: Label = new Label()
-                    label.setText(Colors.head._1)
-                    layout.getChildren().add(label)//the color is added as an option for the user
+                    list =list:+Colors.head._1//the color is added as an option for the user
                     listAvailableColors(Colors.tail) //recursive call
                   case _ => //if the color has been used this case gets activated
                     listAvailableColors(Colors.tail) //recursive call
@@ -51,7 +49,7 @@ class GUI extends Application{
             }
           }
           listAvailableColors(Colors)//calls printAvailableColors
-          val ColorAndName: (String,String) = new CreatePlayer().display(layout)
+          val ColorAndName: (String,String) = new CreatePlayer().display(list)
           val auxiliar:(List[Player], List[Color])=user.CreatePlayer(ColorAndName._2,ColorAndName._1,Players,Colors) //calls CreatePlayer with the user inputs
           Players=auxiliar._1 //updates players list
           Colors=auxiliar._2 //updates colors ist

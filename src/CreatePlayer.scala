@@ -10,7 +10,7 @@ class CreatePlayer {
   var Color:String=""
   var Name :String=""
 
-  def display(layout: FXCollections): (String,String) ={
+  def display(layout: List[String]): (String,String) ={
     //creating stage
     val popUp: Stage = new Stage()
     //setting up popUp's parameters and modality
