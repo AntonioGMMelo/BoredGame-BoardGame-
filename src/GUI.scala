@@ -24,7 +24,7 @@ class GUI extends Application{
     //titling the stage as Main Menu
     primaryStage.setTitle("Main Menu")
     //loading  fmxl
-    val fxmlLoader = new FXMLLoader(getClass.getResource("controller.fxml"))
+    val fxmlLoader = new FXMLLoader(getClass.getResource("GUI.fxml"))
     val mainViewRoot: Parent = fxmlLoader.load()
     //creating buttons
     //Create Player Button setup
@@ -102,6 +102,7 @@ class GUI extends Application{
     mainMenuButtons.add(StartGame,2,2,1,1)
     mainMenuButtons.add(AddQuestion,2,3,1,1)
     mainMenuButtons.add(DeleteQuestion,2,4,1,1)
+    mainMenuButtons.setAlignment(Pos.CENTER)
 
     //adding the grid pane with the buttons to a Border Pane and centering the grid pane
     BorderPane.setAlignment(mainMenuButtons,Pos.CENTER)
