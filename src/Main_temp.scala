@@ -10,7 +10,7 @@ object Main_temp {
     val Player2 = ("Ronaldo", (AnsiColor.RED, true))
     val Players: List[user.Player] = List(Player1, Player2)
     val Colors: List[user.Color] = List((AnsiColor.BLACK, false), (AnsiColor.WHITE, false), (AnsiColor.BLUE, false), (AnsiColor.CYAN, false), (AnsiColor.RED, false), (AnsiColor.GREEN, false), (AnsiColor.MAGENTA, false), (AnsiColor.YELLOW, false))
-    val NewPlayerColor = user.CreatePlayer("Miguel", 7, Players, Colors)
+    val NewPlayerColor = user.CreatePlayer("Miguel", "BLACK", Players, Colors)
     println("Output do método CreatePlayer(Lista de Player) : " + NewPlayerColor._1)
     println("Output do método CreatePlayer(Lista de Color) : " + NewPlayerColor._2)
     val players_2 = user.EditPlayerName("Ronaldo", "Miguel", Players)

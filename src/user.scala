@@ -17,7 +17,7 @@ object user {
         (ListOfPlayers, ListOfColors) // If the name is used, the output will be the current Player and Color lists
       case false => {
         val UpdatedPlayerList: List[Player] = UpdatePlayerList(ListOfPlayers, NewPlayer, None) // New Player list, which is the previous version plus the new Player created
-        val UpdatedColorList: List[Color] = UpdateColorList(ListOfColors, NewPlayerColor, NewColor) // New Color list, which is the previous version plus the update of the Color used
+        val UpdatedColorList: List[Color] = UpdateColorList(ListOfColors, NewPlayerColor, ListOfColors.indexOf(NewColor)) // New Color list, which is the previous version plus the update of the Color used
         println(s"${NewPlayerColor._1}${BOLD}Player created successfully!${RESET}") // Print to check the Color and confirm the creation and proper addition to the Player list
         (UpdatedPlayerList, UpdatedColorList) // If the name isn't used, the output will be the the new Player and Color lists
       }
