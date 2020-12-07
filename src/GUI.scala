@@ -55,7 +55,6 @@ class GUI extends Application{
             }
             listAvailableColors(Colors)//calls printAvailableColors
             val ColorAndName: (String,String) = new CreatePlayer().display(list)
-            println(ColorAndName)
             val auxiliar:(List[Player], List[Color])=user.CreatePlayer(ColorAndName._1,ColorAndName._2,Players,Colors) //calls CreatePlayer with the user inputs
             Players=auxiliar._1 //updates players list
             Colors=auxiliar._2 //updates colors ist
@@ -103,20 +102,20 @@ class GUI extends Application{
             }
             listAvailablePlayers(Players) //calls printAvailablePlayers
             listAvailableColors(Colors)//
-            val OldAndNewName: (Boolean, String, String, Boolean, String) = new EditPlayer().display(list,list2)
-            if (OldAndNewName._1) {
-              val aux = user.EditPlayerName(OldAndNewName._2, OldAndNewName._3, Players)
-              Players = aux
-              if(OldAndNewName._4) {
-                val aux = user.EditPlayerColor(Players(Players.indexWhere(_._1.equals(OldAndNewName._3))),OldAndNewName._5,Players,Colors)
-                Players =aux._1
-                Colors=aux._2
+            val OldAndNewName: (Boolean, String, String, Boolean, String) = new EditPlayer().display(list,list2)//Sends info to popUp page
+            if (OldAndNewName._1) { //tells weather to update name
+              val aux = user.EditPlayerName(OldAndNewName._2, OldAndNewName._3, Players)//Updates name if need be
+              Players = aux //updates the player list
+              if(OldAndNewName._4) { //tells weather to update Color too
+                val aux = user.EditPlayerColor(Players(Players.indexWhere(_._1.equals(OldAndNewName._3))),OldAndNewName._5,Players,Colors)//updates color if need be
+                Players =aux._1 //updates the player list
+                Colors=aux._2 //update the colors list
               }
             }else{
-              if(OldAndNewName._4) {
-                val aux = user.EditPlayerColor(Players(Players.indexOf(OldAndNewName._2)),OldAndNewName._5,Players,Colors)
-                Players =aux._1
-                Colors=aux._2
+              if(OldAndNewName._4) { //Tells weather to update color
+                val aux = user.EditPlayerColor(Players(Players.indexWhere(_._1.equals(OldAndNewName._2))),OldAndNewName._5,Players,Colors)//updates color and not name if need be
+                Players =aux._1 //updates the player list
+                Colors=aux._2 //updates the colors list
               }
             }
         }
