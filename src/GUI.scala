@@ -123,6 +123,10 @@ class GUI extends Application{
     })
     //StartGame Button setup
     val StartGame : Button = new Button("Start Game")
+    StartGame.setOnAction(new EventHandler[ActionEvent]{
+      def handle(actionEvent: ActionEvent): Unit = {
+        val whatever= new Board().display()
+      }})
     //Add Question Button setup
     val AddQuestion : Button = new Button("Add Question")
     //Delete Question Button setup
