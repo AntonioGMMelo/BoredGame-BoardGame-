@@ -10,6 +10,8 @@ import javafx.scene.control.{Button, Label}
 import javafx.scene.layout.{BorderPane, GridPane, VBox}
 import javafx.event.{ActionEvent, EventHandler}
 
+import scala.io.AnsiColor
+
 class GUI extends Application{
   type Name = String // Name of the Player
   type Color = (String, Boolean) // Color of the Player
@@ -18,7 +20,7 @@ class GUI extends Application{
   var Players:List[Player]=List()
   var Questions:List[Pergunta.type ]=List()
   var Themes:List[Tema.type ]=List()
-  var Colors:List[Color]=List((BLACK, false), (WHITE, false), (BLUE, false), (CYAN, false), (RED, false), (GREEN, false), (MAGENTA, false), (YELLOW, false))
+  var Colors:List[Color]=List(("BLACK", false), ("WHITE", false), ("BLUE", false), ("CYAN", false), ("RED", false), ("GREEN", false), ("MAGENTA", false), ("YELLOW", false))
 
   override def start(primaryStage: Stage): Unit ={
     //titling the stage as Main Menu
@@ -52,10 +54,13 @@ class GUI extends Application{
               }
             }
             listAvailableColors(Colors)//calls printAvailableColors
-          val ColorAndName: (String,String) = new CreatePlayer().display(list)
-            val auxiliar:(List[Player], List[Color])=user.CreatePlayer(ColorAndName._2,ColorAndName._1,Players,Colors) //calls CreatePlayer with the user inputs
+            val ColorAndName: (String,String) = new CreatePlayer().display(list)
+            println(ColorAndName)
+            val auxiliar:(List[Player], List[Color])=user.CreatePlayer(ColorAndName._1,ColorAndName._2,Players,Colors) //calls CreatePlayer with the user inputs
             Players=auxiliar._1 //updates players list
             Colors=auxiliar._2 //updates colors ist
+            println(Players)
+            println(Colors)
           case _ => //if there are 8 players this case is activated
             new ErrorMessage().display("SPACE ERROR","Players list is at maximum capacity i.e. 8")//Shows error message
         }

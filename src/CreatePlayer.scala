@@ -1,47 +1,67 @@
-import javafx.collections.FXCollections
+import javafx.collections.{FXCollections, ObservableArray}
 import javafx.event.{ActionEvent, EventHandler}
-import javafx.scene._
-import javafx.stage._
+import javafx.fxml.FXMLLoader
 import javafx.geometry._
-import javafx.scene.control.{Button, ChoiceBox, ComboBox, Label, TextField}
-import javafx.scene.layout.{BorderPane, VBox}
+import javafx.scene._
+import javafx.scene.control.{Button, ChoiceBox, TextField}
+import javafx.scene.layout.VBox
+import javafx.stage._
+
+import scala.annotation.tailrec
+import scala.reflect.Manifest.Nothing
 
 class CreatePlayer {
   var Color:String=""
   var Name :String=""
 
   def display(layout: List[String]): (String,String) ={
+    val fxmlLoader = new FXMLLoader(getClass.getResource("CreatePlayer.fxml"))
+    val mainViewRoot: Parent = fxmlLoader.load()
+    val list= FXCollections.observableArrayList(layout(0))
     //creating stage
     val popUp: Stage = new Stage()
     //setting up popUp's parameters and modality
     popUp.initModality(Modality.APPLICATION_MODAL)
     popUp.setTitle("Create Player")
-    popUp.setMinWidth(400)
-    popUp.setMinHeight(300)
+    popUp.setMaxWidth(400)
+    popUp.setMaxHeight(300)
 
     // Create a combo box
-    val Colors = new ChoiceBox(FXCollections.observableArrayList(layout))
+    @tailrec
+    def whatever(i:Int){
+      val help = layout.size
+      i match {
+        case i if i==help =>
+          println()
+        case i if i<help=>
+          list.add(layout(i))
+          whatever(i+1)
+      }
+    }
+    whatever(1)
+    val Colors = new ChoiceBox(list)
     val name : TextField = new TextField("Player Name")
-    BorderPane.setAlignment(Colors,Pos.CENTER)
     //create button and button action
     val ok : Button = new Button("OK")
     ok.setOnAction(new EventHandler[ActionEvent]{
      def handle(event:ActionEvent)  = {
        Color =Colors.getValue().toString
        Name = name.getCharacters().toString
+       popUp.close()
      }
-      popUp.close()
     })
 
     //adding button and message to a layout
-    val layout2 = new BorderPane()
-    layout2.getChildren.addAll(Colors,name)
+    val layout3 = new VBox(2)
+    layout3.getChildren.addAll(Colors,name,ok)
+    layout3.setAlignment(Pos.CENTER)
     //creating scene and setting stage to scene
-    val scene: Scene= new Scene(layout2)
+    val scene: Scene= new Scene(layout3)
     popUp.setScene(scene)
     popUp.showAndWait()
     (Name,Color)
   }
 
 }
+
 
