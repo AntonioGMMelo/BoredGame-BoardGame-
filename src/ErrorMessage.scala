@@ -1,4 +1,5 @@
 import javafx.event.{ActionEvent, EventHandler}
+import javafx.fxml.FXMLLoader
 import javafx.scene._
 import javafx.stage._
 import javafx.geometry._
@@ -7,6 +8,8 @@ import javafx.scene.layout.VBox
 
 class ErrorMessage {
   def display(title: String, message: String): Unit ={
+    val fxmlLoader = new FXMLLoader(getClass.getResource("ErrorMessage.fxml"))
+    val mainViewRoot: Parent = fxmlLoader.load()
     //creating stage
     val popUp: Stage = new Stage()
     //setting up popUp's parameters and modality

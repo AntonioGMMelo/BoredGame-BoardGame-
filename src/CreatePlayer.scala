@@ -6,9 +6,8 @@ import javafx.scene._
 import javafx.scene.control.{Button, ChoiceBox, TextField}
 import javafx.scene.layout.VBox
 import javafx.stage._
-
 import scala.annotation.tailrec
-import scala.reflect.Manifest.Nothing
+
 
 class CreatePlayer {
   var Color:String=""

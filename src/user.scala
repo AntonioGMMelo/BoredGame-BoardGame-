@@ -42,13 +42,13 @@ object user {
     }
   }
 
-  def EditPlayerColor(Player: Player, Color: Int, ListOfPlayers: List[Player], ListOfColors: List[Color]): (List[Player], List[Color]) = {
+  def EditPlayerColor(Player: Player, Color: String, ListOfPlayers: List[Player], ListOfColors: List[Color]): (List[Player], List[Color]) = {
     val CurrentColor: Color = Player._2
-    val NewColor: Color = (ListOfColors(Color)._1, true)
+    val NewColor: Color = (Color, true)
     val EditedPlayer: Player = (Player._1, NewColor)
 
     val UpdatedPlayerList: List[Player] = UpdatePlayerList(ListOfPlayers, Player, Some(ListOfPlayers.indexOf(Player)))
-    val UpdatedColorList: List[Color] = UpdateColorList(ListOfColors, NewColor,ListOfColors.indexOf(NewColor))
+    val UpdatedColorList: List[Color] = UpdateColorList(ListOfColors, NewColor,ListOfColors.indexOf(Color))
     println(s"${(UpdatedPlayerList(UpdatedPlayerList.indexWhere(_._1 ==
       EditedPlayer._1))._2)._1}${BOLD}Player edited successfully!${RESET}")
     (UpdatedPlayerList, UpdatedColorList)
