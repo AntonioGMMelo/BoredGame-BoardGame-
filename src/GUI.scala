@@ -23,6 +23,7 @@ class GUI extends Application{
   var Colors:List[Color]=List(("BLACK", false), ("WHITE", false), ("BLUE", false), ("CYAN", false), ("RED", false), ("GREEN", false), ("MAGENTA", false), ("YELLOW", false))
   var Feuds:List[feud]=List()
   var Items:List[item]=List()
+  var theme = Tema("yikes",Questions)
 
   override def start(primaryStage: Stage): Unit ={
     //titling the stage as Main Menu
@@ -139,11 +140,13 @@ class GUI extends Application{
     val AddQuestion : Button = new Button("Add Question")
       AddQuestion.setOnAction(new EventHandler[ActionEvent]{
       def handle(actionEvent: ActionEvent): Unit = {
-        //val newQuestion:(String,String,String,String,String) = new AddQuestion().display()
-        //val list =List(newFeud._2,newFeud._3,newFeud._4,newFeud._5)
-        //val P:Pergunta=(newItem._1,list)
-        //val newQuestionsList=Tema.add_pergunta(p).perguntas
-        //Questions=newQuestionsList
+        val newQuestion:(String,String,String,String,String,Int) = new AddQuestion().display()
+        val list2 =List((newQuestion._2,false),(newQuestion._3,false),(newQuestion._4,false),(newQuestion._5,false))
+        val list = list2.updated(newQuestion._6-1,(list2(newQuestion._6-1)._1,true))
+        val p:Pergunta=Pergunta(newQuestion._1,list)
+        val newQuestionsList = Tema.add_Pergunta(p,theme)
+        Questions= newQuestionsList.perguntas
+        theme= newQuestionsList
       }})
 
     //Delete Question Button setup
@@ -166,9 +169,10 @@ class GUI extends Application{
               }
             }
             listAvailableQuestions(Questions)
-            //val QuestionToDelete: (String) = new DeleteQuestion().display(list)//Sends info to popUp page
-            //val newQuestionList = Tema.remove_pergunta(Questions.indexWhere(_.pergunta.equals(QuestionToDelete))).perguntas
-            //Questions=newQuestionList
+            val QuestionToDelete: String = new DeleteQuestion().display(list)//Sends info to popUp page
+            val newQuestionList = Tema.remove_pergunta(Questions(Questions.indexWhere(_.pergunta.equals(QuestionToDelete))),theme).perguntas
+            Questions=newQuestionList
+            theme=Tema(theme.tema,Questions)
         }
       }})
     val AddFeud : Button = new Button("Add Feud")
