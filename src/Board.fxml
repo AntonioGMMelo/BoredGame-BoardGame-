@@ -4,7 +4,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.shape.*?>
 
-<AnchorPane prefHeight="1100.0" prefWidth="1100.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Board">
+<AnchorPane id="layout" prefHeight="1100.0" prefWidth="1100.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Board">
     <children>
         <Rectangle arcHeight="5.0" arcWidth="5.0" fill="BLUE" height="50.0" layoutX="925.0" layoutY="1025.0" stroke="BLACK" strokeType="INSIDE" width="50.0" />
         <Rectangle arcHeight="5.0" arcWidth="5.0" fill="BLUE" height="50.0" layoutX="875.0" layoutY="1025.0" stroke="BLACK" strokeType="INSIDE" width="50.0" />
@@ -93,7 +93,7 @@
         <Rectangle arcHeight="5.0" arcWidth="5.0" height="17.0" layoutX="1059.0" layoutY="1025.0" stroke="BLACK" strokeType="INSIDE" width="17.0" />
         <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="17.0" layoutX="1059.0" layoutY="1042.0" stroke="BLACK" strokeType="INSIDE" width="17.0" />
         <Rectangle arcHeight="5.0" arcWidth="5.0" height="17.0" layoutX="1059.0" layoutY="1059.0" stroke="BLACK" strokeType="INSIDE" width="17.0" />
-        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#1fffd6" height="950.0" layoutX="75.0" layoutY="75.0" stroke="BLACK" strokeType="INSIDE" width="950.0" />
+        <Rectangle id="rect" arcHeight="5.0" arcWidth="5.0" fill="#1fffd6" height="950.0" layoutX="75.0" layoutY="75.0" stroke="BLACK" strokeType="INSIDE" width="950.0" />
         <Ellipse fill="#ff1f98" layoutX="556.0" layoutY="555.0" radiusX="206.0" radiusY="75.0" stroke="BLACK" strokeType="INSIDE" />
         <Ellipse layoutX="350.0" layoutY="575.0" radiusX="20.0" radiusY="15.0" stroke="BLACK" strokeType="INSIDE" />
         <Ellipse layoutX="345.0" layoutY="550.0" radiusX="15.0" radiusY="20.0" stroke="BLACK" strokeType="INSIDE" />

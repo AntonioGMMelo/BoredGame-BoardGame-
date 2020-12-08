@@ -1,5 +1,4 @@
 import scala.annotation.tailrec
-import scala.io.AnsiColor._
 import javafx.application._
 import javafx._
 import javafx.fxml.FXMLLoader
@@ -7,20 +6,21 @@ import javafx.scene._
 import javafx.stage._
 import javafx.geometry._
 import javafx.scene.control.{Button, Label}
-import javafx.scene.layout.{BorderPane, GridPane, VBox}
+import javafx.scene.layout.{BorderPane, GridPane}
 import javafx.event.{ActionEvent, EventHandler}
-
-import scala.io.AnsiColor
 
 class GUI extends Application{
   type Name = String // Name of the Player
   type Color = (String, Boolean) // Color of the Player
   type Player = (Name, Color) // Player type
+  type feud = (String,List[String]) //feud type
+  type item = (String,Double) //priceaintright type
 
   var Players:List[Player]=List()
-  var Questions:List[Pergunta.type ]=List()
-  var Themes:List[Tema.type ]=List()
+  var Questions:List[Pergunta]=List()
   var Colors:List[Color]=List(("BLACK", false), ("WHITE", false), ("BLUE", false), ("CYAN", false), ("RED", false), ("GREEN", false), ("MAGENTA", false), ("YELLOW", false))
+  var Feuds:List[feud]=List()
+  var Items:List[item]=List()
 
   override def start(primaryStage: Stage): Unit ={
     //titling the stage as Main Menu
@@ -125,13 +125,113 @@ class GUI extends Application{
     val StartGame : Button = new Button("Start Game")
     StartGame.setOnAction(new EventHandler[ActionEvent]{
       def handle(actionEvent: ActionEvent): Unit = {
-        val whatever= new Board().display()
+        val auxer = Players.size
+        auxer match {
+          case auxer if auxer>1 && auxer<9 =>
+            val whatever = new Board ().display()
+          case _ =>
+            new ErrorMessage().display("SPACE ERROR", "Not Enough Players to Start Game , Min=2")
+        }
       }})
     //Add Question Button setup
     val AddQuestion : Button = new Button("Add Question")
+      AddQuestion.setOnAction(new EventHandler[ActionEvent]{
+      def handle(actionEvent: ActionEvent): Unit = {
+        //val newQuestion:(String,String,String,String,String) = new AddQuestion().display()
+        //val list =List(newFeud._2,newFeud._3,newFeud._4,newFeud._5)
+        //val P:Pergunta=(newItem._1,list)
+        //val newQuestionsList=Tema.add_pergunta(p).perguntas
+        //Questions=newQuestionsList
+      }})
+
     //Delete Question Button setup
     val DeleteQuestion : Button = new Button("Delete Question")
-
+    DeleteQuestion.setOnAction(new EventHandler[ActionEvent]{
+      def handle(actionEvent: ActionEvent): Unit = {
+        Questions.size match { //matches weather there are any players to be edited
+          case 0 => //if there are no players this case is activated
+            new ErrorMessage().display("SPACE ERROR", "Question list empty")
+          case _ => //if there are players to edit this case is activated
+            var list: List[String] = List()
+            @tailrec
+            def listAvailableQuestions(Questions: List[Pergunta]): Unit = { //prints all the available Players
+              val halp = Questions.size
+              halp match { //matches the number of Players in the list to the cases ensuring recursion
+                case halp if halp > 0 => // if there are still Players in the List this case gets activated
+                  list = list :+ Questions.head.pergunta
+                  listAvailableQuestions(Questions.tail) //recursive call
+                case _ => //if there are no more players on the list this case gets activated
+              }
+            }
+            listAvailableQuestions(Questions)
+            //val QuestionToDelete: (String) = new DeleteQuestion().display(list)//Sends info to popUp page
+            //val newQuestionList = Tema.remove_pergunta(Questions.indexWhere(_.pergunta.equals(QuestionToDelete))).perguntas
+            //Questions=newQuestionList
+        }
+      }})
+    val AddFeud : Button = new Button("Add Feud")
+      AddFeud.setOnAction(new EventHandler[ActionEvent]{
+      def handle(actionEvent: ActionEvent): Unit = {
+        //val newFeud:(String,String,String,String,String,String) = new AddFeud().display()
+        //val list =List(newFeud._2,newFeud._3,newFeud._4,newFeud._5,newFeud._6)
+        //val newItemsList=user.AddFeud(newItem._1,list)
+        //Items=newItemsList
+      }})
+    val DeleteFeud : Button = new Button("Delete Feud")
+      DeleteFeud.setOnAction(new EventHandler[ActionEvent]{
+      def handle(actionEvent: ActionEvent): Unit = {
+        Feuds.size match { //matches weather there are any players to be edited
+          case 0 => //if there are no players this case is activated
+            new ErrorMessage().display("SPACE ERROR", "Feud list empty")
+          case _ => //if there are players to edit this case is activated
+            var list: List[String] = List()
+            @tailrec
+            def listAvailableFeuds(Feuds: List[feud]): Unit = { //prints all the available Players
+              val halp = Feuds.size
+              halp match { //matches the number of Players in the list to the cases ensuring recursion
+                case halp if halp > 0 => // if there are still Players in the List this case gets activated
+                  list = list :+ Feuds.head._1
+                  listAvailableFeuds(Feuds.tail) //recursive call
+                case _ => //if there are no more players on the list this case gets activated
+              }
+            }
+            listAvailableFeuds(Feuds)
+            //val FeudToDelete: (String) = new DeleteFeud().display(list)//Sends info to popUp page
+            //val newFeudList = user.DeleteFeud(Feuds(Feuds.indexWhere(_._1.equals(FeudToDelete))),Feuds)
+            //Feuds=newFeudList
+        }
+      }})
+    val AddPriceAintRight : Button = new Button("Add Price Ain't Right Item")
+    AddPriceAintRight.setOnAction(new EventHandler[ActionEvent]{
+      def handle(actionEvent: ActionEvent): Unit = {
+        //val newItem:(String,Double) = new AddPriceAintRight().display()
+        //val newItemsList=user.AddItem(newItem._1,newItem._2)
+        //Items=newItemsList
+      }})
+    val DeletePriceAintRight : Button = new Button("Delete Price Ain't Right Item")
+    DeletePriceAintRight.setOnAction(new EventHandler[ActionEvent]{
+      def handle(actionEvent: ActionEvent): Unit = {
+        Items.size match { //matches weather there are any players to be edited
+          case 0 => //if there are no players this case is activated
+            new ErrorMessage().display("SPACE ERROR", "Items list empty")
+          case _ => //if there are players to edit this case is activated
+            var list: List[String] = List()
+            @tailrec
+            def listAvailableItems(Items: List[item]): Unit = { //prints all the available Players
+              val halp = Items.size
+              halp match { //matches the number of Players in the list to the cases ensuring recursion
+                case halp if halp > 0 => // if there are still Players in the List this case gets activated
+                  list = list :+ Items.head._1
+                  listAvailableItems(Items.tail) //recursive call
+                case _ => //if there are no more players on the list this case gets activated
+              }
+            }
+            listAvailableItems(Items)
+          //val ItemToDelete: (String) = new DeleteItem().display(list)//Sends info to popUp page
+          //val newItemList = user.DeleteItem(Items(Items.indexWhere(_._1.equals(ItemToDelete))),Items)
+          //Items=newItemList
+        }
+      }})
     //creating a grid pane with all the buttons
     val mainMenuButtons: GridPane = new GridPane()
     mainMenuButtons.add(CreatePlayer,2,0,1,1)
@@ -139,6 +239,10 @@ class GUI extends Application{
     mainMenuButtons.add(StartGame,2,2,1,1)
     mainMenuButtons.add(AddQuestion,2,3,1,1)
     mainMenuButtons.add(DeleteQuestion,2,4,1,1)
+    mainMenuButtons.add(AddFeud,2,5,1,1)
+    mainMenuButtons.add(DeleteFeud,2,6,1,1)
+    mainMenuButtons.add(AddPriceAintRight,2,7,1,1)
+    mainMenuButtons.add(DeletePriceAintRight,2,8,1,1)
     mainMenuButtons.setAlignment(Pos.CENTER)
 
     //adding the grid pane with the buttons to a Border Pane and centering the grid pane
