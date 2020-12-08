@@ -4,7 +4,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.shape.*?>
 
-<AnchorPane id="layout" prefHeight="1100.0" prefWidth="1100.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Board">
+<AnchorPane id="layout" prefHeight="1100.0" prefWidth="1100.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="JavaFXAndFXMLFiles.Board">
     <children>
         <Rectangle arcHeight="5.0" arcWidth="5.0" fill="BLUE" height="50.0" layoutX="925.0" layoutY="1025.0" stroke="BLACK" strokeType="INSIDE" width="50.0" />
         <Rectangle arcHeight="5.0" arcWidth="5.0" fill="BLUE" height="50.0" layoutX="875.0" layoutY="1025.0" stroke="BLACK" strokeType="INSIDE" width="50.0" />

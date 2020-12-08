@@ -14,7 +14,7 @@ class CreatePlayer {
   var Name :String=""
 
   def display(layout: List[String]): (String,String) ={
-    val fxmlLoader = new FXMLLoader(getClass.getResource("CreatePlayer.fxml"))
+    val fxmlLoader = new FXMLLoader(getClass.getResource("JavaFXAndFXMLFiles/CreatePlayer.fxml"))
     val mainViewRoot: Parent = fxmlLoader.load()
     val list= FXCollections.observableArrayList(layout(0))
     //creating stage

@@ -1,3 +1,5 @@
+import JavaFXAndFXMLFiles.Board
+
 import scala.annotation.tailrec
 import javafx.application._
 import javafx._
@@ -14,7 +16,7 @@ class GUI extends Application{
   type Color = (String, Boolean) // Color of the Player
   type Player = (Name, Color) // Player type
   type feud = (String,List[String]) //feud type
-  type item = (String,Double) //priceaintright type
+  type item = (String,Double) //Item type
 
   var Players:List[Player]=List()
   var Questions:List[Pergunta]=List()
