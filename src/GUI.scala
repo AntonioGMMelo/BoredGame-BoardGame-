@@ -1,5 +1,3 @@
-import JavaFXAndFXMLFiles.Board
-
 import scala.annotation.tailrec
 import javafx.application._
 import javafx._
