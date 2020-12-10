@@ -179,8 +179,8 @@ class GUI extends Application{
         val newFeud:(String,String,String,String,String,String) = new AddFeud().display()
         val list =List(newFeud._2,newFeud._3,newFeud._4,newFeud._5,newFeud._6)
         val feudToAdd :feud = new feud(newFeud._1,list)
-        //val newFeudsList=user.AddFeud(feudToAdd,Feuds)
-        //Feuds=newFeudsList
+        val newFeudsList=user.AddFeud(feudToAdd,Feuds)
+        Feuds=newFeudsList
       }})
     val DeleteFeud : Button = new Button("Delete Feud")
       DeleteFeud.setOnAction(new EventHandler[ActionEvent]{
@@ -203,8 +203,8 @@ class GUI extends Application{
             listAvailableFeuds(Feuds)
             val FeudToDelete: String = new DeleteFeud().display(list)//Sends info to popUp page
             val feudToDelete=Feuds(Feuds.indexWhere(_._1.equals(FeudToDelete)))
-            //val newFeudList = user.DeleteFeud(feudToDelete,Feuds)
-            //Feuds=newFeudList
+            val newFeudList = user.DeleteFeud(feudToDelete,Feuds)
+            Feuds=newFeudList
         }
       }})
     val AddPriceAintRight : Button = new Button("Add Price Ain't Right Item")
@@ -216,8 +216,8 @@ class GUI extends Application{
             new ErrorMessage().display("INPUT ERROR", "Price Unacceptable please add a price like so: dolars.cents i.e. 111.11")
           case _ =>
             val itemToAdd= new item(newItem._1,newItem._2)
-          //val newItemsList=user.AddItem(itemToAdd,Items)
-          //Items=newItemsList
+          val newItemsList=user.AddItem(itemToAdd,Items)
+          Items=newItemsList
         }
       }})
     val DeletePriceAintRight : Button = new Button("Delete Price Ain't Right Item")
@@ -241,8 +241,8 @@ class GUI extends Application{
             listAvailableItems(Items)
           val ItemToDelete: String = new DeleteItem().display(list)//Sends info to popUp page
           val itemAux=Items(Items.indexWhere(_._1.equals(ItemToDelete)))
-          //val newItemList = user.DeleteItem(itemAux,Items)
-          //Items=newItemList
+          val newItemList = user.DeleteItem(itemAux,Items)
+          Items=newItemList
         }
       }})
     //creating a grid pane with all the buttons

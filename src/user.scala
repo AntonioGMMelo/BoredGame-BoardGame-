@@ -2,14 +2,16 @@ import scala.annotation.tailrec
 import scala.io.AnsiColor
 import scala.io.AnsiColor._
 import scala.util.Try
+import player._
 
 object user {
 
   type Name = String // Name of the Player
   type Color = (String, Boolean) // Color of the Player
   type Player = (Name, Color) // Player type
+
   def CreatePlayer(NewName: Name, NewColor: String, ListOfPlayers: List[Player], ListOfColors: List[Color]): (List[Player], List[Color]) = { // Creates a Player, given a Name, "Color", list of Player and list of Color
-    val NewPlayerColor: Color = (NewColor,true)//ListOfColors(ListOfColors.indexOf(NewColor)) // Gets the Color from the Colors list
+    val NewPlayerColor: Color = (NewColor, true) //ListOfColors(ListOfColors.indexOf(NewColor)) // Gets the Color from the Colors list
     val NewPlayer: Player = (NewName, NewPlayerColor) // Creates a new Player based on the input Name and the Color from the line before
 
     IsTheNameUsed(ListOfPlayers, NewName) match { // Run the function IsTheNameUsed to check if the input Name has already been used
@@ -17,7 +19,7 @@ object user {
         (ListOfPlayers, ListOfColors) // If the name is used, the output will be the current Player and Color lists
       case false => {
         val UpdatedPlayerList: List[Player] = UpdatePlayerList(ListOfPlayers, NewPlayer, None) // New Player list, which is the previous version plus the new Player created
-        val UpdatedColorList: List[Color] = UpdateColorList(ListOfColors, NewPlayerColor, ListOfColors.indexWhere(_._1==NewColor)) // New Color list, which is the previous version plus the update of the Color used
+        val UpdatedColorList: List[Color] = UpdateColorList(ListOfColors, NewPlayerColor, ListOfColors.indexWhere(_._1 == NewColor)) // New Color list, which is the previous version plus the update of the Color used
         println(s"${NewPlayerColor._1}${BOLD}Player created successfully!${RESET}") // Print to check the Color and confirm the creation and proper addition to the Player list
         (UpdatedPlayerList, UpdatedColorList) // If the name isn't used, the output will be the the new Player and Color lists
       }
@@ -33,10 +35,10 @@ object user {
         ListOfPlayers // If the name isn't used, the output will be the current Player list
       case true =>
         val UpdatedPlayerList: List[Player] = UpdatePlayerList(ListOfPlayers, EditedPlayer, Some(Index)) // New Player list, which is the previous version plus the new Player created
-              println(UpdatedPlayerList)
-              println(s"${
-              (UpdatedPlayerList(UpdatedPlayerList.indexWhere(_._1 ==
-                EditedPlayer._1))._2)._1
+        println(UpdatedPlayerList)
+        println(s"${
+          (UpdatedPlayerList(UpdatedPlayerList.indexWhere(_._1 ==
+            EditedPlayer._1))._2)._1
         }${BOLD}Player edited successfully!${RESET}") // Print to check the Color and confirm the creation and proper addition to the Player list
         UpdatedPlayerList // If the name is used, the output will be the new Player list
     }
@@ -48,11 +50,47 @@ object user {
     val EditedPlayer: Player = (Player._1, NewColor)
 
     val UpdatedPlayerList: List[Player] = UpdatePlayerList(ListOfPlayers, Player, Some(ListOfPlayers.indexOf(Player)))
-    val UpdatedColorList: List[Color] = UpdateColorList(ListOfColors, NewColor,ListOfColors.indexOf(Color))
-    println(s"${(UpdatedPlayerList(UpdatedPlayerList.indexWhere(_._1 ==
-      EditedPlayer._1))._2)._1}${BOLD}Player edited successfully!${RESET}")
+    val UpdatedColorList: List[Color] = UpdateColorList(ListOfColors, NewColor, ListOfColors.indexOf(Color))
+    println(s"${
+      (UpdatedPlayerList(UpdatedPlayerList.indexWhere(_._1 ==
+        EditedPlayer._1))._2)._1
+    }${BOLD}Player edited successfully!${RESET}")
     (UpdatedPlayerList, UpdatedColorList)
 
+  }
+
+  def AddFeud(inputFeud: feud, feudList: List[feud]): List[feud] = { //concat new feud to list
+    feudList match {
+      case inputFeud => println("Feud already exists.")
+        feudList
+      case _ => val result: List[feud] = feudList ++ List(inputFeud)
+        result
+    }
+  }
+
+  def DeleteFeud(inputFeud: feud, feudList: List[feud]): List[feud] = { //delete feud from list
+    feudList match{
+      case inputFeud => val result: List[feud] = feudList diff List(inputFeud)
+        result
+      case _ =>
+        feudList
+    }
+  }
+
+  def AddItem(inputItem: item, itemList: List[item]): List[item] = { //concat new priceaintright item to list
+    itemList match {
+      case inputItem => itemList
+      case _ => val result: List[item] = itemList :+ inputItem
+        result
+    }
+  }
+
+  def DeleteItem(inputItem: item, itemList: List[item]): List[item] = { //delete priceaintright item from list
+    itemList match {
+      case inputItem => val result: List[item] = itemList diff List(inputItem)
+        result
+      case _ => itemList
+    }
   }
 
   def UpdatePlayerList(List: List[Player], Player: Player, Index: Option[Int]): List[Player] = { // Updates the Player list given a Player list, a Player and an Option[Int]
@@ -83,7 +121,4 @@ object user {
         }
     }
   }
-
-
 }
-
