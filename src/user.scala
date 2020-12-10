@@ -57,12 +57,13 @@ object user {
 
   def UpdatePlayerList(List: List[Player], Player: Player, Index: Option[Int]): List[Player] = { // Updates the Player list given a Player list, a Player and an Option[Int]
     Index match {
-      case Some(index) =>
-        val List2: List[Player] = List.updated(index, Player) // Creates a new Player list by updating a specific index
-        List2 // Outputs the new Player list
       case None =>
         val List2: List[Player] = List :+ Player // Creates a new Player list by adding a new Player to the end
         List2 // Outputs the new Player list
+      case Some(index) =>
+        val List2: List[Player] = List.updated(index, Player) // Creates a new Player list by updating a specific index
+        List2 // Outputs the new Player list
+
     }
   }
 
