@@ -1,15 +1,15 @@
 import scala.annotation.tailrec
+import scala.io.AnsiColor
 import scala.io.AnsiColor._
-import scala.util.{Try}
+import scala.util.Try
 
 object user {
 
   type Name = String // Name of the Player
   type Color = (String, Boolean) // Color of the Player
   type Player = (Name, Color) // Player type
-
   def CreatePlayer(NewName: Name, NewColor: String, ListOfPlayers: List[Player], ListOfColors: List[Color]): (List[Player], List[Color]) = { // Creates a Player, given a Name, "Color", list of Player and list of Color
-    val NewPlayerColor: Color = ListOfColors(ListOfColors.indexOf(NewColor)) // Gets the Color from the Colors list
+    val NewPlayerColor: Color = (NewColor,true)//ListOfColors(ListOfColors.indexOf(NewColor)) // Gets the Color from the Colors list
     val NewPlayer: Player = (NewName, NewPlayerColor) // Creates a new Player based on the input Name and the Color from the line before
 
     IsTheNameUsed(ListOfPlayers, NewName) match { // Run the function IsTheNameUsed to check if the input Name has already been used
@@ -17,7 +17,7 @@ object user {
         (ListOfPlayers, ListOfColors) // If the name is used, the output will be the current Player and Color lists
       case false => {
         val UpdatedPlayerList: List[Player] = UpdatePlayerList(ListOfPlayers, NewPlayer, None) // New Player list, which is the previous version plus the new Player created
-        val UpdatedColorList: List[Color] = UpdateColorList(ListOfColors, NewPlayerColor, ListOfColors.indexOf(NewColor)) // New Color list, which is the previous version plus the update of the Color used
+        val UpdatedColorList: List[Color] = UpdateColorList(ListOfColors, NewPlayerColor, ListOfColors.indexWhere(_._1==NewColor)) // New Color list, which is the previous version plus the update of the Color used
         println(s"${NewPlayerColor._1}${BOLD}Player created successfully!${RESET}") // Print to check the Color and confirm the creation and proper addition to the Player list
         (UpdatedPlayerList, UpdatedColorList) // If the name isn't used, the output will be the the new Player and Color lists
       }
@@ -42,13 +42,13 @@ object user {
     }
   }
 
-  def EditPlayerColor(Player: Player, Color: Int, ListOfPlayers: List[Player], ListOfColors: List[Color]): (List[Player], List[Color]) = {
+  def EditPlayerColor(Player: Player, Color: String, ListOfPlayers: List[Player], ListOfColors: List[Color]): (List[Player], List[Color]) = {
     val CurrentColor: Color = Player._2
-    val NewColor: Color = (ListOfColors(Color)._1, true)
+    val NewColor: Color = (Color, true)
     val EditedPlayer: Player = (Player._1, NewColor)
 
     val UpdatedPlayerList: List[Player] = UpdatePlayerList(ListOfPlayers, Player, Some(ListOfPlayers.indexOf(Player)))
-    val UpdatedColorList: List[Color] = UpdateColorList(ListOfColors, NewColor, Color)
+    val UpdatedColorList: List[Color] = UpdateColorList(ListOfColors, NewColor,ListOfColors.indexOf(Color))
     println(s"${(UpdatedPlayerList(UpdatedPlayerList.indexWhere(_._1 ==
       EditedPlayer._1))._2)._1}${BOLD}Player edited successfully!${RESET}")
     (UpdatedPlayerList, UpdatedColorList)

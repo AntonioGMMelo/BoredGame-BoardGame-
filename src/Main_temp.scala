@@ -15,7 +15,7 @@ object Main_temp {
     println("Output do método CreatePlayer(Lista de Color) : " + NewPlayerColor._2)
     val players_2 = user.EditPlayerName("Ronaldo", "Miguel", Players)
     println("Output do método EditPlayerName(Lista de Player) : " + players_2)
-    val newPlayerColor2 = user.EditPlayerColor(Player1, 3, Players, Colors)
+    val newPlayerColor2 = user.EditPlayerColor(Player1, "WHITE", Players, Colors)
     println("Output do método EditPlayerColor(Lista de Player) : " + newPlayerColor2._1)
     println("Output do método EditPlayerColor(Lista de Color) : " + newPlayerColor2._2)
     println("----------END OF A----------")
