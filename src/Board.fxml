@@ -6,7 +6,7 @@
 
 <AnchorPane id="layout" prefHeight="1100.0" prefWidth="1100.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Board">
     <children>
-        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="BLUE" height="50.0" layoutX="925.0" layoutY="1025.0" stroke="BLACK" strokeType="INSIDE" width="50.0" />
+        <Rectangle id="rect" arcHeight="5.0" arcWidth="5.0" fill="BLUE" height="50.0" layoutX="925.0" layoutY="1025.0" stroke="BLACK" strokeType="INSIDE" width="50.0" />
         <Rectangle arcHeight="5.0" arcWidth="5.0" fill="BLUE" height="50.0" layoutX="875.0" layoutY="1025.0" stroke="BLACK" strokeType="INSIDE" width="50.0" />
         <Rectangle arcHeight="5.0" arcWidth="5.0" fill="BLUE" height="50.0" layoutX="825.0" layoutY="1025.0" stroke="BLACK" strokeType="INSIDE" width="50.0" />
         <Rectangle arcHeight="5.0" arcWidth="5.0" fill="BLUE" height="50.0" layoutX="775.0" layoutY="1025.0" stroke="BLACK" strokeType="INSIDE" width="50.0" />
@@ -325,6 +325,6 @@
         <Circle layoutX="517.0" layoutY="953.0" radius="4.0" stroke="BLACK" strokeType="INSIDE" />
         <Circle layoutX="527.0" layoutY="962.0" radius="4.0" stroke="BLACK" strokeType="INSIDE" />
         <Circle layoutX="536.0" layoutY="970.0" radius="4.0" stroke="BLACK" strokeType="INSIDE" />
-        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="BLUE" height="50.0" layoutX="975.0" layoutY="1025.0" stroke="BLACK" strokeType="INSIDE" width="50.0" />
+        <Rectangle id="rect" arcHeight="5.0" arcWidth="5.0" fill="BLUE" height="50.0" layoutX="975.0" layoutY="1025.0" stroke="BLACK" strokeType="INSIDE" width="50.0" />
     </children>
 </AnchorPane>
