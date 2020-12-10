@@ -15,6 +15,7 @@ class GUI extends Application{
   type Player = (Name, Color) // Player type
   type feud = (String,List[String]) //feud type
   type item = (String,Double) //Item type
+  type PlayerExtra=(String,(Int,Int),Boolean,Boolean,Boolean,Boolean,Boolean,Boolean,Boolean,Boolean) //Player(color,(posX,posY),canMove,canReRolDice,canWeighDice,canSkipQuestion,can50/50,canAskForMoreTime,canReSpinTheWheel,canDrawNewCard)
 
   var Players:List[Player]=List()
   var Questions:List[Pergunta]=List()
@@ -126,10 +127,15 @@ class GUI extends Application{
     val StartGame : Button = new Button("Start Game")
     StartGame.setOnAction(new EventHandler[ActionEvent]{
       def handle(actionEvent: ActionEvent): Unit = {
+        val playerExtra=new PlayerExtra("NO",(1050,1050),true,true,true,true,true,true,true,true)
+        var PlayersExtra:List[PlayerExtra]= List(playerExtra,playerExtra,playerExtra,playerExtra,playerExtra,playerExtra,playerExtra,playerExtra)
+        for(i<-0 to Players.size-1){
+          PlayersExtra=PlayersExtra.updated(i,new PlayerExtra(Players(i)._2._1,(1050,1050),true,true,true,true,true,true,true,true))
+        }
         val auxer = Players.size
         auxer match {
           case auxer if auxer>1 && auxer<9 =>
-            val whatever = new Board ().display()
+            val whatever = new Board ().display(PlayersExtra)
           case _ =>
             new ErrorMessage().display("SPACE ERROR", "Not Enough Players to Start Game , Min=2")
         }
