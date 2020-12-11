@@ -11,9 +11,8 @@ import scala.annotation.tailrec
 
 class CreatePlayer {
   var Color:String=""
-  var Name :String=""
 
-  def display(layout: List[String]): (String,String) ={
+  def display(layout: List[String]): (String) ={
     val fxmlLoader = new FXMLLoader(getClass.getResource("CreatePlayer.fxml"))
     val mainViewRoot: Parent = fxmlLoader.load()
     val list= FXCollections.observableArrayList(layout(0))
@@ -39,26 +38,24 @@ class CreatePlayer {
     }
     whatever(1)
     val Colors = new ChoiceBox(list)
-    val name : TextField = new TextField("Player Name")
     //create button and button action
     val ok : Button = new Button("OK")
     ok.setOnAction(new EventHandler[ActionEvent]{
      def handle(event:ActionEvent)  = {
        Color =Colors.getValue().toString
-       Name = name.getCharacters().toString
        popUp.close()
      }
     })
 
     //adding button and message to a layout
     val layout3 = new VBox(2)
-    layout3.getChildren.addAll(Colors,name,ok)
+    layout3.getChildren.addAll(Colors,ok)
     layout3.setAlignment(Pos.CENTER)
     //creating scene and setting stage to scene
     val scene: Scene= new Scene(layout3)
     popUp.setScene(scene)
     popUp.showAndWait()
-    (Name,Color)
+    (Color)
   }
 
 }

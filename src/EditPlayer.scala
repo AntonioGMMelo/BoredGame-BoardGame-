@@ -10,12 +10,9 @@ import javafx.stage._
 import scala.annotation.tailrec
 
 class EditPlayer {
-  var EditName:Boolean=false
-  var OldName:String=""
-  var NewName :String=""
-  var EditColor:Boolean=false
   var NewColor :String=""
-  def display(layout: List[String],layout2 :List[String]): (Boolean,String,String,Boolean,String) ={
+  var OldColor :String=""
+  def display(layout: List[String],layout2 :List[String]): (String,String) ={
     val fxmlLoader = new FXMLLoader(getClass.getResource("EditPlayer.fxml"))
     val mainViewRoot: Parent = fxmlLoader.load()
     val list= FXCollections.observableArrayList(layout(0))
@@ -53,19 +50,13 @@ class EditPlayer {
     }
     whatever(1)
     whatever2(1)
-    val editName = new CheckBox("Edit Name")
-    val oldName = new ChoiceBox(list)
-    val newName : TextField = new TextField("Player Name")
-    val editColor = new CheckBox("Edit Color")
+    val oldColor = new ChoiceBox(list)
     val newColor = new ChoiceBox(list2)
     //create button and button action
     val ok : Button = new Button("OK")
     ok.setOnAction(new EventHandler[ActionEvent]{
       def handle(event:ActionEvent)  = {
-        EditName= editName.isSelected
-        OldName =oldName.getValue().toString
-        NewName = newName.getCharacters().toString
-        EditColor= editColor.isSelected
+         OldColor=oldColor.getValue
         NewColor=newColor.getValue()
         popUp.close()
       }
@@ -73,13 +64,13 @@ class EditPlayer {
 
     //adding button and message to a layout
     val layout3 = new VBox(2)
-    layout3.getChildren.addAll(editName,oldName,newName,editColor,newColor,ok)
+    layout3.getChildren.addAll(oldColor,newColor,ok)
     layout3.setAlignment(Pos.CENTER)
     //creating scene and setting stage to scene
     val scene: Scene= new Scene(layout3)
     popUp.setScene(scene)
     popUp.showAndWait()
-    (EditName,OldName,NewName,EditColor,NewColor)
+    (OldColor,NewColor)
   }
 
 }
