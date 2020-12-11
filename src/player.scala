@@ -6,12 +6,13 @@ object player {
   private val BOUNDARY_TOP: Int = 50; //Where the center of the top most spaces are
   private val BOUNDARY_BOTTOM: Int = 1050 //Where the center of the bottom most spaces are
   val dice = List(1, 2, 3, 4, 5, 6) // a six faced dice
-  val wheelItems = List("Price Aint Right Round","Move Back 1 Space", "Move Back 1 Space", "Move Back 1 Space", "Move Back 2 Spaces", "Move Back 2 Spaces", "All Players Move Back 2 Spaces", "Move Forward 1 Space", "Move Forward 1 Space", "Move Forward 1 Space", "Move Forward 2 Spaces", "Move Forward 2 Spaces", "All Players Move Forwards 2 Spaces", "Go To Jail", "Move Forward 3 Spaces", "Stay", "Roll The dice", "Roll The Weighted Dice") //Wheel options
-  val cards = List("Roll The dice", "Roll The Weighted Dice", "Go To Jail", "50/50", "Skip Question", "Dilate Time","Feud Round","Feud Round","Feud Round","Feud Round","Feud Round") //card options
-  val coin = List("Heads","Tails")
-  type feud = (String,List[String]) //feud type
-  type item = (String,Double) //priceaintright type
-  def getSomething[A](list:List[A]): A ={ //gets a random item of a list, use "coin" list for a coin toss use "dice" list for a dice roll or "wheelItems" for a wheel spin or "cards" to draw a card or "feudList" for a feud or "itemList" for an item
+  val wheelItems = List("Price Aint Right Round", "Move Back 1 Space", "Move Back 1 Space", "Move Back 1 Space", "Move Back 2 Spaces", "Move Back 2 Spaces", "All Players Move Back 2 Spaces", "Move Forward 1 Space", "Move Forward 1 Space", "Move Forward 1 Space", "Move Forward 2 Spaces", "Move Forward 2 Spaces", "All Players Move Forwards 2 Spaces", "Go To Jail", "Move Forward 3 Spaces", "Stay", "Roll The dice", "Roll The Weighted Dice") //Wheel options
+  val cards = List("Roll The dice", "Roll The Weighted Dice", "Go To Jail", "50/50", "Skip Question", "Dilate Time", "Feud Round", "Feud Round", "Feud Round", "Feud Round", "Feud Round") //card options
+  val coin = List("Heads", "Tails")
+  type feud = (String, List[String]) //feud type
+  type item = (String, Double) //priceaintright type
+
+  def getSomething[A](list: List[A]): A = { //gets a random item of a list, use "coin" list for a coin toss use "dice" list for a dice roll or "wheelItems" for a wheel spin or "cards" to draw a card or "feudList" for a feud or "itemList" for an item
     val r = new scala.util.Random
     list(r.nextInt(list.size))
   }
@@ -23,18 +24,19 @@ object player {
     val aux4 = f._2(3)
     val aux5 = f._2(4)
     answer match {
-      case answer if answer.compareTo(aux1)==0 => 3 //best answer means player moves 3 spaces
-      case answer if answer.compareTo(aux2)==0 => 2//medium answer means player moves 2 spaces
-      case answer if answer.compareTo(aux3)==0 => 2
-      case answer if answer.compareTo(aux4)==0 => 1 //acceptable answer mean player moves 1 space
-      case answer if answer.compareTo(aux5)==0 => 1
+      case answer if answer.compareTo(aux1) == 0 => 3 //best answer means player moves 3 spaces
+      case answer if answer.compareTo(aux2) == 0 => 2 //medium answer means player moves 2 spaces
+      case answer if answer.compareTo(aux3) == 0 => 2
+      case answer if answer.compareTo(aux4) == 0 => 1 //acceptable answer mean player moves 1 space
+      case answer if answer.compareTo(aux5) == 0 => 1
       case _ => 0 //wrong answer no movement for the player
     }
   }
-  def priceAintRight(item:item, list:List[Double]): Int ={ //returns the index of the player who was closest
-    list match{
+
+  def priceAintRight(item: item, list: List[Double]): Int = { //returns the index of the player who was closest
+    list match {
       case Nil => -1
-      case list => list.indexOf(list.minBy(v => math.abs(v - item._2 ))) //functions that gives the number on the list that is closest to the items price(Inside the indexOF() function)
+      case list => list.indexOf(list.minBy(v => math.abs(v - item._2))) //functions that gives the number on the list that is closest to the items price(Inside the indexOF() function)
     }
   }
 
@@ -95,7 +97,7 @@ object player {
 
   def weightedDice(): Int = { //a 3 faced dice with the values 2,4 or 6
     lazy val aux = dice.filter(_ < 4) //filters dice to List(1,2,3).
-    lazy val aux2 = aux.foldLeft(0)(_+_)//folds aux list to int 6
+    lazy val aux2 = aux.foldLeft(0)(_ + _) //folds aux list to int 6
     lazy val aux3 = dice.filter(_ < 3) //filters dice to List(1,2).
     lazy val aux4 = aux3.map(x => x * 2) //maps dice to List(2,4)
     val diceRoll = aux4 :+ aux2 //concatenates List(2,4) with 6 = List(2,4,6)
