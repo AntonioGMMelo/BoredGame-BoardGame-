@@ -11,6 +11,7 @@ class Board {
   type feud = (String,List[String]) //feud type
   type item = (String,Double) //Item type
 
+  //loading circles and buttons from fxml File
   @FXML
   var circle1 :Circle =_
   @FXML
@@ -36,36 +37,41 @@ class Board {
   @FXML
   var savegame:Button=_
   def display(players:List[PlayersExtra],questions:List[Pergunta],feuds:List[feud],items:List[item]):Unit = {
-
+  //loading fxml file
     val fxmlLoader = new FXMLLoader(getClass.getResource("Board.fxml"))
     val mainViewRoot: Parent = fxmlLoader.load()
 
-    //    val rect = new Rectangle()
+    //Creating stage
     val popUp: Stage = new Stage()
+    //Creating Circles List from the fxml load
     var circles: List[Circle]= List(circle1,circle2,circle3,circle4,circle5,circle6,circle7,circle8)
-
+    //setting main menu button action
     mainmenu.setOnAction(new EventHandler[ActionEvent]{
       def handle(actionEvent: ActionEvent): Unit = {
         main(Array(""))
         popUp.close()
       }
     })
+    //etting savegaem button action
     savegame.setOnAction(new EventHandler[ActionEvent]{
       def handle(actionEvent: ActionEvent): Unit = {
         FileFunctions.write_file("Players.txt",FileFunctions.makePlayerString,players)
       }
     })
+    //setting endgame button action
     endgame.setOnAction(new EventHandler[ActionEvent]{
       def handle(actionEvent: ActionEvent): Unit = {
         popUp.close()
       }
     })
+    //setting restartgame button action
     restartgame.setOnAction(new EventHandler[ActionEvent]{
       def handle(actionEvent: ActionEvent): Unit = {
         val x:Unit=display(players,questions,feuds,items)
         popUp.close()
       }
     })
+    //setting circles to correspond to a player
   for(i<-0 to players.size-1){
     if(!(players(i).equals("NO"))) {
       if (players(i)._1.equals("BLACK")) {
@@ -103,32 +109,38 @@ class Board {
       circles(i).setVisible(true)
     }
   }
+    //functions that returns the sapce number by taking the diference beetwen the inicial space and th players corinates now and dividing that by 50
     def getSpaceNumber(x:Int,y:Int): Int ={
       ((1050-x/50) + (1050-y/5))
     }
       //game begins
+    //var to help Un Jailing a player that is jailed
       var counter =0
-    //round loop
+    //var that helps now if someone has won and the game shall end
     var someOneWon=false
+    //var that allows player to only win after the first round seing as the win condition is beeign at the starting space again
     var canWin=0
+    //round loop
     while(!someOneWon) {
+      //takes counter down to say 1 less round that the player that cant move needs to wait untill beeing able to move
       counter -= 1
-      for (i <- 0 to players.size) {
-        if (counter == 0) {
+      for (i <- 0 to players.size) {//players turn in round loop
+        if (counter == 0) { //id id the counter hits 0 everyone can move again
           //players(i)._3=true
         }
-        if (players(i)._3) {
+        if (players(i)._3) {//if player Can Move then
           val rollDaDice:(Int,Boolean) = new RollDaDice().display(players(i)._1,players(i)._4)
           //players(i)._4=rollDaDice._2
-          val newPos:(Int,Int)=player.move(rollDaDice._1,50,players(i)._2,player.moveForward)
+          val newPos:(Int,Int)=player.move(rollDaDice._1,50,players(i)._2,player.moveForward) // player rolls the dice
+          //players circle gets moved to new position
           //circles(i).setCenterX(newPos._1)
           //circles(i).setCenterY(newPos._2)
-          if (getSpaceNumber(circles(i).getCenterX.toInt, circles(i).getCenterY.toInt) % 3 == 0) {
+          if (getSpaceNumber(circles(i).getCenterX.toInt, circles(i).getCenterY.toInt) % 3 == 0) {//checks space action if its a multiple of 3 then action is spinthewheel
             val wheel:(String,Boolean)=new SpinDaWheel().display(players(i)._1,players(i)._9)
             //players(i)._9=wheel._2
             val aux:String = wheel._1
             println(aux)
-//            aux match {
+//            aux match {//matches the wheel spin instance to the cases
 //            case "Price Aint Right Round" =>
 //            val playa:Int=new PriceAintRight().display(players,items)
 //            val newPos:(Int,Int)=player.move(10,50,players(playa)._2,player.moveBackward)
@@ -184,7 +196,7 @@ class Board {
 //             var counter =2
 //            }
           } else {
-            if (getSpaceNumber(circles(i).getCenterX.toInt, circles(i).getCenterY.toInt) % 2 == 0) {
+            if (getSpaceNumber(circles(i).getCenterX.toInt, circles(i).getCenterY.toInt) % 2 == 0) { //checks space number if its a multiple of 2 but not of 3 then action is DrawCard
               val card:(String,Boolean)= new DrawCard().display(players(i)._1,players(i)._10)
               //players(i)._10=card._2
               val aux=card._1
@@ -215,7 +227,7 @@ class Board {
               //circles(i).setCenterX(newPos._1)
               //circles(i).setCenterY(newPos._2)
               //}
-            } else {
+            } else { //if the space number is not a multiple of 2 or 3 then action si answer question
               //val move:(Boolean,Boolean,Boolean,Boolean)=new Question().display(questions,players(i)._1,players(i)._6,players(i)._7,players(i)._8)
               //players(i)._6= move._2
               //players(i)._7= move._3
