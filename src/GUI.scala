@@ -238,6 +238,14 @@ class GUI extends Application{
           Items=newItemList
         }
       }})
+    val CloseWindow: Button = new Button("Close Window")
+    CloseWindow.setOnAction(new EventHandler[ActionEvent] {
+      def handle(actionEvent: ActionEvent): Unit = {
+        Platform.exit()
+        System.exit(0)
+      }
+    })
+
     //creating a grid pane with all the buttons
     val mainMenuButtons: GridPane = new GridPane()
     mainMenuButtons.add(CreatePlayer,2,0,1,1)
@@ -249,6 +257,7 @@ class GUI extends Application{
     mainMenuButtons.add(DeleteFeud,2,6,1,1)
     mainMenuButtons.add(AddPriceAintRight,2,7,1,1)
     mainMenuButtons.add(DeletePriceAintRight,2,8,1,1)
+    mainMenuButtons.add(CloseWindow,2,9,1,1)
     mainMenuButtons.setAlignment(Pos.CENTER)
 
     //adding the grid pane with the buttons to a Border Pane and centering the grid pane
