@@ -57,7 +57,4 @@ class CreatePlayer {
     popUp.showAndWait()
     (Color)
   }
-
 }
-
-
