@@ -18,7 +18,7 @@ class GUI extends Application{
 
   var Players:List[PlayerExtra]=FileFunctions.read_file("Players.txt",FileFunctions.makePlayer)
   var Questions:List[Pergunta]=FileFunctions.read_file("Questions.txt",FileFunctions.makePergunta)
-  var Colors:List[Color]= List(("BLACK", false), ("WHITE", false), ("BLUE", false), ("CYAN", false), ("RED", false), ("GREEN", false), ("MAGENTA", false), ("YELLOW", false)) //FileFunctions.read_file("Colors.txt",FileFunctions.makeColor)
+  var Colors:List[Color]= FileFunctions.read_file("Colors.txt",FileFunctions.makeColor) //List(("BLACK", false), ("WHITE", false), ("BLUE", false), ("CYAN", false), ("RED", false), ("GREEN", false), ("MAGENTA", false), ("YELLOW", false)) //
   var Feuds:List[feud]=FileFunctions.read_file("Feuds.txt",FileFunctions.makeFeud)
   var Items:List[item]=FileFunctions.read_file("Items.txt",FileFunctions.makeItem)
   var theme = Tema("yikes",Questions)

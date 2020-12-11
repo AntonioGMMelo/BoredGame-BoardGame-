@@ -1,0 +1,5 @@
+Bolacha;1.5
+Leite;0.5
+Chocolate;1.0
+Garrafa de Agua;0.3
+Pipoca;1.1
