@@ -2,9 +2,9 @@ import javafx.collections.FXCollections
 import javafx.event.{ActionEvent, EventHandler}
 import javafx.fxml.FXMLLoader
 import javafx.geometry.Pos
+import javafx.scene.control.{Button, ChoiceBox, Label}
+import javafx.scene.layout.{GridPane, VBox}
 import javafx.scene.{Parent, Scene}
-import javafx.scene.control.{Button, ChoiceBox, TextField}
-import javafx.scene.layout.VBox
 import javafx.stage.{Modality, Stage}
 
 import scala.annotation.tailrec
@@ -13,8 +13,10 @@ class DeleteFeud {
   var Feud:String=""
 
   def display(layout: List[String]): String ={
+    //load fxml
     val fxmlLoader = new FXMLLoader(getClass.getResource("DeleteFeud.fxml"))
     val mainViewRoot: Parent = fxmlLoader.load()
+    //creates observablearraylist list of of list[Strings]layout
     val list= FXCollections.observableArrayList(layout(0))
     //creating stage
     val popUp: Stage = new Stage()
@@ -24,7 +26,7 @@ class DeleteFeud {
     popUp.setMaxWidth(400)
     popUp.setMaxHeight(300)
 
-    // Create a combo box
+    //adds each string of the list[string] to the observablearraylist list
     @tailrec
     def whatever(i:Int){
       val help = layout.size
@@ -37,24 +39,32 @@ class DeleteFeud {
       }
     }
     whatever(1)
+    //creates user input fields
+    val l= new Label("Feud to Delete: ")
     val feuds = new ChoiceBox(list)
     //create button and button action
-    val ok : Button = new Button("OK")
-    ok.setOnAction(new EventHandler[ActionEvent]{
+    val Submit : Button = new Button("OK")
+    Submit.setOnAction(new EventHandler[ActionEvent]{
       def handle(event:ActionEvent)  = {
+        //get choice form choicebox
         Feud =feuds.getValue()
+        //closes the window
         popUp.close()
       }
     })
-
-    //adding button and message to a layout
+    //create grid pane with labe l and choicebox feuds
+    val g= new GridPane()
+    g.add(l,2,0,1,1)
+    g.add(feuds,3,0,1,1)
+    //creating layout3 and adding gridpane l and button submit
     val layout3 = new VBox(2)
-    layout3.getChildren.addAll(feuds,ok)
+    layout3.getChildren.addAll(g,Submit)
     layout3.setAlignment(Pos.CENTER)
     //creating scene and setting stage to scene
     val scene: Scene= new Scene(layout3)
     popUp.setScene(scene)
     popUp.showAndWait()
+    //return value for window
     (Feud)
   }
 }

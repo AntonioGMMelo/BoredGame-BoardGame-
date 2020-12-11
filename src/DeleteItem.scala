@@ -2,9 +2,9 @@ import javafx.collections.FXCollections
 import javafx.event.{ActionEvent, EventHandler}
 import javafx.fxml.FXMLLoader
 import javafx.geometry.Pos
-import javafx.scene.{Parent, Scene}
-import javafx.scene.control.{Button, ChoiceBox, Label, TextField}
+import javafx.scene.control.{Button, ChoiceBox, Label}
 import javafx.scene.layout.{GridPane, VBox}
+import javafx.scene.{Parent, Scene}
 import javafx.stage.{Modality, Stage}
 
 import scala.annotation.tailrec
