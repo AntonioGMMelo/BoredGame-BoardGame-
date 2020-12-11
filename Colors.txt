@@ -1,8 +1,8 @@
-BLACK;true
-WHITE;true
-BLUE;true
-CYAN;true
-RED;true
-GREEN;true
-MAGENTA;true
+BLACK;false
+WHITE;false
+BLUE;false
+CYAN;false
+RED;false
+GREEN;false
+MAGENTA;false
 YELLOW;false
