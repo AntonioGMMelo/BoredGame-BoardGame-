@@ -36,6 +36,7 @@ class Board {
   var mainmenu:Button=_
   @FXML
   var savegame:Button=_
+
   def display(players:List[PlayersExtra],questions:List[Pergunta],feuds:List[feud],items:List[item]):Unit = {
   //loading fxml file
     val fxmlLoader = new FXMLLoader(getClass.getResource("Board.fxml"))
@@ -142,7 +143,7 @@ class Board {
             println(aux)
 //            aux match {//matches the wheel spin instance to the cases
 //            case "Price Aint Right Round" =>
-//            val playa:Int=new PriceAintRight().display(players,items)
+//            val playa:Int=new PriceAintRight().display(players,items) //starts a a price aint right round
 //            val newPos:(Int,Int)=player.move(10,50,players(playa)._2,player.moveBackward)
 //            circles(i).setCenterX(newPos._1)
 //            circles(i).setCenterY(newPos._2)
@@ -199,7 +200,7 @@ class Board {
             if (getSpaceNumber(circles(i).getCenterX.toInt, circles(i).getCenterY.toInt) % 2 == 0) { //checks space number if its a multiple of 2 but not of 3 then action is DrawCard
               val card:(String,Boolean)= new DrawCard().display(players(i)._1,players(i)._10)
               //players(i)._10=card._2
-              val aux=card._1
+              val aux=card._1 //matches the drawn card to the cases
               //aux match{
               //case "Roll The dice" =>
               //val rollDaDice:(Int,Boolean) = new RollDaDice(players(i)._1,players(i)._4)
@@ -213,16 +214,16 @@ class Board {
               //circles(i).setCenterX(newPos._1)
               //circles(i).setCenterY(newPos._2)
               //case "Go To Jail" =>
-              //players(i)._3 = false
-              // var counter =2
+              //players(i)._3 = false //sets can move to false
+              // var counter =2 //sets counter to 2
               //case "50/50" =>
-              //players(i)._7=true
+              //players(i)._7=true //gives player the abillity to ask for a 50/50 while answering a question
               //case "Skip Question"=>
-              //players(i)._6=true
+              //players(i)._6=true//gives player the abillity to ask for a new Question while answering a question
               //case "Dilate Time" =>
-              //players(i)._8=true
+              //players(i)._8=true//gives player the abillity to ask for more time while answering a question
               //case "Feud Round"=>
-              //val Spaces Int = new Feud().display(players(i)._1,feuds)
+              //val Spaces Int = new Feud().display(players(i)._1,feuds) //Starts a feud round
               //val newPos:(Int,Int)=player.move(Spaces,50,players(i)._2,player.moveForward())
               //circles(i).setCenterX(newPos._1)
               //circles(i).setCenterY(newPos._2)
@@ -232,28 +233,27 @@ class Board {
               //players(i)._6= move._2
               //players(i)._7= move._3
               //players(i)._8= move._4
-              //if(move._1){
-              //val newPos:(Int,Int)=player.move(actionScreen,50,players(i)._2,player.moveForward())
+              //if(move._1){ //if the player got the answer right move._1=true moves forward 1 space else moves backward 1 space
+              //val newPos:(Int,Int)=player.move(1,50,players(i)._2,player.moveForward)
               //circles(i).setCenterX(newPos._1)
               //circles(i).setCenterY(newPos._2)
               //}else{
-              //val newPos:(Int,Int)=player.move(actionScreen,50,players(i)._2,player.moveBackward())
+              //val newPos:(Int,Int)=player.move(1,50,players(i)._2,player.moveBackward)
               //circles(i).setCenterX(newPos._1)
               //circles(i).setCenterY(newPos._2)
               //}
             }
           }
         }
-        if(players(i)._2._1==1050 && players(i)._2._1==1050 && canWin!=0){
-          //val winnerQuote :String = new WinnerQuote.display(players(i)._1)
-          //val whatever= new ErrorMessage("WINNER IS" + players(i)._1,players(i)._1+"SAYS: " + winnerQuote)
-          someOneWon=true
+        if(players(i)._2._1==1050 && players(i)._2._1==1050 && canWin!=0){ //checks if the player won by checking their Positon and if its not the first round
+          //val winnerQuote :String = new WinnerQuote.display(players(i)._1) //asks the winner for a quote
+          //val whatever= new ErrorMessage("WINNER IS" + players(i)._1 + "In "+ canWin+1 + " Rounds",players(i)._1+"SAYS: " + winnerQuote) //display winner's quote
+          someOneWon=true //changes var to true to "break" the while loop
         }
       }
-      canWin+=1
+      canWin+=1 //counts the rounds elapsed
     }
-
-
+    //create scene and set stage's scene to the scene created
       val scene: Scene= new Scene(mainViewRoot)
       popUp.setScene(scene)
       popUp.showAndWait()
