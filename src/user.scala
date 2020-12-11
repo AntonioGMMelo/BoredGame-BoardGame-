@@ -9,28 +9,27 @@ object user {
   type Name = String // Name of the Player
   type Color = (String, Boolean) // Color of the Player
   type Player = (Name, Color) // Player type
-  type PlayerExtra=(String,(Int,Int),Boolean,Boolean,Boolean,Boolean,Boolean,Boolean,Boolean,Boolean)
+  type PlayerExtra = (String, (Int, Int), Boolean, Boolean, Boolean, Boolean, Boolean, Boolean, Boolean, Boolean)
 
   def CreatePlayer(Color: String, ListOfPlayers: List[PlayerExtra], ListOfColors: List[Color]): (List[PlayerExtra], List[Color]) = { // Creates a Player, given a Name, "Color", list of Player and list of Color
     val NewPlayerColor: Color = (Color, true) //ListOfColors(ListOfColors.indexOf(NewColor)) // Gets the Color from the Colors list
-    val NewPlayer: PlayerExtra = new PlayerExtra(Color,(1050,1050),true,true,true,true,true,true,true,true) // Creates a new Player based on the input Name and the Color from the line before
+    val NewPlayer: PlayerExtra = new PlayerExtra(Color, (1050, 1050), true, true, true, true, true, true, true, true) // Creates a new Player based on the input Name and the Color from the line before
 
-
-        val UpdatedPlayerList: List[PlayerExtra] = UpdatePlayerList(ListOfPlayers, NewPlayer, None) // New Player list, which is the previous version plus the new Player created
-        val UpdatedColorList: List[Color] = UpdateColorList(ListOfColors, NewPlayerColor, ListOfColors.indexWhere(_._1 ==Color)) // New Color list, which is the previous version plus the update of the Color used
-        println(s"${NewPlayerColor._1}${BOLD}Player created successfully!${RESET}") // Print to check the Color and confirm the creation and proper addition to the Player list
-        (UpdatedPlayerList, UpdatedColorList) // If the name isn't used, the output will be the the new Player and Color lists
+    val UpdatedPlayerList: List[PlayerExtra] = UpdatePlayerList(ListOfPlayers, NewPlayer, None) // New Player list, which is the previous version plus the new Player created
+    val UpdatedColorList: List[Color] = UpdateColorList(ListOfColors, NewPlayerColor, ListOfColors.indexWhere(_._1 == Color)) // New Color list, which is the previous version plus the update of the Color used
+    println(s"${NewPlayerColor._1}${BOLD}Player created successfully!${RESET}") // Print to check the Color and confirm the creation and proper addition to the Player list
+    (UpdatedPlayerList, UpdatedColorList) // If the name isn't used, the output will be the the new Player and Color lists
 
   }
 
-  def EditPlayer(oldColor:String,newColor: String, ListOfPlayers: List[PlayerExtra], ListOfColors: List[Color]): (List[PlayerExtra], List[Color]) = {
-    val CurrentColor: Color = ListOfColors(ListOfColors.indexWhere(_._1==oldColor))
+  def EditPlayer(oldColor: String, newColor: String, ListOfPlayers: List[PlayerExtra], ListOfColors: List[Color]): (List[PlayerExtra], List[Color]) = {
+    val CurrentColor: Color = ListOfColors(ListOfColors.indexWhere(_._1 == oldColor))
     val NewColor: Color = (newColor, true)
-    val OgPlayer: PlayerExtra= ListOfPlayers(ListOfPlayers.indexWhere(_._1==oldColor))
-    val EditedPlayer: PlayerExtra =new PlayerExtra(NewColor._1,OgPlayer._2,OgPlayer._3,OgPlayer._4,OgPlayer._5,OgPlayer._6,OgPlayer._7,OgPlayer._8,OgPlayer._9,OgPlayer._10)
+    val OgPlayer: PlayerExtra = ListOfPlayers(ListOfPlayers.indexWhere(_._1 == oldColor))
+    val EditedPlayer: PlayerExtra = new PlayerExtra(NewColor._1, OgPlayer._2, OgPlayer._3, OgPlayer._4, OgPlayer._5, OgPlayer._6, OgPlayer._7, OgPlayer._8, OgPlayer._9, OgPlayer._10)
 
-    val UpdatedPlayerList: List[PlayerExtra] = UpdatePlayerList(ListOfPlayers, EditedPlayer,Some(ListOfPlayers.indexWhere(_._1==OgPlayer._1)))
-    val UpdatedColorList: List[Color] = UpdateColorList(ListOfColors,NewColor,ListOfColors.indexOf(CurrentColor))
+    val UpdatedPlayerList: List[PlayerExtra] = UpdatePlayerList(ListOfPlayers, EditedPlayer, Some(ListOfPlayers.indexWhere(_._1 == OgPlayer._1)))
+    val UpdatedColorList: List[Color] = UpdateColorList(ListOfColors, NewColor, ListOfColors.indexOf(CurrentColor))
     println(s"${
       (UpdatedPlayerList(UpdatedPlayerList.indexWhere(_._1 ==
         EditedPlayer._1))._2)._1
@@ -51,13 +50,21 @@ object user {
     }
   }
 
+  def printoutCurrying(s: String)(i: Int): Unit = { // CURRYING
+    println("Message: " + s + " , Number: " + i)
+  }
+
   def AddFeud(inputFeud: feud, feudList: List[feud]): List[feud] = { //concat new feud to list
     val result: List[feud] = feudList :+ inputFeud
 
     isFeudUsed(inputFeud, feudList) match {
-      case true => println("Feud already exists")
+      case true => val help = printoutCurrying("Feud already exists") _
+        val randomInt = scala.util.Random
+        help(randomInt.nextInt())
         feudList
-      case false => println("Feud created")
+      case false => val help = printoutCurrying("Feud created") _
+        val randomInt = scala.util.Random
+        help(randomInt.nextInt())
         result
     }
   }
@@ -66,9 +73,13 @@ object user {
     val result: List[feud] = feudList diff List(inputFeud)
 
     isFeudUsed(inputFeud, feudList) match {
-      case true => println("Feud deleted")
+      case true => val help = printoutCurrying("Feud deleted") _
+        val randomInt = scala.util.Random
+        help(randomInt.nextInt())
         result
-      case false => println("Feud inexistent")
+      case false => val help = printoutCurrying("Feud inexistent") _
+        val randomInt = scala.util.Random
+        help(randomInt.nextInt())
         feudList
     }
   }
@@ -88,6 +99,9 @@ object user {
 
   def AddItem(inputItem: item, itemList: List[item]): List[item] = { //concat new priceaintright item to list
     val result: List[item] = itemList :+ inputItem
+    val help = printoutCurrying("Item added") _
+    val randomInt = scala.util.Random
+    help(randomInt.nextInt())
     result
   }
 
@@ -95,9 +109,13 @@ object user {
     val result: List[item] = itemList diff List(inputItem)
 
     isItemUsed(inputItem, itemList) match {
-      case true => println("Item deleted")
+      case true => val help = printoutCurrying("Item deleted") _
+        val randomInt = scala.util.Random
+        help(randomInt.nextInt())
         result
-      case false => println("Item inexistent")
+      case false => val help = printoutCurrying("Item inexistent") _
+        val randomInt = scala.util.Random
+        help(randomInt.nextInt())
         itemList
     }
   }

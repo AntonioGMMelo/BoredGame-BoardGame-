@@ -31,8 +31,8 @@ Recursividade (no lugar de iteratividade); DONE I.E. NO WHILE OR FOR LOOPS
 • Lazy evaluation; DONE I.E. MAKE EVERY VAL THAT IS NOT IMEDIATLY USED A LAZY VAL
 • Pattern matching; DONE I.E. NO IFS OR ELSES USE MATCH-CASE
 • Funções de ordem superior; DONE
-• Padrões recorrentes sobre listas (incluir: map DONE, filter DONE e fold);
-• Partially Applied Functions e/ou Currying; DONE I THINK
-• Try;
+• Padrões recorrentes sobre listas (incluir: map DONE, filter DONE e fold); DONE
+• Partially Applied Functions e/ou Currying; DONE (Currying)
+• Try; DONE
 • Option; DONE
 • Functional Object-Oriented programming. DONE
