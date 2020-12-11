@@ -7,9 +7,19 @@ import scala.util.{Failure, Success, Try}
 
 object FileFunctions {
   type feud = (String, List[String])
+  type Color = (String, Boolean) // Color of the Player
   type item = (String, Double) //Item type
   type PlayerExtra = (String, (Int, Int), Boolean, Boolean, Boolean, Boolean, Boolean, Boolean, Boolean, Boolean) //Player(color,(posX,posY),canMove,canReRolDice,canWeighDice,canSkipQuestion,can50/50,canAskForMoreTime,canReSpinTheWheel,canDrawNewCard)
 
+  def makeColor(string: String):Color = {
+    val split1 = string.split(";")
+    (split1(0), split1(1).toBoolean)
+  }
+
+  def makeColorString(color: Color):String = {
+    val aux = color._1 + ";" + color._2 + "\n"
+    aux
+  }
   def makePlayerString(p: PlayerExtra): String = {
     var result = p._1 + ";"
     result = result + p._2._1 + "," + p._2._1 + ";"

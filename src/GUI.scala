@@ -18,7 +18,7 @@ class GUI extends Application{
 
   var Players:List[PlayerExtra]=FileFunctions.read_file("Players.txt",FileFunctions.makePlayer)
   var Questions:List[Pergunta]=FileFunctions.read_file("Questions.txt",FileFunctions.makePergunta)
-  var Colors:List[Color]= //List(("BLACK", false), ("WHITE", false), ("BLUE", false), ("CYAN", false), ("RED", false), ("GREEN", false), ("MAGENTA", false), ("YELLOW", false))
+  var Colors:List[Color]= List(("BLACK", false), ("WHITE", false), ("BLUE", false), ("CYAN", false), ("RED", false), ("GREEN", false), ("MAGENTA", false), ("YELLOW", false)) //FileFunctions.read_file("Colors.txt",FileFunctions.makeColor)
   var Feuds:List[feud]=FileFunctions.read_file("Feuds.txt",FileFunctions.makeFeud)
   var Items:List[item]=FileFunctions.read_file("Items.txt",FileFunctions.makeItem)
   var theme = Tema("yikes",Questions)
@@ -56,10 +56,9 @@ class GUI extends Application{
             }
             listAvailableColors(Colors)//calls printAvailableColors
             val Color: (String) = new CreatePlayer().display(list)
-            val p= new PlayerExtra(Color,(1050,1050),true,true,true,true,true,true,true,true)
-            //val auxiliar:(List[PlayerExtra], List[Color])=user.CreatePlayer(p,Players,Colors) //calls CreatePlayer with the user inputs
-            //Players=auxiliar._1 //updates players list
-            //Colors=auxiliar._2 //updates colors ist
+            val auxiliar:(List[PlayerExtra], List[Color])=user.CreatePlayer(Color,Players,Colors) //calls CreatePlayer with the user inputs
+            Players=auxiliar._1 //updates players list
+            Colors=auxiliar._2 //updates colors ist
           case _ => //if there are 8 players this case is activated
             new ErrorMessage().display("SPACE ERROR","Players list is at maximum capacity i.e. 8")//Shows error message
         }
@@ -110,8 +109,9 @@ class GUI extends Application{
             listAvailableColors(Colors)
             listNonAvailableColors(Colors)
             val OldAndNewColor: (String, String) = new EditPlayer().display(list,list2)//Sends info to popUp page
-              //val aux = user.EditPlayer(OldAndNewColor._1, OldAndNewColor._2, Players,Colors)//Updates color
-             // Players = aux //updates the player list
+              val aux = user.EditPlayer(OldAndNewColor._1, OldAndNewColor._2, Players,Colors)//Updates color
+             Players = aux._1 //updates the player list
+              Colors=aux._2
         }
       }
     })
@@ -258,11 +258,12 @@ class GUI extends Application{
     //Creating the scene and setting the stage to the scene and showing it
     val scene:Scene = new Scene(root);
     primaryStage.setScene(scene)
-    primaryStage.onCloseRequestProperty(new EventHandler[ActionEvent] {
-      def handle(actionEvent: ActionEvent): Unit = {
+    primaryStage.setOnCloseRequest(new EventHandler[WindowEvent] {
+      override def handle(t: WindowEvent): Unit ={
         FileFunctions.write_file("Questions.txt",FileFunctions.makeStringPerguntas,Questions)
         FileFunctions.write_file("Feuds.txt",FileFunctions.makeFeudString,Feuds)
-        FileFunctions.write_file("Items.txt",FileFunctions.makeItemString(),Items)
+        FileFunctions.write_file("Items.txt",FileFunctions.makeItemString,Items)
+        FileFunctions.write_file("Colors.txt",FileFunctions.makeColorString,Colors)
       }
     })
     primaryStage.show()

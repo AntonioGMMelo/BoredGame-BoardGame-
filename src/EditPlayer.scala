@@ -50,7 +50,7 @@ class EditPlayer {
     }
     whatever(1)
     whatever2(1)
-    val oldColor = new ChoiceBox(list2)
+    val oldColor = new ChoiceBox(list)
     val newColor = new ChoiceBox(list2)
     //create button and button action
     val ok : Button = new Button("OK")
@@ -64,7 +64,7 @@ class EditPlayer {
 
     //adding button and message to a layout
     val layout3 = new VBox(2)
-    layout3.getChildren.addAll(newColor,ok)
+    layout3.getChildren.addAll(oldColor,newColor,ok)
     layout3.setAlignment(Pos.CENTER)
     //creating scene and setting stage to scene
     val scene: Scene= new Scene(layout3)
