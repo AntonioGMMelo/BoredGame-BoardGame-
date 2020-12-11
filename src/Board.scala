@@ -129,7 +129,7 @@ class Board {
             println(aux)
 //            aux match {
 //            case "Price Aint Right Round" =>
-//            val playa:Int=new priceAintRight().display(players)
+//            val playa:Int=new PriceAintRight().display(players)
 //            val newPos:(Int,Int)=player.move(10,50,players(playa)._2,player.moveBackward)
 //            circles(i).setCenterX(newPos._1)
 //            circles(i).setCenterY(newPos._2)
