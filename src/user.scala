@@ -56,40 +56,69 @@ object user {
         EditedPlayer._1))._2)._1
     }${BOLD}Player edited successfully!${RESET}")
     (UpdatedPlayerList, UpdatedColorList)
+  }
 
+  @tailrec
+  def isFeudUsed(inputFeud: feud, feudList: List[feud]): Boolean = {
+
+    feudList match {
+      case Nil => false
+      case x :: t => {
+        if (x == inputFeud)
+          true
+        else isFeudUsed(inputFeud, t)
+      }
+    }
   }
 
   def AddFeud(inputFeud: feud, feudList: List[feud]): List[feud] = { //concat new feud to list
-    feudList match {
-      case inputFeud => println("Feud already exists.")
+    val result: List[feud] = feudList :+ inputFeud
+
+    isFeudUsed(inputFeud, feudList) match {
+      case true => println("Feud already exists")
         feudList
-      case _ => val result: List[feud] = feudList ++ List(inputFeud)
+      case false => println("Feud created")
         result
     }
   }
 
   def DeleteFeud(inputFeud: feud, feudList: List[feud]): List[feud] = { //delete feud from list
-    feudList match{
-      case inputFeud => val result: List[feud] = feudList diff List(inputFeud)
+    val result: List[feud] = feudList diff List(inputFeud)
+
+    isFeudUsed(inputFeud, feudList) match {
+      case true => println("Feud deleted")
         result
-      case _ =>
+      case false => println("Feud inexistent")
         feudList
     }
   }
 
-  def AddItem(inputItem: item, itemList: List[item]): List[item] = { //concat new priceaintright item to list
+  @tailrec
+  def isItemUsed(inputItem: item, itemList: List[item]): Boolean = {
+
     itemList match {
-      case inputItem => itemList
-      case _ => val result: List[item] = itemList :+ inputItem
-        result
+      case Nil => false
+      case x :: t => {
+        if (x == inputItem)
+          true
+        else isItemUsed(inputItem, t)
+      }
     }
   }
 
+  def AddItem(inputItem: item, itemList: List[item]): List[item] = { //concat new priceaintright item to list
+    val result: List[item] = itemList :+ inputItem
+    result
+  }
+
   def DeleteItem(inputItem: item, itemList: List[item]): List[item] = { //delete priceaintright item from list
-    itemList match {
-      case inputItem => val result: List[item] = itemList diff List(inputItem)
+    val result: List[item] = itemList diff List(inputItem)
+
+    isItemUsed(inputItem, itemList) match {
+      case true => println("Item deleted")
         result
-      case _ => itemList
+      case false => println("Item inexistent")
+        itemList
     }
   }
 
