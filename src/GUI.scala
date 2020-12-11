@@ -13,7 +13,7 @@ class GUI extends Application{
   type Color = (String, Boolean) // Color of the Player
   type feud = (String,List[String]) //feud type
   type item = (String,Double) //Item type
-  type PlayerExtra=(String,(Int,Int),Boolean,Boolean,Boolean,Boolean,Boolean,Boolean,Boolean,Boolean) //Player(color,(posX,posY),canMove,canReRolDice,canWeighDice,canSkipQuestion,can50/50,canAskForMoreTime,canReSpinTheWheel,canDrawNewCard)
+  type PlayerExtra=(String,(Int,Int),Boolean,Boolean,Boolean,Boolean,Boolean,Boolean,Boolean,Boolean) //PlayerExtra(color,(posX,posY),canMove,canReRolDice,canWeighDice,canSkipQuestion,can50/50,canAskForMoreTime,canReSpinTheWheel,canDrawNewCard)
 
   var Players:List[PlayerExtra]=FileFunctions.read_file("Players.txt",FileFunctions.makePlayer)
   var Questions:List[Pergunta]=FileFunctions.read_file("Questions.txt",FileFunctions.makePergunta)
@@ -122,7 +122,7 @@ class GUI extends Application{
         val auxer = Players.size
         auxer match {
           case auxer if auxer>1 && auxer<9 =>
-            val whatever = new Board ().display(Players,Questions,Feuds,Items)
+            val whatever = new Board ().display(Questions,Feuds,Items)
           case _ =>
             new ErrorMessage().display("SPACE ERROR", "Not Enough Players to Start Game , Min=2")
         }
@@ -293,6 +293,7 @@ class GUI extends Application{
         FileFunctions.write_file("Feuds.txt",FileFunctions.makeFeudString,Feuds)
         FileFunctions.write_file("Items.txt",FileFunctions.makeItemString,Items)
         FileFunctions.write_file("Colors.txt",FileFunctions.makeColorString,Colors)
+        FileFunctions.write_file("Players.txt",FileFunctions.makePlayerString,Players)
       }
     })
     primaryStage.show()
