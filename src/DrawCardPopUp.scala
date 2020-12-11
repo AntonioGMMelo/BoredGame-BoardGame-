@@ -1,5 +1,3 @@
-import java.awt.{Label, TextField}
-
 import javafx.event.{ActionEvent, EventHandler}
 import javafx.fxml.FXMLLoader
 import javafx.geometry.Pos
@@ -8,12 +6,12 @@ import javafx.scene.control.Button
 import javafx.scene.layout.VBox
 import javafx.stage.{Modality, Stage}
 
-class SpinDaWheelPopUp {
-  var spin:String=""
-  var CanReSpin:Boolean=true
+class DrawCardPopUp {
+  var Card:String=""
+  var CanReDraw:Boolean=true
 
-  def display(label:String,canReSpin: Boolean,wheelitem:String): (String,Boolean) ={
-    val fxmlLoader = new FXMLLoader(getClass.getResource("SpinDaWheelPopUp.fxml"))
+  def display(label:String,canReDraw: Boolean,card:String): (String,Boolean) = {
+    val fxmlLoader = new FXMLLoader(getClass.getResource("DrawCardPopUp.fxml"))
     val mainViewRoot: Parent = fxmlLoader.load()
     //creating stage
     val popUp: Stage = new Stage()
@@ -25,33 +23,33 @@ class SpinDaWheelPopUp {
 
     val layout3 = new VBox(3)
     //create button and button action
-    val ok2: Button = new Button("I'll Take: "+ wheelitem)
+    val ok2: Button = new Button("I'll Take: " + card)
     ok2.setOnAction(new EventHandler[ActionEvent] {
       def handle(event: ActionEvent) = {
-        spin=wheelitem
-        CanReSpin=canReSpin
+        Card=card
+        CanReDraw=canReDraw
         popUp.close()
       }
     })
-    if(canReSpin) {
+    if (canReDraw) {
       val ok: Button = new Button("Re-Spin Wheel")
       ok.setOnAction(new EventHandler[ActionEvent] {
         def handle(event: ActionEvent) = {
-          spin=player.getSomething(player.wheelItems)
-          CanReSpin=false
+          Card = player.getSomething(player.cards)
+          CanReDraw = false
           popUp.close()
         }
       })
-      layout3.getChildren.addAll(ok,ok2)
-    }else{
+      layout3.getChildren.addAll(ok, ok2)
+    } else {
       layout3.getChildren.addAll(ok2)
     }
 
     layout3.setAlignment(Pos.CENTER)
     //creating scene and setting stage to scene
-    val scene: Scene= new Scene(layout3)
+    val scene: Scene = new Scene(layout3)
     popUp.setScene(scene)
     popUp.showAndWait()
-    (spin,CanReSpin)
+    (Card, CanReDraw)
   }
 }

@@ -1,5 +1,3 @@
-import java.awt.{Label, TextField}
-
 import javafx.event.{ActionEvent, EventHandler}
 import javafx.fxml.FXMLLoader
 import javafx.geometry.Pos
@@ -8,12 +6,12 @@ import javafx.scene.control.Button
 import javafx.scene.layout.VBox
 import javafx.stage.{Modality, Stage}
 
-class SpinDaWheelPopUp {
-  var spin:String=""
-  var CanReSpin:Boolean=true
+class RollDaDicePopUp {
+  var newRoll:Int=0
+  var CanReRoll:Boolean=true
 
-  def display(label:String,canReSpin: Boolean,wheelitem:String): (String,Boolean) ={
-    val fxmlLoader = new FXMLLoader(getClass.getResource("SpinDaWheelPopUp.fxml"))
+  def display(label:String,canReRoll: Boolean,roll:Int): (Int,Boolean) ={
+    val fxmlLoader = new FXMLLoader(getClass.getResource("RollDaDicePopUp.fxml"))
     val mainViewRoot: Parent = fxmlLoader.load()
     //creating stage
     val popUp: Stage = new Stage()
@@ -25,20 +23,20 @@ class SpinDaWheelPopUp {
 
     val layout3 = new VBox(3)
     //create button and button action
-    val ok2: Button = new Button("I'll Take: "+ wheelitem)
+    val ok2: Button = new Button("I'll Take: "+ roll)
     ok2.setOnAction(new EventHandler[ActionEvent] {
       def handle(event: ActionEvent) = {
-        spin=wheelitem
-        CanReSpin=canReSpin
+        newRoll=roll
+        CanReRoll=canReRoll
         popUp.close()
       }
     })
-    if(canReSpin) {
+    if(canReRoll) {
       val ok: Button = new Button("Re-Spin Wheel")
       ok.setOnAction(new EventHandler[ActionEvent] {
         def handle(event: ActionEvent) = {
-          spin=player.getSomething(player.wheelItems)
-          CanReSpin=false
+           newRoll=player.getSomething(player.dice)
+          CanReRoll=false
           popUp.close()
         }
       })
@@ -52,6 +50,6 @@ class SpinDaWheelPopUp {
     val scene: Scene= new Scene(layout3)
     popUp.setScene(scene)
     popUp.showAndWait()
-    (spin,CanReSpin)
+    (newRoll,CanReRoll)
   }
 }

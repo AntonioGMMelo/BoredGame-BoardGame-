@@ -1,7 +1,7 @@
-BLACK;false
+BLACK;true
 WHITE;true
 BLUE;false
-CYAN;false
+CYAN;true
 RED;false
 GREEN;false
 MAGENTA;false

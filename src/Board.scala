@@ -183,10 +183,9 @@ class Board {
 //            }
           } else {
             if (getSpaceNumber(circles(i).getCenterX.toInt, circles(i).getCenterY.toInt) % 2 == 0) {
-              //, , ","Feud Round","Feud Round","Feud Round","Feud Round","Feud Round"
-              //val card:(String,Boolean)= new drawCard().display(players(i)._1,players(i)._10)
+              val card:(String,Boolean)= new DrawCard().display(players(i)._1,players(i)._10)
               //players(i)._10=card._2
-              //val aux=card._1
+              val aux=card._1
               //aux match{
               //case "Roll The dice" =>
               //val rollDaDice:(Int,Boolean) = new RollDaDice(players(i)._1,players(i)._4)
