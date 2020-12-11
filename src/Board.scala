@@ -116,9 +116,9 @@ class Board {
           //players(i)._3=true
         }
         if (players(i)._3) {
-          //val rollDaDice:(Int,Boolean) = new RollDaDice(players(i)._1,players(i)._4)
+          val rollDaDice:(Int,Boolean) = new RollDaDice().display(players(i)._1,players(i)._4)
           //players(i)._4=rollDaDice._2
-          //val newPos:(Int,Int)=player.move(rollDaDice._1,50,players(i)._2,player.moveForward())
+          val newPos:(Int,Int)=player.move(rollDaDice._1,50,players(i)._2,player.moveForward)
           //circles(i).setCenterX(newPos._1)
           //circles(i).setCenterY(newPos._2)
           if (getSpaceNumber(circles(i).getCenterX.toInt, circles(i).getCenterY.toInt) % 3 == 0) {
@@ -129,50 +129,50 @@ class Board {
 //            aux match {
 //            case "Price Aint Right Round" =>
 //            val playa:Int=new priceAintRight().display(players)
-//            val newPos:(Int,Int)=player.move(10,50,players(playa)._2,player.moveBackward())
+//            val newPos:(Int,Int)=player.move(10,50,players(playa)._2,player.moveBackward)
 //            circles(i).setCenterX(newPos._1)
 //            circles(i).setCenterY(newPos._2)
 //            case "Move Back 1 Space" =>
-//            val newPos:(Int,Int)=player.move(1,50,players(i)._2,player.moveBackward())
+//            val newPos:(Int,Int)=player.move(1,50,players(i)._2,player.moveBackward)
 //            circles(i).setCenterX(newPos._1)
 //            circles(i).setCenterY(newPos._2)
 //            case "Move Back 2 Spaces" =>
-//            val newPos:(Int,Int)=player.move(2,50,players(i)._2,player.moveBackward())
+//            val newPos:(Int,Int)=player.move(2,50,players(i)._2,player.moveBackward)
 //            circles(i).setCenterX(newPos._1)
 //            circles(i).setCenterY(newPos._2)
 //            case "All Players Move Back 2 Spaces" =>
 //            for(j<-0 to player.size){
-//            val newPos:(Int,Int)=player.move(2,50,players(j)._2,player.moveForward())
+//            val newPos:(Int,Int)=player.move(2,50,players(j)._2,player.moveForward)
 //            circles(j).setCenterX(newPos._1)
 //            circles(j).setCenterY(newPos._2)
 //            }
 //            case "Move Forward 1 Space" =>
-//            val newPos:(Int,Int)=player.move(1,50,players(i)._2,player.moveForward())
+//            val newPos:(Int,Int)=player.move(1,50,players(i)._2,player.moveForward)
 //            circles(i).setCenterX(newPos._1)
 //            circles(i).setCenterY(newPos._2)
 //            case "Move Forward 2 Spaces" =>
-//            val newPos:(Int,Int)=player.move(2,50,players(i)._2,player.moveForward())
+//            val newPos:(Int,Int)=player.move(2,50,players(i)._2,player.moveForward)
 //            circles(i).setCenterX(newPos._1)
 //            circles(i).setCenterY(newPos._2)
 //            case "Move Forward 3 Spaces" =>
-//            val newPos:(Int,Int)=player.move(3,50,players(i)._2,player.moveForward())
+//            val newPos:(Int,Int)=player.move(3,50,players(i)._2,player.moveForward)
 //            circles(i).setCenterX(newPos._1)
 //            circles(i).setCenterY(newPos._2)
 //            case "All Players Move Forwards 2 Spaces" =>
 //            for(j<-0 to player.size){
-//            val newPos:(Int,Int)=player.move(2,50,players(j)._2,player.moveForward())
+//            val newPos:(Int,Int)=player.move(2,50,players(j)._2,player.moveForward)
 //            circles(j).setCenterX(newPos._1)
 //            circles(j).setCenterY(newPos._2)
 //            }
 //            case "Roll The dice" =>
-//            val rollDaDice:(Int,Boolean) = new RollDaDice(players(i)._1,players(i)._4)
+              val rollDaDice:(Int,Boolean) = new RollDaDice().display(players(i)._1,players(i)._4)
 //            players(i)._4=rollDaDice._2
-//            val newPos:(Int,Int)=player.move(rollDaDice._1,50,players(i)._2,player.moveForward())
+              val newPos:(Int,Int)=player.move(rollDaDice._1,50,players(i)._2,player.moveForward)
 //            circles(i).setCenterX(newPos._1)
 //            circles(i).setCenterY(newPos._2)
-//            case "Roll The Weighted Dice" =>
-//            val rollDaWeightedDice:Int = new RollDaWeightedDice(players(i)._1)
-//            val newPos:(Int,Int)=player.move(rollDaWeightedDice,50,players(i)._2,player.moveForward())
+            //case "Roll The Weighted Dice" =>
+              val rollDaWeightedDice:Int = new RollDaWeightedDice().display(players(i)._1)
+              //val newPos:(Int,Int)=player.move(rollDaWeightedDice,50,players(i)._2,player.moveForward)
 //            circles(i).setCenterX(newPos._1)
 //            circles(i).setCenterY(newPos._2)
 //             case "Stay" =>
