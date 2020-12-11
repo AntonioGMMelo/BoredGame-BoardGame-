@@ -7,10 +7,12 @@ import javafx.scene.layout.VBox
 import javafx.stage.{Modality, Stage}
 
 class DrawCardPopUp {
+
   var Card:String=""
   var CanReDraw:Boolean=true
 
   def display(label:String,canReDraw: Boolean,card:String): (String,Boolean) = {
+    //load fxml
     val fxmlLoader = new FXMLLoader(getClass.getResource("DrawCardPopUp.fxml"))
     val mainViewRoot: Parent = fxmlLoader.load()
     //creating stage
@@ -20,9 +22,9 @@ class DrawCardPopUp {
     popUp.setTitle(label)
     popUp.setMaxWidth(400)
     popUp.setMaxHeight(300)
-
+    //creates vbox
     val layout3 = new VBox(3)
-    //create button and button action
+    //create button and button action "Dont RE-Draw" i.e I'll take: card(last card draw)
     val ok2: Button = new Button("I'll Take: " + card)
     ok2.setOnAction(new EventHandler[ActionEvent] {
       def handle(event: ActionEvent) = {
@@ -31,17 +33,23 @@ class DrawCardPopUp {
         popUp.close()
       }
     })
+    //if user can re draw ie canredraw=true
     if (canReDraw) {
       val ok: Button = new Button("Re-Spin Wheel")
       ok.setOnAction(new EventHandler[ActionEvent] {
         def handle(event: ActionEvent) = {
+          //draws new card
           Card = player.getSomething(player.cards)
+          //sets boolean to false
           CanReDraw = false
+          //closes Window
           popUp.close()
         }
       })
+      //adds both buttons to layout
       layout3.getChildren.addAll(ok, ok2)
     } else {
+      //adds only "Dont redraw" button
       layout3.getChildren.addAll(ok2)
     }
 
@@ -50,6 +58,7 @@ class DrawCardPopUp {
     val scene: Scene = new Scene(layout3)
     popUp.setScene(scene)
     popUp.showAndWait()
+    //returns the oldDraw/newDraw and the boolean
     (Card, CanReDraw)
   }
 }

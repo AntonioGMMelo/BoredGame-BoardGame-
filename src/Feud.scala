@@ -12,6 +12,7 @@ class Feud {
   var Spaces :Int=0
 
   def display(label:String,layout: List[feud]): (Int) ={
+    //load fxml
     val fxmlLoader = new FXMLLoader(getClass.getResource("Feud.fxml"))
     val mainViewRoot: Parent = fxmlLoader.load()
     val list= FXCollections.observableArrayList(layout(0))
@@ -22,26 +23,30 @@ class Feud {
     popUp.setTitle(label)
     popUp.setMaxWidth(400)
     popUp.setMaxHeight(300)
-    val a= player.getSomething(layout)
-    val label2= new Label(a._1)
+    val a= player.getSomething(layout)//gets random feud
+    val label2= new Label(a._1)//creates label with feud name
+    //adds user input field
     val answer = new TextField("Answer Here")
     //create button and button action
-    val ok : Button = new Button("OK")
-    ok.setOnAction(new EventHandler[ActionEvent]{
+    val Submit : Button = new Button("Submit")
+    Submit.setOnAction(new EventHandler[ActionEvent]{
       def handle(event:ActionEvent)  = {
+        //gets user answer
         Spaces=player.answerFeud(a,answer.getText())
+        //closes window
         popUp.close()
       }
     })
 
-    //adding button and message to a layout
+    //creates layout3 and adds label label2, the textfield answer and submit button to the layput3
     val layout3 = new VBox(2)
-    layout3.getChildren.addAll(label2,answer,ok)
+    layout3.getChildren.addAll(label2,answer,Submit)
     layout3.setAlignment(Pos.CENTER)
     //creating scene and setting stage to scene
     val scene: Scene= new Scene(layout3)
     popUp.setScene(scene)
     popUp.showAndWait()
+    //return value for this window
     Spaces
   }
 }

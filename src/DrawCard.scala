@@ -11,6 +11,7 @@ class DrawCard {
   var CanReDraw:Boolean=true
 
   def display(label:String,canReDraw: Boolean): (String,Boolean) ={
+    //load fxml
     val fxmlLoader = new FXMLLoader(getClass.getResource("DrawCard.fxml"))
     val mainViewRoot: Parent = fxmlLoader.load()
     //creating stage
@@ -22,24 +23,27 @@ class DrawCard {
     popUp.setMaxHeight(300)
 
     //create button and button action
-    val ok : Button = new Button("Draw Card")
-    ok.setOnAction(new EventHandler[ActionEvent]{
+    val draw : Button = new Button("Draw Card")
+    draw.setOnAction(new EventHandler[ActionEvent]{
       def handle(event:ActionEvent)  = {
-        val spin2 = new SpinDaWheelPopUp().display(label,canReDraw,player.getSomething(player.cards))
+        val spin2 = new SpinDaWheelPopUp().display(label,canReDraw,player.getSomething(player.cards)) //pops Up options for user
+        //gets values from SpinDaWheelPopUP
         card=spin2._1
         CanReDraw=spin2._2
+        //closes the window
         popUp.close()
       }
     })
 
-    //adding button and message to a layout
+    //creating layout3 and adding button
     val layout3 = new VBox(2)
-    layout3.getChildren.addAll(ok)
+    layout3.getChildren.addAll(draw)
     layout3.setAlignment(Pos.CENTER)
     //creating scene and setting stage to scene
     val scene: Scene= new Scene(layout3)
     popUp.setScene(scene)
     popUp.showAndWait()
+    //return value
     (card,CanReDraw)
   }
 }

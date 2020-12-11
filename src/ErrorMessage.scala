@@ -1,13 +1,14 @@
 import javafx.event.{ActionEvent, EventHandler}
 import javafx.fxml.FXMLLoader
-import javafx.scene._
-import javafx.stage._
 import javafx.geometry._
-import javafx.scene.control.{Button, ComboBox, Label, TextField}
+import javafx.scene._
+import javafx.scene.control.{Button, Label}
 import javafx.scene.layout.VBox
+import javafx.stage._
 
 class ErrorMessage {
   def display(title: String, message: String): Unit ={
+    //load fxml
     val fxmlLoader = new FXMLLoader(getClass.getResource("ErrorMessage.fxml"))
     val mainViewRoot: Parent = fxmlLoader.load()
     //creating stage
