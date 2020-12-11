@@ -339,10 +339,10 @@
                         <Circle layoutX="527.0" layoutY="962.0" radius="4.0" stroke="BLACK" strokeType="INSIDE" />
                         <Circle layoutX="536.0" layoutY="970.0" radius="4.0" stroke="BLACK" strokeType="INSIDE" />
                         <Rectangle id="rect" arcHeight="5.0" arcWidth="5.0" fill="BLUE" height="50.0" layoutX="975.0" layoutY="1025.0" stroke="BLACK" strokeType="INSIDE" width="50.0" />
-                        <Button fx:id="endgame" layoutX="600.0" layoutY="1100.0" mnemonicParsing="false" text="End Game" />
-                        <Button fx:id="restartgame" layoutX="550.0" layoutY="1100.0" mnemonicParsing="false" text="Restart Game" />
+                        <Button fx:id="endgame" layoutX="700.0" layoutY="1100.0" mnemonicParsing="false" text="End Game" />
+                        <Button fx:id="restartgame" layoutX="600.0" layoutY="1100.0" mnemonicParsing="false" text="Restart Game" />
                         <Button fx:id="savegame" layoutX="500.0" layoutY="1100.0" mnemonicParsing="false" text="Save Game" />
-                        <Button fx:id="mainmenu" layoutX="450.0" layoutY="1100.0" mnemonicParsing="false" text="Main Menu" />
+                        <Button fx:id="mainmenu" layoutX="400.0" layoutY="1100.0" mnemonicParsing="false" text="Main Menu" />
                        </children>
                 </AnchorPane>
             </content>
