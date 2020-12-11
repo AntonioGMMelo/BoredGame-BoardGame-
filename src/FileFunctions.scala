@@ -31,7 +31,8 @@ object FileFunctions {
     result = result + p._8 + ";"
     result = result + p._9 + ";"
     result = result + p._10 + "\n"
-    result
+    val r = result
+    r
   }
 
   def makePlayer(string: String): PlayerExtra = {
@@ -76,7 +77,8 @@ object FileFunctions {
         result = result + "\n"
       a += 1
     }
-    result
+    val r = result
+    r
   }
 
 
@@ -118,7 +120,8 @@ object FileFunctions {
         result = result + "\n"
       aux += 1
     }
-    result
+    val r = result
+    r
   }
 
   def check_File(filename: String): Try[List[String]] = {
@@ -154,4 +157,3 @@ object FileFunctions {
   }
 
 }
-
