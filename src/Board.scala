@@ -1,4 +1,3 @@
-
 import Menu._
 import javafx.event.{ActionEvent, EventHandler}
 import javafx.fxml.{FXML, FXMLLoader}
@@ -51,7 +50,7 @@ class Board {
     })
     savegame.setOnAction(new EventHandler[ActionEvent]{
       def handle(actionEvent: ActionEvent): Unit = {
-        //writePlayers
+        FileFunctions.write_file("Players.txt",FileFunctions.makePlayerString,players)
       }
     })
     endgame.setOnAction(new EventHandler[ActionEvent]{

@@ -12,16 +12,15 @@ import javafx.event.{ActionEvent, EventHandler}
 class GUI extends Application{
   type Name = String // Name of the Player
   type Color = (String, Boolean) // Color of the Player
-  type Player = (Name, Color) // Player type
   type feud = (String,List[String]) //feud type
   type item = (String,Double) //Item type
   type PlayerExtra=(String,(Int,Int),Boolean,Boolean,Boolean,Boolean,Boolean,Boolean,Boolean,Boolean) //Player(color,(posX,posY),canMove,canReRolDice,canWeighDice,canSkipQuestion,can50/50,canAskForMoreTime,canReSpinTheWheel,canDrawNewCard)
 
-  var Players:List[Player]=List()
-  var Questions:List[Pergunta]=List()
-  var Colors:List[Color]=List(("BLACK", false), ("WHITE", false), ("BLUE", false), ("CYAN", false), ("RED", false), ("GREEN", false), ("MAGENTA", false), ("YELLOW", false))
-  var Feuds:List[feud]=List()
-  var Items:List[item]=List()
+  var Players:List[PlayerExtra]=FileFunctions.read_file("Players.txt",FileFunctions.makePlayer)
+  var Questions:List[Pergunta]=FileFunctions.read_file("Questions.txt",FileFunctions.makePergunta)
+  var Colors:List[Color]= //List(("BLACK", false), ("WHITE", false), ("BLUE", false), ("CYAN", false), ("RED", false), ("GREEN", false), ("MAGENTA", false), ("YELLOW", false))
+  var Feuds:List[feud]=FileFunctions.read_file("Feuds.txt",FileFunctions.makeFeud)
+  var Items:List[item]=FileFunctions.read_file("Items.txt",FileFunctions.makeItem)
   var theme = Tema("yikes",Questions)
 
   override def start(primaryStage: Stage): Unit ={
@@ -56,10 +55,11 @@ class GUI extends Application{
               }
             }
             listAvailableColors(Colors)//calls printAvailableColors
-            val ColorAndName: (String,String) = new CreatePlayer().display(list)
-            val auxiliar:(List[Player], List[Color])=user.CreatePlayer(ColorAndName._1,ColorAndName._2,Players,Colors) //calls CreatePlayer with the user inputs
-            Players=auxiliar._1 //updates players list
-            Colors=auxiliar._2 //updates colors ist
+            val Color: (String) = new CreatePlayer().display(list)
+            val p= new PlayerExtra(Color,(1050,1050),true,true,true,true,true,true,true,true)
+            //val auxiliar:(List[PlayerExtra], List[Color])=user.CreatePlayer(p,Players,Colors) //calls CreatePlayer with the user inputs
+            //Players=auxiliar._1 //updates players list
+            //Colors=auxiliar._2 //updates colors ist
           case _ => //if there are 8 players this case is activated
             new ErrorMessage().display("SPACE ERROR","Players list is at maximum capacity i.e. 8")//Shows error message
         }
@@ -73,16 +73,21 @@ class GUI extends Application{
           case 0 => //if there are no players this case is activated
             new ErrorMessage().display("SPACE ERROR", "Players list empty")
           case _ => //if there are players to edit this case is activated
-            var list: List[String] = List()
-
+            var list:List[String]=List()
             @tailrec
-            def listAvailablePlayers(Players: List[Player]): Unit = { //prints all the available Players
-              val halp = Players.size
-              halp match { //matches the number of Players in the list to the cases ensuring recursion
-                case halp if halp > 0 => // if there are still Players in the List this case gets activated
-                  list = list :+ Players.head._1
-                  listAvailablePlayers(Players.tail) //recursive call
-                case _ => //if there are no more players on the list this case gets activated
+            def listNonAvailableColors(Colors:List[(String,Boolean)]): Unit = { //prints all the available colors by checking the Boolean in the list true if the color has been used and false if it hasn't
+              val aux=Colors.size
+              aux match { //matches the number of colors in the list to the cases ensuring recursion
+                case aux if aux > 0 => // if there are still colors in the List this case gets activated
+                  Colors.head._2 match { //Matches the boolean to see weather the color is still unused
+                    case true => //if the color hasn't been used this case gets activated
+                      val label: Label = new Label()
+                      list =list:+Colors.head._1//the color is added as an option for the user
+                      listNonAvailableColors(Colors.tail) //recursive call
+                    case _ => //if the color has been used this case gets activated
+                      listNonAvailableColors(Colors.tail) //recursive call
+                  }
+                case _ => //if there are no colors left in the list this case is activated
               }
             }
             var list2:List[String]=List()
@@ -102,24 +107,11 @@ class GUI extends Application{
                 case _ => //if there are no colors left in the list this case is activated
               }
             }
-            listAvailablePlayers(Players) //calls printAvailablePlayers
-            listAvailableColors(Colors)//
-            val OldAndNewName: (Boolean, String, String, Boolean, String) = new EditPlayer().display(list,list2)//Sends info to popUp page
-            if (OldAndNewName._1) { //tells weather to update name
-              val aux = user.EditPlayerName(OldAndNewName._2, OldAndNewName._3, Players)//Updates name if need be
-              Players = aux //updates the player list
-              if(OldAndNewName._4) { //tells weather to update Color too
-                val aux = user.EditPlayerColor(Players(Players.indexWhere(_._1.equals(OldAndNewName._3))),OldAndNewName._5,Players,Colors)//updates color if need be
-                Players =aux._1 //updates the player list
-                Colors=aux._2 //update the colors list
-              }
-            }else{
-              if(OldAndNewName._4) { //Tells weather to update color
-                val aux = user.EditPlayerColor(Players(Players.indexWhere(_._1.equals(OldAndNewName._2))),OldAndNewName._5,Players,Colors)//updates color and not name if need be
-                Players =aux._1 //updates the player list
-                Colors=aux._2 //updates the colors list
-              }
-            }
+            listAvailableColors(Colors)
+            listNonAvailableColors(Colors)
+            val OldAndNewColor: (String, String) = new EditPlayer().display(list,list2)//Sends info to popUp page
+              //val aux = user.EditPlayer(OldAndNewColor._1, OldAndNewColor._2, Players,Colors)//Updates color
+             // Players = aux //updates the player list
         }
       }
     })
@@ -127,15 +119,10 @@ class GUI extends Application{
     val StartGame : Button = new Button("Start Game")
     StartGame.setOnAction(new EventHandler[ActionEvent]{
       def handle(actionEvent: ActionEvent): Unit = {
-        val playerExtra=new PlayerExtra("NO",(1050,1050),true,true,true,true,true,true,true,true)
-        var PlayersExtra:List[PlayerExtra]= List(playerExtra,playerExtra,playerExtra,playerExtra,playerExtra,playerExtra,playerExtra,playerExtra)
-        for(i<-0 to Players.size-1){
-          PlayersExtra=PlayersExtra.updated(i,new PlayerExtra(Players(i)._2._1,(1050,1050),true,true,true,true,true,true,true,true))
-        }
         val auxer = Players.size
         auxer match {
           case auxer if auxer>1 && auxer<9 =>
-            val whatever = new Board ().display(PlayersExtra)
+            val whatever = new Board ().display(Players)
           case _ =>
             new ErrorMessage().display("SPACE ERROR", "Not Enough Players to Start Game , Min=2")
         }
@@ -271,6 +258,13 @@ class GUI extends Application{
     //Creating the scene and setting the stage to the scene and showing it
     val scene:Scene = new Scene(root);
     primaryStage.setScene(scene)
+    primaryStage.onCloseRequestProperty(new EventHandler[ActionEvent] {
+      def handle(actionEvent: ActionEvent): Unit = {
+        FileFunctions.write_file("Questions.txt",FileFunctions.makeStringPerguntas,Questions)
+        FileFunctions.write_file("Feuds.txt",FileFunctions.makeFeudString,Feuds)
+        FileFunctions.write_file("Items.txt",FileFunctions.makeItemString(),Items)
+      }
+    })
     primaryStage.show()
 
   }
