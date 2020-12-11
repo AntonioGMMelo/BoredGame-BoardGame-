@@ -10,6 +10,7 @@ class RollDaWeightedDice {
   var roll:Int=0
 
   def display(label:String): Int ={
+    //load fxml
     val fxmlLoader = new FXMLLoader(getClass.getResource("RollDaWeightedDice.fxml"))
     val mainViewRoot: Parent = fxmlLoader.load()
     //creating stage
@@ -21,12 +22,13 @@ class RollDaWeightedDice {
     popUp.setMaxHeight(300)
 
     //create button and button action
-    val ok : Button = new Button("Spin Wheel")
+    val ok : Button = new Button("Roll the Weighted Dice")
     ok.setOnAction(new EventHandler[ActionEvent]{
       def handle(event:ActionEvent)  = {
         val r=player.weightedDice()
-        val spin2 =new  ErrorMessage().display(label,r.toString)
-        roll=r
+        val spin2 =new  ErrorMessage().display(label,r.toString)//tells the player the dice roll
+        roll=r //assigns dice roll value to roll
+        //close window
         popUp.close()
       }
     })
@@ -39,6 +41,7 @@ class RollDaWeightedDice {
     val scene: Scene= new Scene(layout3)
     popUp.setScene(scene)
     popUp.showAndWait()
+    //return value for this window
     (roll)
   }
 }

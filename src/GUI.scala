@@ -117,6 +117,7 @@ class GUI extends Application{
     //StartGame Button setup
     val StartGame : Button = new Button("Start Game")
     StartGame.setOnAction(new EventHandler[ActionEvent]{
+
       def handle(actionEvent: ActionEvent): Unit = {
         val auxer = Players.size
         auxer match {

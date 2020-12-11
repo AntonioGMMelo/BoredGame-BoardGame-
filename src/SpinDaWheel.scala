@@ -10,10 +10,12 @@ import javafx.stage.{Modality, Stage}
 import scala.annotation.tailrec
 
 class SpinDaWheel {
+
   var spin:String=""
   var CanReSpin:Boolean=true
 
   def display(label:String,canReSpin: Boolean): (String,Boolean) ={
+    //load fxml
     val fxmlLoader = new FXMLLoader(getClass.getResource("SpinDaWheel.fxml"))
     val mainViewRoot: Parent = fxmlLoader.load()
     //creating stage
@@ -28,9 +30,9 @@ class SpinDaWheel {
     val ok : Button = new Button("Spin Wheel")
     ok.setOnAction(new EventHandler[ActionEvent]{
       def handle(event:ActionEvent)  = {
-        val spin2 = new SpinDaWheelPopUp().display(label,canReSpin,player.getSomething(player.wheelItems))
-        spin=spin2._1
-        CanReSpin=spin2._2
+        val spin2 = new SpinDaWheelPopUp().display(label,canReSpin,player.getSomething(player.wheelItems))//gets values from spinTheWheelPopUp
+        spin=spin2._1 //asssings the wheel item gotten
+        CanReSpin=spin2._2 //updates boolean
         popUp.close()
       }
     })
@@ -43,6 +45,7 @@ class SpinDaWheel {
     val scene: Scene= new Scene(layout3)
     popUp.setScene(scene)
     popUp.showAndWait()
+    //return value for this window
     (spin,CanReSpin)
   }
 }

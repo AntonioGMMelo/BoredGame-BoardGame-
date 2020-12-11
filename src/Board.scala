@@ -13,7 +13,7 @@ class Board {
 
   //loading circles and buttons from fxml File
   @FXML
-  var circle1 :Circle =_
+  var Circle1 :Circle =_
   @FXML
   var circle2 :Circle =_
   @FXML
@@ -37,15 +37,15 @@ class Board {
   @FXML
   var savegame:Button=_
 
+
   def display(players:List[PlayersExtra],questions:List[Pergunta],feuds:List[feud],items:List[item]):Unit = {
   //loading fxml file
     val fxmlLoader = new FXMLLoader(getClass.getResource("Board.fxml"))
     val mainViewRoot: Parent = fxmlLoader.load()
-
     //Creating stage
     val popUp: Stage = new Stage()
     //Creating Circles List from the fxml load
-    var circles: List[Circle]= List(circle1,circle2,circle3,circle4,circle5,circle6,circle7,circle8)
+    var circles: List[Circle]= List(Circle1,circle2,circle3,circle4,circle5,circle6,circle7,circle8)
     //setting main menu button action
     mainmenu.setOnAction(new EventHandler[ActionEvent]{
       def handle(actionEvent: ActionEvent): Unit = {
@@ -140,7 +140,6 @@ class Board {
             val wheel:(String,Boolean)=new SpinDaWheel().display(players(i)._1,players(i)._9)
             //players(i)._9=wheel._2
             val aux:String = wheel._1
-            println(aux)
 //            aux match {//matches the wheel spin instance to the cases
 //            case "Price Aint Right Round" =>
 //            val playa:Int=new PriceAintRight().display(players,items) //starts a a price aint right round

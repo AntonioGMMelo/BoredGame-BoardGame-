@@ -1,18 +1,16 @@
-import javafx.collections.FXCollections
 import javafx.event.{ActionEvent, EventHandler}
 import javafx.fxml.FXMLLoader
 import javafx.geometry.Pos
-import javafx.scene.{Parent, Scene}
-import javafx.scene.control.{Button, ChoiceBox, TextField}
+import javafx.scene.control.{Button, TextField}
 import javafx.scene.layout.VBox
+import javafx.scene.{Parent, Scene}
 import javafx.stage.{Modality, Stage}
-
-import scala.annotation.tailrec
 
 class WinnerQuote {
   var Quote:String=""
 
   def display(label:String): String ={
+    //load fxml
     val fxmlLoader = new FXMLLoader(getClass.getResource("WinnerQuote.fxml"))
     val mainViewRoot: Parent = fxmlLoader.load()
     //creating stage
@@ -22,7 +20,7 @@ class WinnerQuote {
     popUp.setTitle(label)
     popUp.setMaxWidth(400)
     popUp.setMaxHeight(300)
-
+    //creates user input fields
     val quote:TextField= new TextField("Insert Quote Here")
     //create button and button action
     val ok : Button = new Button("OK")
@@ -33,7 +31,7 @@ class WinnerQuote {
       }
     })
 
-    //adding button and message to a layout
+    //create layout3 and add quote and ok button
     val layout3 = new VBox(2)
     layout3.getChildren.addAll(quote,ok)
     layout3.setAlignment(Pos.CENTER)
@@ -41,6 +39,7 @@ class WinnerQuote {
     val scene: Scene= new Scene(layout3)
     popUp.setScene(scene)
     popUp.showAndWait()
+    //return value for this window
     (Quote)
   }
 }
