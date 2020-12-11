@@ -34,6 +34,7 @@ class Board {
   @FXML
   var savegame:Button=_
   def display(players:List[PlayersExtra]):Unit = {
+    val playercopy=players
 
     val fxmlLoader = new FXMLLoader(getClass.getResource("Board.fxml"))
     val mainViewRoot: Parent = fxmlLoader.load()
@@ -60,7 +61,7 @@ class Board {
     })
     restartgame.setOnAction(new EventHandler[ActionEvent]{
       def handle(actionEvent: ActionEvent): Unit = {
-        val x:Unit=display(players)
+        val x:Unit=display(playercopy)
         popUp.close()
       }
     })
@@ -128,7 +129,7 @@ class Board {
             println(aux)
 //            aux match {
 //            case "Price Aint Right Round" =>
-//            val playa:Int=new priceAintRight().display(players)
+//            val playa:Int=new PriceAintRight().display(players)
 //            val newPos:(Int,Int)=player.move(10,50,players(playa)._2,player.moveBackward)
 //            circles(i).setCenterX(newPos._1)
 //            circles(i).setCenterY(newPos._2)
@@ -208,7 +209,7 @@ class Board {
               //case "Dilate Time" =>
               //players(i)._8=true
               //case "Feud Round"=>
-              //val Spaces Int = new FeudDisplay().display(players(i)._1)
+              //val Spaces Int = new Feud().display(players(i)._1)
               //val newPos:(Int,Int)=player.move(Spaces,50,players(i)._2,player.moveForward())
               //circles(i).setCenterX(newPos._1)
               //circles(i).setCenterY(newPos._2)
