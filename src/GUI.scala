@@ -10,7 +10,6 @@ import javafx.scene.layout.{BorderPane, GridPane}
 import javafx.event.{ActionEvent, EventHandler}
 
 class GUI extends Application{
-  type Name = String // Name of the Player
   type Color = (String, Boolean) // Color of the Player
   type feud = (String,List[String]) //feud type
   type item = (String,Double) //Item type
@@ -122,7 +121,7 @@ class GUI extends Application{
         val auxer = Players.size
         auxer match {
           case auxer if auxer>1 && auxer<9 =>
-            val whatever = new Board ().display(Players)
+            val whatever = new Board ().display(Players,Questions,Feuds,Items)
           case _ =>
             new ErrorMessage().display("SPACE ERROR", "Not Enough Players to Start Game , Min=2")
         }
@@ -249,20 +248,40 @@ class GUI extends Application{
     //creating a grid pane with all the buttons
     val mainMenuButtons: GridPane = new GridPane()
     mainMenuButtons.add(CreatePlayer,2,0,1,1)
-    mainMenuButtons.add(EditPlayer,2,1,1,1)
-    mainMenuButtons.add(StartGame,2,2,1,1)
-    mainMenuButtons.add(AddQuestion,2,3,1,1)
-    mainMenuButtons.add(DeleteQuestion,2,4,1,1)
-    mainMenuButtons.add(AddFeud,2,5,1,1)
-    mainMenuButtons.add(DeleteFeud,2,6,1,1)
-    mainMenuButtons.add(AddPriceAintRight,2,7,1,1)
-    mainMenuButtons.add(DeletePriceAintRight,2,8,1,1)
-    mainMenuButtons.add(CloseWindow,2,9,1,1)
+    mainMenuButtons.add(EditPlayer,3,0,1,1)
+    mainMenuButtons.add(AddQuestion,2,1,1,1)
+    mainMenuButtons.add(DeleteQuestion,3,1,1,1)
+    mainMenuButtons.add(AddFeud,2,2,1,1)
+    mainMenuButtons.add(DeleteFeud,3,2,1,1)
+    mainMenuButtons.add(AddPriceAintRight,2,3,1,1)
+    mainMenuButtons.add(DeletePriceAintRight,3,3,1,1)
     mainMenuButtons.setAlignment(Pos.CENTER)
+    GridPane.setFillWidth(CreatePlayer,true)
+    GridPane.setFillWidth(EditPlayer,true)
+    GridPane.setFillWidth(AddQuestion,true)
+    GridPane.setFillWidth(DeleteQuestion,true)
+    GridPane.setFillWidth(AddFeud,true)
+    GridPane.setFillWidth(DeleteFeud,true)
+    CreatePlayer.setMaxSize(Double.MaxValue,Double.MaxValue)
+    EditPlayer.setMaxSize(Double.MaxValue,Double.MaxValue)
+    AddQuestion.setMaxSize(Double.MaxValue,Double.MaxValue)
+    DeleteQuestion.setMaxSize(Double.MaxValue,Double.MaxValue)
+    AddFeud.setMaxSize(Double.MaxValue,Double.MaxValue)
+    DeleteFeud.setMaxSize(Double.MaxValue,Double.MaxValue)
+
+    val help = new GridPane()
+    help.add(mainMenuButtons,2,0,1,1)
+    help.add(StartGame,2,1,1,1)
+    help.add(CloseWindow,2,2,1,1)
+    help.setAlignment(Pos.CENTER)
+    GridPane.setFillWidth(StartGame,true)
+    GridPane.setFillWidth(CloseWindow,true)
+    StartGame.setMaxSize(Double.MaxValue,Double.MaxValue)
+    CloseWindow.setMaxSize(Double.MaxValue,Double.MaxValue)
 
     //adding the grid pane with the buttons to a Border Pane and centering the grid pane
     BorderPane.setAlignment(mainMenuButtons,Pos.CENTER)
-    val root: BorderPane  = new BorderPane(mainMenuButtons)
+    val root: BorderPane  = new BorderPane(help)
     root.setPrefSize(1000,1000)
     //Creating the scene and setting the stage to the scene and showing it
     val scene:Scene = new Scene(root);

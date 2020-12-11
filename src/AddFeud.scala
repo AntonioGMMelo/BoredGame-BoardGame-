@@ -16,6 +16,7 @@ class AddFeud {
   var AcceptableAnswer2:String=""
 
   def display(): (String,String,String,String,String,String) ={
+    //Load fxml
     val fxmlLoader = new FXMLLoader(getClass.getResource("AddFeud.fxml"))
     val mainViewRoot: Parent = fxmlLoader.load()
     //creating stage
@@ -25,7 +26,7 @@ class AddFeud {
     popUp.setTitle("Add Feud")
     popUp.setMaxWidth(400)
     popUp.setMaxHeight(300)
-
+    //Creating Input Fields
     val prompt : TextField = new TextField("Prompt")
     val bestAnswer : TextField = new TextField("Best Answer")
     val mediumAnswer1 : TextField = new TextField("Medium Answer 1")
@@ -34,27 +35,30 @@ class AddFeud {
     val acceptableAnswer2 : TextField = new TextField("Acceptable Answer 2")
 
     //create button and button action
-    val ok : Button = new Button("OK")
-    ok.setOnAction(new EventHandler[ActionEvent]{
+    val Submit : Button = new Button("Submit")
+    Submit.setOnAction(new EventHandler[ActionEvent]{
       def handle(event:ActionEvent)  = {
+        //getting user's inputs
         Prompt= prompt.getCharacters.toString
         BestAnswer= bestAnswer.getCharacters.toString
         MediumAnswer1= mediumAnswer1.getCharacters.toString
         MediumAnswer2= mediumAnswer2.getCharacters.toString
         AcceptableAnswer1= acceptableAnswer1.getCharacters.toString
         AcceptableAnswer2 =acceptableAnswer2.getCharacters.toString
+        //closing window
         popUp.close()
       }
     })
 
-    //adding button and message to a layout
+    //Creating layout3 and Adding TextFIleds and Submit Button to layout3
     val layout3 = new VBox(2)
-    layout3.getChildren.addAll(prompt,bestAnswer,mediumAnswer1,mediumAnswer2,acceptableAnswer1,acceptableAnswer2,ok)
+    layout3.getChildren.addAll(prompt,bestAnswer,mediumAnswer1,mediumAnswer2,acceptableAnswer1,acceptableAnswer2,Submit)
     layout3.setAlignment(Pos.CENTER)
     //creating scene and setting stage to scene
     val scene: Scene= new Scene(layout3)
     popUp.setScene(scene)
     popUp.showAndWait()
+    //Retrun Values For this window
     (Prompt,BestAnswer,MediumAnswer1,MediumAnswer2,AcceptableAnswer1,AcceptableAnswer2)
   }
 }
