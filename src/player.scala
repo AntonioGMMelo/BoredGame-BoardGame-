@@ -5,10 +5,10 @@ object player {
   private val BOUNDARY_RIGHT: Int = 1050; //where the center pixel on the right most spaces are
   private val BOUNDARY_TOP: Int = 50; //Where the center of the top most spaces are
   private val BOUNDARY_BOTTOM: Int = 1050 //Where the center of the bottom most spaces are
-  private val dice = List(1, 2, 3, 4, 5, 6) // a six faced dice
-  private val wheelItems = List("Price Aint Right Round","Move Back 1 Space", "Move Back 1 Space", "Move Back 1 Space", "Move Back 2 Spaces", "Move Back 2 Spaces", "All Players Move Back 2 Spaces", "Move Forward 1 Space", "Move Forward 1 Space", "Move Forward 1 Space", "Move Forward 2 Spaces", "Move Forward 2 Spaces", "All Players Move Forwards 2 Spaces", "Go To Jail", "Move Forward 3 Spaces", "Stay", "Roll The dice", "Roll The Weighted Dice") //Wheel options
-  private val cards = List("Roll The dice", "Roll The Weighted Dice", "Go To Jail", "Get Out Of Jail Free Card", "50/50", "Skip Question", "Dilate Time") //card options
-  private val coin = List("Heads","Tails")
+  val dice = List(1, 2, 3, 4, 5, 6) // a six faced dice
+  val wheelItems = List("Price Aint Right Round","Move Back 1 Space", "Move Back 1 Space", "Move Back 1 Space", "Move Back 2 Spaces", "Move Back 2 Spaces", "All Players Move Back 2 Spaces", "Move Forward 1 Space", "Move Forward 1 Space", "Move Forward 1 Space", "Move Forward 2 Spaces", "Move Forward 2 Spaces", "All Players Move Forwards 2 Spaces", "Go To Jail", "Move Forward 3 Spaces", "Stay", "Roll The dice", "Roll The Weighted Dice") //Wheel options
+  val cards = List("Roll The dice", "Roll The Weighted Dice", "Go To Jail", "50/50", "Skip Question", "Dilate Time","Feud Round","Feud Round","Feud Round","Feud Round","Feud Round") //card options
+  val coin = List("Heads","Tails")
   type feud = (String,List[String]) //feud type
   type item = (String,Double) //priceaintright type
   def getSomething[A](list:List[A]): A ={ //gets a random item of a list, use "coin" list for a coin toss use "dice" list for a dice roll or "wheelItems" for a wheel spin or "cards" to draw a card or "feudList" for a feud or "itemList" for an item

@@ -11,6 +11,14 @@
             <content>
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="200.0" prefWidth="306.0">
                     <children>
+                        <Circle fx:id="circle1" centerX="1050.0" centerY="1050.0" fill="DODGERBLUE" layoutX="50.0" layoutY="700.0" radius="25.0" stroke="BLACK" strokeType="INSIDE" visible="false" />
+                        <Circle fx:id="circle2" centerX="1050.0" centerY="1050.0" fill="DODGERBLUE" layoutX="532.0" layoutY="575.0" radius="22.0" stroke="BLACK" strokeType="INSIDE" visible="false" />
+                        <Circle fx:id="circle3" centerX="1050.0" centerY="1050.0" fill="DODGERBLUE" layoutX="415.0" layoutY="352.0" radius="19.0" stroke="BLACK" strokeType="INSIDE" visible="false" />
+                        <Circle fx:id="circle4" centerX="1050.0" centerY="1050.0" fill="DODGERBLUE" layoutX="619.0" layoutY="480.0" radius="16.0" stroke="BLACK" strokeType="INSIDE" visible="false" />
+                        <Circle fx:id="circle5" centerX="1050.0" centerY="1050.0" fill="DODGERBLUE" layoutX="550.0" layoutY="408.0" radius="13.0" stroke="BLACK" strokeType="INSIDE" visible="false" />
+                        <Circle fx:id="circle6" centerX="1050.0" centerY="1050.0" fill="DODGERBLUE" layoutX="619.0" layoutY="546.0" radius="10.0" stroke="BLACK" strokeType="INSIDE" visible="false" />
+                        <Circle fx:id="circle7" centerX="1050.0" centerY="1050.0" fill="DODGERBLUE" layoutX="619.0" layoutY="434.0" radius="10.0" stroke="BLACK" strokeType="INSIDE" visible="false" />
+                        <Circle fx:id="circle8" centerX="1050.0" centerY="1050.0" fill="DODGERBLUE" layoutX="757.0" layoutY="584.0" radius="7.0" stroke="BLACK" strokeType="INSIDE" visible="false" />
                         <Rectangle id="rect" arcHeight="5.0" arcWidth="5.0" fill="BLUE" height="50.0" layoutX="925.0" layoutY="1025.0" stroke="BLACK" strokeType="INSIDE" width="50.0" />
                         <Rectangle arcHeight="5.0" arcWidth="5.0" fill="BLUE" height="50.0" layoutX="875.0" layoutY="1025.0" stroke="BLACK" strokeType="INSIDE" width="50.0" />
                         <Rectangle arcHeight="5.0" arcWidth="5.0" fill="BLUE" height="50.0" layoutX="825.0" layoutY="1025.0" stroke="BLACK" strokeType="INSIDE" width="50.0" />
@@ -331,15 +339,11 @@
                         <Circle layoutX="527.0" layoutY="962.0" radius="4.0" stroke="BLACK" strokeType="INSIDE" />
                         <Circle layoutX="536.0" layoutY="970.0" radius="4.0" stroke="BLACK" strokeType="INSIDE" />
                         <Rectangle id="rect" arcHeight="5.0" arcWidth="5.0" fill="BLUE" height="50.0" layoutX="975.0" layoutY="1025.0" stroke="BLACK" strokeType="INSIDE" width="50.0" />
-                  <Circle fx:id="circle1" centerX="1050.0" centerY="1050.0" fill="DODGERBLUE" layoutX="50.0" layoutY="700.0" radius="25.0" stroke="BLACK" strokeType="INSIDE" visible="false" />
-                  <Circle fx:id="circle2" centerX="1050.0" centerY="1050.0" fill="DODGERBLUE" layoutX="532.0" layoutY="575.0" radius="22.0" stroke="BLACK" strokeType="INSIDE" visible="false"/>
-                  <Circle fx:id="circle3" centerX="1050.0" centerY="1050.0" fill="DODGERBLUE" layoutX="415.0" layoutY="352.0" radius="19.0" stroke="BLACK" strokeType="INSIDE" visible="false"/>
-                  <Circle fx:id="circle4" centerX="1050.0" centerY="1050.0" fill="DODGERBLUE" layoutX="619.0" layoutY="480.0" radius="16.0" stroke="BLACK" strokeType="INSIDE" visible="false"/>
-                  <Circle fx:id="circle5" centerX="1050.0" centerY="1050.0" fill="DODGERBLUE" layoutX="550.0" layoutY="408.0" radius="13.0" stroke="BLACK" strokeType="INSIDE" visible="false"/>
-                  <Circle fx:id="circle6" centerX="1050.0" centerY="1050.0" fill="DODGERBLUE" layoutX="619.0" layoutY="546.0" radius="10.0" stroke="BLACK" strokeType="INSIDE" visible="false"/>
-                  <Circle fx:id="circle7" centerX="1050.0" centerY="1050.0" fill="DODGERBLUE" layoutX="619.0" layoutY="434.0" radius="10.0" stroke="BLACK" strokeType="INSIDE" visible="false"/>
-                  <Circle fx:id="circle8" centerX="1050.0" centerY="1050.0" fill="DODGERBLUE" layoutX="757.0" layoutY="584.0" radius="7.0" stroke="BLACK" strokeType="INSIDE" visible="false" />
-                    </children>
+                        <Button fx:id="endgame" layoutX="600.0" layoutY="1100.0" mnemonicParsing="false" text="End Game" />
+                        <Button fx:id="restartgame" layoutX="550.0" layoutY="1100.0" mnemonicParsing="false" text="Restart Game" />
+                        <Button fx:id="savegame" layoutX="500.0" layoutY="1100.0" mnemonicParsing="false" text="Save Game" />
+                        <Button fx:id="mainmenu" layoutX="450.0" layoutY="1100.0" mnemonicParsing="false" text="Main Menu" />
+                       </children>
                 </AnchorPane>
             </content>
         </ScrollPane>
