@@ -1,2 +1,0 @@
-BLACK;1050,1050;true;true;true;true;true;true;true;true
-WHITE;1050,1050;true;true;true;true;true;true;true;true
