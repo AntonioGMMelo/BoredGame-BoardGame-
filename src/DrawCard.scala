@@ -26,7 +26,7 @@ class DrawCard {
     val draw : Button = new Button("Draw Card")
     draw.setOnAction(new EventHandler[ActionEvent]{
       def handle(event:ActionEvent)  = {
-        val spin2 = new SpinDaWheelPopUp().display(label,canReDraw,player.getSomething(player.cards)) //pops Up options for user
+        val spin2 = new DrawCardPopUp().display(label,canReDraw,player.getSomething(player.cards)) //pops Up options for user
         //gets values from SpinDaWheelPopUP
         card=spin2._1
         CanReDraw=spin2._2
