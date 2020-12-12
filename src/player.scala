@@ -7,7 +7,7 @@ object player {
   private val BOUNDARY_BOTTOM: Int = 1050 //Where the center of the bottom most spaces are
   val dice = List(1, 2, 3, 4, 5, 6) // a six faced dice
   val wheelItems = List("Price Aint Right Round", "Move Back 1 Space", "Move Back 1 Space", "Move Back 1 Space", "Move Back 2 Spaces", "Move Back 2 Spaces", "All Players Move Back 2 Spaces", "Move Forward 1 Space", "Move Forward 1 Space", "Move Forward 1 Space", "Move Forward 2 Spaces", "Move Forward 2 Spaces", "All Players Move Forwards 2 Spaces", "Go To Jail", "Move Forward 3 Spaces", "Stay", "Roll The dice", "Roll The Weighted Dice") //Wheel options
-  val cards = List("Roll The dice", "Roll The Weighted Dice", "Go To Jail", "50/50", "Skip Question", "Dilate Time", "Feud Round", "Feud Round", "Feud Round", "Feud Round", "Feud Round") //card options
+  val cards = List("Roll The dice", "Roll The Weighted Dice", "Go To Jail", "50/50", "Skip Question", "Get Right", "Feud Round","50/50", "Skip Question", "Get Right", "Feud Round","50/50", "Skip Question", "Get Right", "Feud Round") //card options
   type feud = (String, List[String]) //feud type
   type item = (String, Double) //priceaintright type
 

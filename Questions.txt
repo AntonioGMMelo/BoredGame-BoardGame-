@@ -1,5 +1,5 @@
 Quem é o atual campeão da F1?;Hamilton/true,Leclerc/false,Vettel/false,Verstappen/false
 Em que ano o Benfica foi fundado?;1908/false,1903/false,1902/false,1904/true
 Qual o primeiro Harry Potter?;A Ordem da Fenix/false,A Pedra Filosofal/true,Reliquias da Morte/false,O Prisioneiro de Azkaban/false
-Quem é o atual campeao europeu?;França/false
+Quem é o atual campeao europeu?;França/false,Portugal/true,Espanha/false,Mexico/false
 Quem é o maior ganhador da Liga Nos?;Sporting(AHHAHAHA)/false,Benfica/true,Porto/false,Boa Vista/true

@@ -13,7 +13,7 @@ class GUI extends Application{
   type Color = (String, Boolean) // Color of the Player
   type feud = (String,List[String]) //feud type
   type item = (String,Double) //Item type
-  type PlayerExtra=(String,(Int,Int),Boolean,Boolean,Boolean,Boolean,Boolean,Boolean,Boolean,Boolean) //PlayerExtra(color,(posX,posY),canMove,canReRolDice,canWeighDice,canSkipQuestion,can50/50,canAskForMoreTime,canReSpinTheWheel,canDrawNewCard)
+  type PlayerExtra=(String,(Int,Int),Boolean,Boolean,Boolean,Boolean,Boolean,Boolean,Boolean,Boolean) //PlayerExtra(color,(posX,posY),canMove,canReRolDice,canWeighDice,canSkipQuestion,can50/50,canGetQuestioRight,canReSpinTheWheel,canDrawNewCard)
 
   var Players:List[PlayerExtra]=FileFunctions.read_file("Players.txt",FileFunctions.makePlayer)
   var Questions:List[Pergunta]=FileFunctions.read_file("Questions.txt",FileFunctions.makePergunta)
@@ -57,6 +57,7 @@ class GUI extends Application{
             val Color: (String) = new CreatePlayer().display(list)
             val auxiliar:(List[PlayerExtra], List[Color])=user.CreatePlayer(Color,Players,Colors) //calls CreatePlayer with the user inputs
             Players=auxiliar._1 //updates players list
+            println(auxiliar._2)
             Colors=auxiliar._2 //updates colors ist
           case _ => //if there are 8 players this case is activated
             new ErrorMessage().display("SPACE ERROR","Players list is at maximum capacity i.e. 8")//Shows error message
@@ -117,12 +118,26 @@ class GUI extends Application{
     //StartGame Button setup
     val StartGame : Button = new Button("Start Game")
     StartGame.setOnAction(new EventHandler[ActionEvent]{
-
       def handle(actionEvent: ActionEvent): Unit = {
         val auxer = Players.size
         auxer match {
           case auxer if auxer>1 && auxer<9 =>
-            val whatever = new Board ().display(Questions,Feuds,Items)
+            FileFunctions.write_file("Players.txt",FileFunctions.makePlayerString,Players)
+             // whateve.display()
+            //loading fxml file
+            val fxmlLoader = new FXMLLoader(getClass.getResource("Board.fxml"))
+            val mainViewRoot: Parent = fxmlLoader.load()
+            //Creating stage
+            val popUp2: Stage = new Stage()
+            //create scene and set stage's scene to the scene created
+            val scene: Scene = new Scene(mainViewRoot)
+            popUp2.setScene(scene)
+            popUp2.setOnHiding(new EventHandler[WindowEvent] {
+              override def handle(t: WindowEvent): Unit ={
+                  Platform.exit()
+              }})
+            popUp2.show()
+            primaryStage.close()
           case _ =>
             new ErrorMessage().display("SPACE ERROR", "Not Enough Players to Start Game , Min=2")
         }

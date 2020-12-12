@@ -8,6 +8,14 @@ case class Pergunta(pergunta: String, alternativas: List[(String, Boolean)]) {
   def tip_Alternativa(): List[Alternativa] = {
     Pergunta.tip_Alternativa(this.alternativas)
   }
+
+  def alternativas_string(): List[String] = {
+    Pergunta.alternativas_string(this.alternativas)
+  }
+
+  def alternativas_tip_string(): List[String] = {
+    Pergunta.alternativas_string(this.tip_Alternativa())
+  }
 }
 
 
@@ -38,6 +46,13 @@ object Pergunta {
         else
           (alternativas filter (y => y._2 == true)) :+ x
       }
+    }
+  }
+
+  def alternativas_string(alternativas: List[Alternativa]): List[String] = {
+    alternativas match {
+      case Nil => Nil
+      case x :: t => x._1 :: alternativas_string(t)
     }
   }
 

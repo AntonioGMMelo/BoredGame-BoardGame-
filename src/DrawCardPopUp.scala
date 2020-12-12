@@ -35,7 +35,7 @@ class DrawCardPopUp {
     })
     //if user can re draw ie canredraw=true
     if (canReDraw) {
-      val ok: Button = new Button("Re-Spin Wheel")
+      val ok: Button = new Button("Re-Draw Card")
       ok.setOnAction(new EventHandler[ActionEvent] {
         def handle(event: ActionEvent) = {
           //draws new card

@@ -22,7 +22,7 @@ object FileFunctions {
   }
   def makePlayerString(p: PlayerExtra): String = {
     var result = p._1 + ";"
-    result = result + p._2._1 + "," + p._2._1 + ";"
+    result = result + p._2._1 + "," + p._2._2 + ";"
     result = result + p._3 + ";"
     result = result + p._4 + ";"
     result = result + p._5 + ";"
@@ -38,7 +38,6 @@ object FileFunctions {
   def makePlayer(string: String): PlayerExtra = {
     var split1 = string.split(";")
     var st = split1(0)
-    var st2=st
     var t = split1(1).split(",")
     var t1 = t(0).toInt
     var t2 = t(1).toInt
@@ -50,7 +49,7 @@ object FileFunctions {
     var b6 = split1(7).toBoolean
     var b7 = split1(8).toBoolean
     var b8 = split1(9).toBoolean
-    (st2, (t1, t2), b1, b2, b3, b4, b5, b6, b7, b8)
+    (st, (t1, t2), b1, b2, b3, b4, b5, b6, b7, b8)
   }
 
   def makeItem(string: String): item = {

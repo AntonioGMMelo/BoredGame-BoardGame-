@@ -1,5 +1,5 @@
-BLACK;false
-WHITE;false
+BLACK;true
+WHITE;true
 BLUE;false
 CYAN;false
 RED;false

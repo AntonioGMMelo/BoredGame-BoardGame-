@@ -18,7 +18,6 @@ class RollDaDice {
     //creating stage
     val popUp: Stage = new Stage()
     //setting up popUp's parameters and modality
-    popUp.initModality(Modality.APPLICATION_MODAL)
     popUp.setTitle(label)
     popUp.setMaxWidth(400)
     popUp.setMaxHeight(300)
