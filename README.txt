@@ -16,3 +16,5 @@ RULES:
 8-Possible card draws are;"Roll the Dice","Roll the Weighted Dice","Go to Jail"(Same as wheelspins),"50/50","Skip Question","Get Right"(if you did not have these powerups previously and draw their card then you get another use) and most importantly "Feud Round" which is another type of question where there are 5 possible answers and 1 worth 3 spaces,2 worth 1 space and 2 worth 1 space it is an open question like "What was the first Starwars" for this reason there is no punishment for getting the question wrong lets say the answers to this question were "4,5,6,1,2" if you typed "4" you would have moved forward 3 spaces, "5" or "6" 2 spaces, "1" or "2" one space any other answer would not warrant any movement.
 9-The winner is prompted for a quote.
 10-Now that you know the rules you are ready to play, HAVE FUN!
+OBSERVATIONS:
+WHILE "CLOSE GAME" MERELY CLOSES THE WINDOW "END GAME" RESTARTS THE GAME AND CLOSES THE WINDOW!!!
