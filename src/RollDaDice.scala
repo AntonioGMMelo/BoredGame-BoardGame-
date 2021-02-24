@@ -19,8 +19,8 @@ class RollDaDice {
     val popUp: Stage = new Stage()
     //setting up popUp's parameters and modality
     popUp.setTitle(label)
-    popUp.setMaxWidth(400)
-    popUp.setMaxHeight(300)
+    popUp.setMinWidth(400)
+    popUp.setMinHeight(300)
 
     //create button and button action
     val ok : Button = new Button("Roll The Dice")
