@@ -43,6 +43,7 @@ class RollDaDicePopUp {
            newRoll=player.getSomething(player.dice)
           //updates boolean
           CanReRoll=false
+          val whatever = new ErrorMessage().display(label, "You Got: "+ newRoll)
           //closes window
           popUp.close()
         }
