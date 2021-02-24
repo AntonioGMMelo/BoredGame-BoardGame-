@@ -21,8 +21,8 @@ class Feud {
     //setting up popUp's parameters and modality
     popUp.initModality(Modality.APPLICATION_MODAL)
     popUp.setTitle(label)
-    popUp.setMaxWidth(400)
-    popUp.setMaxHeight(300)
+    popUp.setMinWidth(400)
+    popUp.setMinHeight(300)
     val a= player.getSomething(layout)//gets random feud
     val label2= new Label(a._1)//creates label with feud name
     //adds user input field
