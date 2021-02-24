@@ -18,8 +18,8 @@ class RollDaWeightedDice {
     //setting up popUp's parameters and modality
     popUp.initModality(Modality.APPLICATION_MODAL)
     popUp.setTitle(label)
-    popUp.setMaxWidth(400)
-    popUp.setMaxHeight(300)
+    popUp.setMinWidth(400)
+    popUp.setMinHeight(300)
 
     //create button and button action
     val ok : Button = new Button("Roll the Weighted Dice")
