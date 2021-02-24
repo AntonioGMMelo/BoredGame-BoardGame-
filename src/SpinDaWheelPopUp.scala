@@ -40,6 +40,7 @@ class SpinDaWheelPopUp {
         def handle(event: ActionEvent) = {
           spin=player.getSomething(player.wheelItems)//gets new wheel item
           CanReSpin=false//updates boolean
+          val whatever = new ErrorMessage().display(label, "You Got: "+ spin)
           popUp.close()
         }
       })
