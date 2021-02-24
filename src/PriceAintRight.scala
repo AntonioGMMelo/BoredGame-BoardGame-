@@ -24,8 +24,8 @@ class PriceAintRight {
     //setting up popUp's parameters and modality
     popUp.initModality(Modality.APPLICATION_MODAL)
     popUp.setTitle("PriceAintRight")
-    popUp.setMaxWidth(400)
-    popUp.setMaxHeight(300)
+    popUp.setMinWidth(400)
+    popUp.setMinHeight(300)
     val item2 = player.getSomething(list)
     var answers:List[Double]=List()
     // Create a combo box
