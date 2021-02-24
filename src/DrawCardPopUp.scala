@@ -42,7 +42,7 @@ class DrawCardPopUp {
           Card = player.getSomething(player.cards)
           //sets boolean to false
           CanReDraw = false
-          //closes Window
+          val whatever = new ErrorMessage().display(label, "You Got: "+ Card)
           popUp.close()
         }
       })
