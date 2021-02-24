@@ -20,8 +20,8 @@ class RollDaDicePopUp {
     //setting up popUp's parameters and modality
     popUp.initModality(Modality.APPLICATION_MODAL)
     popUp.setTitle(label)
-    popUp.setMaxWidth(400)
-    popUp.setMaxHeight(300)
+    popUp.setMinWidth(400)
+    popUp.setMinHeight(300)
   //creates layout3
     val layout3 = new VBox(3)
     //create button and button action
