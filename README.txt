@@ -1,6 +1,6 @@
 BORED GAME
 A scala and functional programming project.
-requirements: JDK 15, scala SBT 1.3.13 http://scala-sbt.org/download.html,JavaFX 14.0.2.1 https://gluonhq.com/products/javafx/ and
+requirements: JDK 15, scala SBT 1.3.13 http://scala-sbt.org/download.html , JavaFX 14.0.2.1 https://gluonhq.com/products/javafx/ and
 Scala interpreter ("REPL") from:https://downloads.lightbend.com/scala/2.13.3/scala-2.13.3.msi
 IDE used: InteliJ with scala extension
 Main Function in file GUI.scala under the name Menu
